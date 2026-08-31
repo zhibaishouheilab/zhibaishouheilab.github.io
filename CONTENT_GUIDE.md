@@ -2,11 +2,11 @@
 
 ## Publications / 论文
 
-Edit `src/data/publications.json`. Every record needs a unique lowercase `id`, verified title and author order, venue, year, DOI, publication status, bilingual summary, BibTeX, and descriptive image alt text. Use `null` for unavailable optional links; never invent a URL.
+Edit `src/data/publications.json`. Every record needs a unique lowercase `id`, accurate title and author order, venue or manuscript status, year, publication status, bilingual summary, BibTeX, and descriptive image alt text. Use an empty DOI and `null` paper link for accepted or under-review work that is not yet online; never invent a URL.
 
-编辑 `src/data/publications.json`。每条记录必须包含唯一的小写 `id`、核验后的标题与作者顺序、期刊或会议、年份、DOI、发表状态、中英文摘要、BibTeX 与有意义的图片替代文本。没有的链接请使用 `null`，不要猜测。
+编辑 `src/data/publications.json`。每条记录必须包含唯一的小写 `id`、准确的标题与作者顺序、期刊/会议或稿件状态、年份、发表状态、中英文摘要、BibTeX 与有意义的图片替代文本。尚未上线的已接收论文或在投稿件可保留空 DOI，并将论文链接设为 `null`；不要猜测链接。
 
-Allowed publication statuses are `Published`, `In Press`, `Preprint`, and `Under Review`. A paper is `featured` only when it is appropriate to highlight it on the home page. Mark `first_author` and `co_first_author` independently and set `equal_contribution` only for authors explicitly identified by the source.
+Allowed publication statuses are `Published`, `Accepted`, `In Press`, `Preprint`, and `Under Review`. A paper is `featured` only when it is appropriate to highlight it on the home page. Mark `first_author` and `co_first_author` independently and set `equal_contribution` only for authors explicitly identified by the source.
 
 ## Projects / 项目
 
@@ -16,7 +16,7 @@ Edit `src/data/projects.json`. Project descriptions should state the clinical mo
 
 ## Profile, education, and news / 简介、教育与动态
 
-Profile copy lives in `src/data/profile.ts`; education in `src/data/education.ts`; news in `src/data/news.ts`. Add matching English and Chinese text. Dates use ISO format (`YYYY-MM-DD`) in data and are rendered for each locale.
+Profile copy lives in `src/data/profile.ts`; education in `src/data/education.ts`; honors in `src/data/honors.ts`; conferences in `src/data/conferences.ts`; news in `src/data/news.ts`. Add matching English and Chinese text. Dates use ISO format (`YYYY-MM-DD` or `YYYY-MM`) in data and are rendered for each locale.
 
 个人简介位于 `src/data/profile.ts`，教育经历位于 `src/data/education.ts`，动态位于 `src/data/news.ts`。请同时维护中英文内容；数据中的日期使用 ISO 格式（`YYYY-MM-DD`）。
 

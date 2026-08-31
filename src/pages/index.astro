@@ -18,6 +18,19 @@ const publications = (await getCollection("publications"))
 const projects = (await getCollection("projects"))
   .map((entry) => entry.data)
   .filter((project) => project.featured)
+  .sort(
+    (a, b) =>
+      [
+        "cervical-spine-ai",
+        "vertebral-fracture-assessment",
+        "medical-anomaly-detection",
+      ].indexOf(a.id) -
+      [
+        "cervical-spine-ai",
+        "vertebral-fracture-assessment",
+        "medical-anomaly-detection",
+      ].indexOf(b.id),
+  )
   .slice(0, 3);
 ---
 
@@ -28,12 +41,12 @@ const projects = (await getCollection("projects"))
     <div class="container">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">Research agenda</p>
+          <p class="eyebrow">Research</p>
           <h2 id="interests-heading">{t.labels.researchInterests}</h2>
         </div>
         <p>
-          Four connected directions guide my work from imaging representation to
-          evidence that can be inspected in clinical evaluation.
+          My current work covers spine imaging, anomaly detection, multimodal
+          learning, and quantitative analysis.
         </p>
       </div>
       <div class="interest-grid">
@@ -75,7 +88,7 @@ const projects = (await getCollection("projects"))
     <div class="container">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">From questions to workflows</p>
+          <p class="eyebrow">Current projects</p>
           <h2 id="projects-heading">{t.labels.featuredResearch}</h2>
         </div>
         <a class="button secondary" href={pathFor(locale, "research")}
@@ -103,7 +116,7 @@ const projects = (await getCollection("projects"))
     <div class="container content-narrow">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">Research record</p>
+          <p class="eyebrow">News</p>
           <h2 id="news-heading">{t.labels.latestNews}</h2>
         </div>
       </div>

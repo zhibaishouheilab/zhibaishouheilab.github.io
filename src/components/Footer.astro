@@ -15,7 +15,7 @@ const t = dictionaries[locale];
   <div class="container footer-grid">
     <div>
       <p class="footer-name">
-        {profile.name}
+        {profile.name} ·
         <span lang="zh-CN">{profile.chineseName}</span>
       </p>
       <p>
@@ -35,11 +35,7 @@ const t = dictionaries[locale];
   <div class="container footer-meta">
     <p>© {new Date().getFullYear()} Qi Zhang</p>
     <p>
-      {
-        locale === "en"
-          ? "Built for clarity, accessibility, and long-term academic use."
-          : "为清晰、无障碍与长期学术维护而构建。"
-      }
+      {locale === "en" ? "Last updated August 2026." : "更新于2026年8月。"}
     </p>
   </div>
 </footer>

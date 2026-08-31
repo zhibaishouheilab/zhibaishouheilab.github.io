@@ -294,6 +294,12 @@ a {
   gap: 1.25rem;
 }
 
+.conference-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
 .projects-stack {
   display: grid;
   gap: 1.5rem;
@@ -488,6 +494,7 @@ a {
   }
 
   .featured-grid,
+  .conference-grid,
   .home-project-grid {
     grid-template-columns: 1fr;
   }

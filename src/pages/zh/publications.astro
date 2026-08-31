@@ -4,6 +4,8 @@ import ContentLayout from "../../layouts/ContentLayout.astro";
 import FeaturedPublicationCard from "../../components/FeaturedPublicationCard.astro";
 import PublicationFilters from "../../components/PublicationFilters.astro";
 import PublicationListItem from "../../components/PublicationListItem.astro";
+import ConferenceCard from "../../components/ConferenceCard.astro";
+import { conferences } from "../../data/conferences";
 import { dictionaries } from "../../i18n/routes";
 
 const locale = "zh" as const;
@@ -27,10 +29,10 @@ const topics = [
   {locale}
   routeName="publications"
   eyebrow="论文"
-  heading="经过核验的同行评议成果"
-  intro="以下论文保留正式作者顺序、发表状态、DOI与可用的公开代码链接。本站不展示容易过时的动态引用次数。"
+  heading="论文与学术会议"
+  intro="我的研究涉及颈椎影像、医学异常检测、图像重建与定量影像。"
   title="论文 | 张琦"
-  description="张琦在医学图像分析、颈椎影像、异常检测与多模态学习方向的已核验论文。"
+  description="张琦在医学图像分析、颈椎影像与异常检测方向的论文、在投稿件和学术会议记录。"
 >
   <section class="section" aria-labelledby="featured-heading">
     <div class="container">
@@ -40,7 +42,7 @@ const topics = [
             {t.labels.featuredFirstAuthor}
           </h2>
         </div>
-        <p>每张卡片均使用从作者提供的论文 PDF 中提取的方法总览或工作流程图。</p>
+        <p>卡片图片选用各篇论文中具有代表性的方法总览或工作流程图。</p>
       </div>
       <div class="featured-grid">
         {
@@ -52,12 +54,36 @@ const topics = [
     </div>
   </section>
 
+  <section
+    class="section soft-blue"
+    id="conferences"
+    aria-labelledby="conferences-heading"
+  >
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">学术交流</p><h2 id="conferences-heading">
+            参会与报告
+          </h2>
+        </div>
+        <p>2025至2026年的口头汇报、海报展示与会议获奖记录。</p>
+      </div>
+      <div class="conference-grid">
+        {
+          conferences.map((conference) => (
+            <ConferenceCard {conference} {locale} />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
   <section class="section surface" aria-labelledby="all-heading">
     <div class="container">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">完整核验列表</p><h2 id="all-heading">
-            {t.labels.allPublications}
+          <p class="eyebrow">论文列表</p><h2 id="all-heading">
+            论文与在投稿件
           </h2>
         </div>
       </div>

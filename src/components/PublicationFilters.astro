@@ -24,6 +24,15 @@ const topicLabels: Record<string, string> = {
   "image-synthesis": locale === "en" ? "Image synthesis" : "图像合成",
   "quantitative-mri": locale === "en" ? "Quantitative MRI" : "定量MRI",
   "knee-cartilage": locale === "en" ? "Knee cartilage" : "膝软骨",
+  "super-resolution": locale === "en" ? "Image reconstruction" : "图像重建",
+  "systematic-review": locale === "en" ? "Systematic review" : "系统综述",
+};
+const statusLabels: Record<string, string> = {
+  Published: locale === "en" ? "Published" : "已发表",
+  Accepted: locale === "en" ? "Accepted" : "已接收",
+  "In Press": locale === "en" ? "In Press" : "在线优先",
+  Preprint: locale === "en" ? "Preprint" : "预印本",
+  "Under Review": locale === "en" ? "Under Review" : "在投",
 };
 ---
 
@@ -51,7 +60,11 @@ const topicLabels: Record<string, string> = {
     <span>{t.labels.status}</span>
     <select name="status">
       <option value="">{t.labels.allStatuses}</option>
-      {statuses.map((status) => <option value={status}>{status}</option>)}
+      {
+        statuses.map((status) => (
+          <option value={status}>{statusLabels[status] ?? status}</option>
+        ))
+      }
     </select>
   </label>
   <label>

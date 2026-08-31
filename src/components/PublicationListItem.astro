@@ -12,9 +12,21 @@ const { publication, locale } = Astro.props;
 const t = dictionaries[locale];
 const filterText =
   `${publication.title} ${publication.authors.map((author) => author.name).join(" ")} ${publication.venue}`.toLowerCase();
+const statusLabels: Record<string, string> = {
+  Published: locale === "en" ? "Published" : "已发表",
+  Accepted: locale === "en" ? "Accepted" : "已接收",
+  "In Press": locale === "en" ? "In Press" : "在线优先",
+  Preprint: locale === "en" ? "Preprint" : "预印本",
+  "Under Review": locale === "en" ? "Under Review" : "在投",
+};
+const venue =
+  locale === "zh" && publication.venue === "Manuscript under review"
+    ? "在投稿件"
+    : publication.venue;
 ---
 
 <article
+  id={`list-${publication.id}`}
   class="publication-list-item"
   data-publication
   data-year={publication.year}
@@ -46,7 +58,7 @@ const filterText =
     <div class="badge-row">
       <span
         class={`status-badge status-${publication.status.toLowerCase().replace(" ", "-")}`}
-        >{publication.status}</span
+        >{statusLabels[publication.status]}</span
       >
       {
         publication.co_first_author && (
@@ -78,20 +90,26 @@ const filterText =
       }
     </p>
     <p class="venue-line">
-      <strong>{publication.venue}</strong>{
+      <strong>{venue}</strong>{
         publication.volume && ` · ${publication.volume}`
       }{publication.issue && `(${publication.issue})`}{
         publication.pages && ` · ${publication.pages}`
       }{publication.article_number && ` · ${publication.article_number}`}
     </p>
-    <p class="doi">
-      <span>{t.labels.doi}</span>
-      <a
-        href={publication.links.paper ?? undefined}
-        target="_blank"
-        rel="noopener noreferrer">{publication.doi}</a
-      >
-    </p>
+    {
+      publication.doi && (
+        <p class="doi">
+          <span>{t.labels.doi}</span>
+          <a
+            href={publication.links.paper ?? undefined}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {publication.doi}
+          </a>
+        </p>
+      )
+    }
     <div class="button-row compact-row">
       {
         publication.links.paper && (

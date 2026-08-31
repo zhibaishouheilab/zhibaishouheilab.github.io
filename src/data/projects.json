@@ -11,7 +11,12 @@
     "clinical_motivation_zh": "颈椎病评估需要一致地解释多种解剖结构、压迫模式与信号异常。",
     "technical_focus_en": "Pathology-guided segmentation, automated imaging indicators, uncertainty-aware anomaly detection, and external validation.",
     "technical_focus_zh": "病理引导分割、影像指标自动计算、不确定性感知异常检测与外部验证。",
-    "related_publications": ["cervai-x", "u2ad"],
+    "related_publications": [
+      "jointsr-miccai2026",
+      "cervai-x",
+      "u2ad",
+      "dcm-ai-review"
+    ],
     "links": {
       "code": "https://github.com/zhibaishouheilab/CervAI-X",
       "paper": "https://doi.org/10.1109/JBHI.2025.3598469",
@@ -19,8 +24,8 @@
     },
     "image": {
       "src": "/assets/projects/cervical-spine-ai.webp",
-      "alt_en": "Conceptual cervical-spine measurement and anomaly-detection workflow",
-      "alt_zh": "颈椎测量与异常检测流程概念图"
+      "alt_en": "Cover artwork depicting cervical MRI analysis and human-AI collaboration",
+      "alt_zh": "描绘颈椎MRI分析与人机协作的封面图"
     }
   },
   {
@@ -43,8 +48,8 @@
     },
     "image": {
       "src": "/assets/projects/vertebral-fracture-assessment.webp",
-      "alt_en": "Conceptual comparison of compressed and reconstructed vertebral height",
-      "alt_zh": "压缩椎体与重建椎体高度对比概念图"
+      "alt_en": "HealthiVert-GAN artwork showing pseudo-healthy vertebra synthesis and height-loss measurement",
+      "alt_zh": "HealthiVert-GAN封面图，展示伪健康椎体合成与高度损失测量"
     }
   },
   {
@@ -67,32 +72,8 @@
     },
     "image": {
       "src": "/assets/projects/medical-anomaly-detection.webp",
-      "alt_en": "Conceptual cross-sequence anomaly-detection evidence map",
-      "alt_zh": "跨序列异常检测证据图概念示意"
-    }
-  },
-  {
-    "id": "multimodal-registration",
-    "title": "Multimodal Deformable Registration",
-    "slug": "multimodal-registration",
-    "status": "Published",
-    "featured": false,
-    "summary_en": "Collaborative work on modality-invariant representations and recursive inference for large-deformation medical image registration.",
-    "summary_zh": "合作研究模态不变表征与递归推理，用于医学图像大形变配准。",
-    "clinical_motivation_en": "Alignment across CT and MRI is challenged by both contrast differences and large physiological deformations.",
-    "clinical_motivation_zh": "CT与MRI之间的对齐同时受到对比差异与生理大形变的影响。",
-    "technical_focus_en": "Representation disentanglement, multi-scale feature registration, and adaptive recursive refinement.",
-    "technical_focus_zh": "表征解耦、多尺度特征配准与自适应递归细化。",
-    "related_publications": ["ardmr", "rdmr"],
-    "links": {
-      "code": "https://github.com/ybby2020/ARDMR_MIA",
-      "paper": "https://doi.org/10.1016/j.media.2025.103844",
-      "data": null
-    },
-    "image": {
-      "src": "/assets/projects/multimodal-registration.webp",
-      "alt_en": "Conceptual alignment of two multimodal medical image grids",
-      "alt_zh": "两种模态医学图像网格对齐概念图"
+      "alt_en": "UniTransAD Figure 1 comparing reconstruction, cyclic-translation, cross-translation, and unified anomaly-detection paradigms",
+      "alt_zh": "UniTransAD论文图1，对比重建、循环翻译、跨序列翻译与统一异常检测范式"
     }
   }
 ]

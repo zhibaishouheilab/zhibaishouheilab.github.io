@@ -20,7 +20,10 @@ const publicationSchema = z.object({
   issue: z.string(),
   pages: z.string(),
   article_number: z.string(),
-  doi: z.string().regex(/^10\.\d{4,9}\/[\-._;()/:A-Za-z0-9]+$/),
+  doi: z.union([
+    z.literal(""),
+    z.string().regex(/^10\.\d{4,9}\/[\-._;()/:A-Za-z0-9]+$/),
+  ]),
   status: z.enum([
     "Published",
     "Accepted",

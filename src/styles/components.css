@@ -491,6 +491,167 @@
   color: var(--color-text-muted);
 }
 
+.conference-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.conference-image {
+  width: 100%;
+  margin: 0;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-bottom: 1px solid var(--color-border);
+  background: #fff;
+}
+
+.conference-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.conference-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 1.35rem;
+}
+
+.conference-content h3 {
+  margin-top: 0.85rem;
+  font-size: 1.25rem;
+}
+
+.conference-content > p:not(.conference-meta, .conference-award) {
+  margin-top: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.conference-formats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.conference-formats span {
+  padding: 0.28rem 0.55rem;
+  border: 1px solid #b9d2c7;
+  border-radius: 999px;
+  background: #edf6f1;
+  color: var(--color-success);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.conference-meta {
+  margin-top: 0.5rem;
+  color: var(--color-secondary);
+  font-size: 0.85rem;
+  font-weight: 650;
+}
+
+.conference-talk {
+  display: grid;
+  gap: 0.3rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.conference-talk strong {
+  color: var(--color-primary);
+  font-size: 0.82rem;
+}
+
+.conference-talk span {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.conference-award {
+  margin-top: 1rem;
+  padding: 0.72rem 0.8rem;
+  border-left: 3px solid var(--color-accent);
+  background: #fbf6e9;
+  color: #795724;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.conference-link {
+  width: fit-content;
+  margin-top: auto;
+  padding-top: 1rem;
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.honors-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--color-border);
+}
+
+.honors-list li {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  gap: 1rem;
+  padding: 1.15rem 1rem 1.15rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.honors-list li:nth-child(odd) {
+  padding-right: 1.5rem;
+  border-right: 1px solid var(--color-border);
+}
+
+.honors-list li:nth-child(even) {
+  padding-left: 1.5rem;
+}
+
+.honors-list time {
+  color: var(--color-secondary);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.honors-list strong,
+.honors-list span {
+  display: block;
+}
+
+.honors-list strong {
+  color: var(--color-primary);
+}
+
+.honors-list span {
+  margin-top: 0.25rem;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.collaboration-list {
+  margin: 0.8rem 0 0;
+  padding-left: 1.2rem;
+  color: var(--color-text-muted);
+}
+
+.collaboration-list li + li {
+  margin-top: 0.45rem;
+}
+
 .news-list {
   margin: 0;
   padding: 0;
@@ -598,6 +759,17 @@
   .project-card > img {
     aspect-ratio: 16 / 9;
   }
+
+  .honors-list {
+    grid-template-columns: 1fr;
+  }
+
+  .honors-list li,
+  .honors-list li:nth-child(odd),
+  .honors-list li:nth-child(even) {
+    padding-inline: 0;
+    border-right: 0;
+  }
 }
 
 @media (max-width: 600px) {
@@ -610,7 +782,8 @@
   }
 
   .news-list li,
-  .timeline li {
+  .timeline li,
+  .honors-list li {
     grid-template-columns: 1fr;
     gap: 0.2rem;
   }

@@ -1,5 +1,85 @@
 [
   {
+    "id": "jointsr-miccai2026",
+    "title": "Reconstructing Isotropic 3D Cervical MRI from Anisotropic Clinical Scans via Anatomy-Style Decoupled INRs",
+    "authors": [
+      { "name": "Qi Zhang", "self": true, "equal_contribution": true },
+      { "name": "Xiuyuan Chen", "self": false, "equal_contribution": true },
+      { "name": "Yibo Hu", "self": false, "equal_contribution": false },
+      { "name": "Hongxing Shen", "self": false, "equal_contribution": false },
+      { "name": "Jianqi Sun", "self": false, "equal_contribution": false }
+    ],
+    "venue": "Medical Image Computing and Computer Assisted Intervention - MICCAI 2026",
+    "year": 2026,
+    "volume": "",
+    "issue": "",
+    "pages": "",
+    "article_number": "",
+    "doi": "",
+    "status": "Accepted",
+    "first_author": true,
+    "co_first_author": true,
+    "featured": true,
+    "topics": ["cervical-spine", "super-resolution", "multimodal-learning"],
+    "links": {
+      "paper": null,
+      "preprint": null,
+      "code": "https://github.com/zhibaishouheilab/JointSR",
+      "project": "/research/#cervical-spine-ai"
+    },
+    "image": {
+      "src": "/assets/publications/jointsr-miccai2026.webp",
+      "alt_en": "JointSR Figure 2 showing the anatomy-style decoupled hybrid implicit neural representation framework",
+      "alt_zh": "JointSR论文图2，展示解剖-风格解耦的混合隐式神经表示框架",
+      "label_en": "Fig. 2 · Paper figure",
+      "label_zh": "图 2 · 论文图示"
+    },
+    "summary_en": "An anatomy-style decoupled hybrid implicit neural representation reconstructs an isotropic 3D cervical MRI volume from routine anisotropic multi-view scans. The method uses unified spatial coordinates, view-specific style embeddings, and stochastic view dropout without paired high-resolution supervision.",
+    "summary_zh": "该研究利用解剖-风格解耦的混合隐式神经表示，从常规多视角各向异性扫描重建各向同性三维颈椎MRI。方法结合统一空间坐标、视角风格嵌入与随机视角丢弃，无需配对高分辨率监督。",
+    "bibtex": "@inproceedings{zhang2026jointsr,\n  title={Reconstructing Isotropic 3D Cervical MRI from Anisotropic Clinical Scans via Anatomy-Style Decoupled INRs},\n  author={Zhang, Qi and Chen, Xiuyuan and Hu, Yibo and Shen, Hongxing and Sun, Jianqi},\n  booktitle={Medical Image Computing and Computer Assisted Intervention -- MICCAI 2026},\n  year={2026},\n  note={Accepted}\n}"
+  },
+  {
+    "id": "dcm-ai-review",
+    "title": "Artificial intelligence for degenerative cervical myelopathy imaging: a systematic review across tasks and modalities",
+    "authors": [
+      { "name": "Qi Zhang", "self": true, "equal_contribution": true },
+      { "name": "Xiuyuan Chen", "self": false, "equal_contribution": true },
+      { "name": "Zihui Wang", "self": false, "equal_contribution": true },
+      { "name": "Kun Wang", "self": false, "equal_contribution": false },
+      { "name": "Lianming Wu", "self": false, "equal_contribution": false },
+      { "name": "Hongxing Shen", "self": false, "equal_contribution": false },
+      { "name": "Jianqi Sun", "self": false, "equal_contribution": false }
+    ],
+    "venue": "Manuscript under review",
+    "year": 2026,
+    "volume": "",
+    "issue": "",
+    "pages": "",
+    "article_number": "",
+    "doi": "",
+    "status": "Under Review",
+    "first_author": false,
+    "co_first_author": true,
+    "featured": false,
+    "topics": ["cervical-spine", "systematic-review", "multimodal-learning"],
+    "links": {
+      "paper": null,
+      "preprint": null,
+      "code": null,
+      "project": "/research/#cervical-spine-ai"
+    },
+    "image": {
+      "src": "/assets/publications/dcm-ai-review.webp",
+      "alt_en": "Review Figure 1 connecting cervical X-ray, CT, and MRI with six artificial-intelligence task groups",
+      "alt_zh": "综述图1，展示颈椎X线、CT与MRI和六类人工智能任务的联系",
+      "label_en": "Fig. 1 · Manuscript figure",
+      "label_zh": "图 1 · 稿件图示"
+    },
+    "summary_en": "This systematic review examines 103 studies of artificial intelligence for degenerative cervical myelopathy across MRI, CT, X-ray, and six task groups. It summarises current evidence and the recurring challenges of retrospective single-centre data and limited external validation.",
+    "summary_zh": "该系统综述梳理了103项退行性脊髓型颈椎病人工智能研究，覆盖MRI、CT、X线及六类任务，并总结了当前证据以及单中心回顾性数据、外部验证不足等共性问题。",
+    "bibtex": "@unpublished{zhang2026dcmreview,\n  title={Artificial intelligence for degenerative cervical myelopathy imaging: a systematic review across tasks and modalities},\n  author={Zhang, Qi and Chen, Xiuyuan and Wang, Zihui and Wang, Kun and Wu, Lianming and Shen, Hongxing and Sun, Jianqi},\n  year={2026},\n  note={Manuscript under review}\n}"
+  },
+  {
     "id": "unitransad",
     "title": "UniTransAD: Unified Translation Framework for Anomaly Detection in Brain MRI",
     "authors": [
@@ -33,7 +113,7 @@
       "label_en": "Fig. 3 · Paper figure",
       "label_zh": "图 3 · 论文图示"
     },
-    "summary_en": "A unified translation framework addresses brain MRI anomaly detection across diseases, sequences, and missing-input settings. Dynamic style prototypes and dual-level evidence support flexible inference without presenting invented clinical results.",
+    "summary_en": "A unified translation framework addresses brain MRI anomaly detection across diseases, sequences, and missing-input settings. Dynamic style prototypes and dual-level evidence support flexible inference under different combinations of MRI inputs.",
     "summary_zh": "该工作面向不同疾病、序列与缺失输入场景，构建统一的脑MRI翻译式异常检测框架。动态风格原型与双层证据机制支持更加灵活的推理。",
     "bibtex": "@article{zhang2026unitransad,\n  title={UniTransAD: Unified Translation Framework for Anomaly Detection in Brain MRI},\n  author={Zhang, Qi and Li, Xia and Hu, Yibo and Sun, Jianqi},\n  journal={IEEE Transactions on Medical Imaging},\n  year={2026},\n  doi={10.1109/TMI.2026.3711975},\n  note={Online ahead of print}\n}"
   },
@@ -148,7 +228,7 @@
       "paper": "https://doi.org/10.1016/j.media.2025.103844",
       "preprint": null,
       "code": "https://github.com/ybby2020/ARDMR_MIA",
-      "project": "/research/#multimodal-registration"
+      "project": null
     },
     "image": {
       "src": "/assets/publications/ardmr.webp",
@@ -265,7 +345,7 @@
       "paper": "https://doi.org/10.1007/978-3-032-04947-6_49",
       "preprint": null,
       "code": "https://github.com/ybby2020/RDMR",
-      "project": "/research/#multimodal-registration"
+      "project": null
     },
     "image": {
       "src": "/assets/publications/rdmr.webp",

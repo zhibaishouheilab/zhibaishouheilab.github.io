@@ -1,0 +1,24 @@
+---
+import { honors } from "../data/honors";
+import type { Locale } from "../i18n/routes";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+---
+
+<ol class="honors-list">
+  {
+    honors.map((honor) => (
+      <li>
+        <time>{honor.period}</time>
+        <div>
+          <strong>{locale === "en" ? honor.title_en : honor.title_zh}</strong>
+          <span>{locale === "en" ? honor.detail_en : honor.detail_zh}</span>
+        </div>
+      </li>
+    ))
+  }
+</ol>

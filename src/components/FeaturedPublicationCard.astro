@@ -12,9 +12,20 @@ const { publication, locale } = Astro.props;
 const t = dictionaries[locale];
 const summary =
   locale === "en" ? publication.summary_en : publication.summary_zh;
+const statusLabels: Record<string, string> = {
+  Published: locale === "en" ? "Published" : "已发表",
+  Accepted: locale === "en" ? "Accepted" : "已接收",
+  "In Press": locale === "en" ? "In Press" : "在线优先",
+  Preprint: locale === "en" ? "Preprint" : "预印本",
+  "Under Review": locale === "en" ? "Under Review" : "在投",
+};
+const venue =
+  locale === "zh" && publication.venue === "Manuscript under review"
+    ? "在投稿件"
+    : publication.venue;
 ---
 
-<article class="publication-card featured-card">
+<article class="publication-card featured-card" id={publication.id}>
   <figure class="publication-image">
     <img
       src={publication.image.src}
@@ -38,7 +49,7 @@ const summary =
     <div class="badge-row">
       <span
         class={`status-badge status-${publication.status.toLowerCase().replace(" ", "-")}`}
-        >{publication.status}</span
+        >{statusLabels[publication.status]}</span
       >
       {
         publication.co_first_author ? (
@@ -67,17 +78,23 @@ const summary =
       }
     </p>
     <p class="venue-line">
-      <strong>{publication.venue}</strong> · {publication.year}
+      <strong>{venue}</strong> · {publication.year}
     </p>
     <p class="publication-summary">{summary}</p>
-    <p class="doi">
-      <span>{t.labels.doi}</span>
-      <a
-        href={publication.links.paper ?? undefined}
-        target="_blank"
-        rel="noopener noreferrer">{publication.doi}</a
-      >
-    </p>
+    {
+      publication.doi && (
+        <p class="doi">
+          <span>{t.labels.doi}</span>
+          <a
+            href={publication.links.paper ?? undefined}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {publication.doi}
+          </a>
+        </p>
+      )
+    }
     <div class="button-row compact-row">
       {
         publication.links.paper && (

@@ -18,6 +18,19 @@ const publications = (await getCollection("publications"))
 const projects = (await getCollection("projects"))
   .map((entry) => entry.data)
   .filter((project) => project.featured)
+  .sort(
+    (a, b) =>
+      [
+        "cervical-spine-ai",
+        "vertebral-fracture-assessment",
+        "medical-anomaly-detection",
+      ].indexOf(a.id) -
+      [
+        "cervical-spine-ai",
+        "vertebral-fracture-assessment",
+        "medical-anomaly-detection",
+      ].indexOf(b.id),
+  )
   .slice(0, 3);
 ---
 
@@ -28,11 +41,11 @@ const projects = (await getCollection("projects"))
     <div class="container">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">研究议程</p><h2 id="interests-heading">
+          <p class="eyebrow">研究方向</p><h2 id="interests-heading">
             {t.labels.researchInterests}
           </h2>
         </div>
-        <p>四个相互连接的方向贯穿影像表征、定量证据与临床可检查的评价流程。</p>
+        <p>目前的工作包括脊柱影像、异常检测、多模态学习与定量分析。</p>
       </div>
       <div class="interest-grid">
         {
@@ -74,7 +87,7 @@ const projects = (await getCollection("projects"))
     <div class="container">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">从问题到流程</p><h2 id="projects-heading">
+          <p class="eyebrow">当前项目</p><h2 id="projects-heading">
             {t.labels.featuredResearch}
           </h2>
         </div>
@@ -105,7 +118,7 @@ const projects = (await getCollection("projects"))
     <div class="container content-narrow">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">研究记录</p><h2 id="news-heading">
+          <p class="eyebrow">动态</p><h2 id="news-heading">
             {t.labels.latestNews}
           </h2>
         </div>

@@ -11,6 +11,7 @@ const projects = JSON.parse(
 const errors = [];
 const allowedStatuses = new Set([
   "Published",
+  "Accepted",
   "In Press",
   "Preprint",
   "Under Review",
@@ -30,7 +31,7 @@ unique(
   "publication id",
 );
 unique(
-  publications.map((item) => item.doi.toLowerCase()),
+  publications.map((item) => item.doi.toLowerCase()).filter(Boolean),
   "DOI",
 );
 unique(
@@ -44,10 +45,16 @@ for (const publication of publications) {
     errors.push(`Invalid publication id: ${publication.id}`);
   if (!allowedStatuses.has(publication.status))
     errors.push(`Invalid publication status: ${publication.id}`);
-  if (!/^10\.\d{4,9}\/.+/.test(publication.doi))
-    errors.push(`Invalid DOI: ${publication.id}`);
-  if (publication.links.paper !== `https://doi.org/${publication.doi}`) {
-    errors.push(`Paper link must use canonical DOI URL: ${publication.id}`);
+  if (publication.doi) {
+    if (!/^10\.\d{4,9}\/.+/.test(publication.doi))
+      errors.push(`Invalid DOI: ${publication.id}`);
+    if (publication.links.paper !== `https://doi.org/${publication.doi}`) {
+      errors.push(`Paper link must use canonical DOI URL: ${publication.id}`);
+    }
+  } else if (publication.links.paper) {
+    errors.push(
+      `Paper link must be empty when DOI is unavailable: ${publication.id}`,
+    );
   }
   if (
     !publication.authors.some(
@@ -110,6 +117,8 @@ const publicSourceFiles = [
   "src/data/profile.ts",
   "src/data/education.ts",
   "src/data/news.ts",
+  "src/data/honors.ts",
+  "src/data/conferences.ts",
   "src/data/publications.json",
   "src/data/projects.json",
 ];

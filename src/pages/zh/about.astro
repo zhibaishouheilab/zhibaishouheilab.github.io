@@ -2,6 +2,7 @@
 import ContentLayout from "../../layouts/ContentLayout.astro";
 import { biography, profile } from "../../data/profile";
 import { education } from "../../data/education";
+import HonorsList from "../../components/HonorsList.astro";
 import { dictionaries } from "../../i18n/routes";
 
 const locale = "zh" as const;
@@ -12,8 +13,8 @@ const t = dictionaries[locale];
   {locale}
   routeName="about"
   eyebrow="关于"
-  heading="以工程方法回答临床相关问题"
-  intro="我的研究让医学图像分析与解剖结构、定量评估和可靠验证保持紧密联系。"
+  heading="面向脊柱影像的医学图像分析"
+  intro="我的研究涉及颈椎MRI与CT、医学异常检测、图像重建和定量影像。"
   title="关于张琦 | 医学图像分析"
   description="张琦在上海交通大学的个人简介、教育经历、研究经验与临床合作背景。"
 >
@@ -39,8 +40,14 @@ const t = dictionaries[locale];
         </div>
         <div class="side-panel">
           <h2>{t.labels.clinicalCollaboration}</h2><p>
-            已发表工作包含与附属临床机构脊柱外科和放射科团队的合作，强调可复现的医学影像评价。
+            目前的主要临床合作单位包括：
           </p>
+          <ul class="collaboration-list">
+            <li>仁济医院脊柱外科</li>
+            <li>上海市第六人民医院骨科</li>
+            <li>瑞金医院影像科</li>
+            <li>仁济医院影像科</li>
+          </ul>
         </div>
       </aside>
     </div>
@@ -74,9 +81,21 @@ const t = dictionaries[locale];
     </div>
   </section>
 
+  <section class="section" aria-labelledby="honors-heading">
+    <div class="container content-narrow">
+      <p class="eyebrow">奖励与奖学金</p><h2
+        id="honors-heading"
+        style="margin-top: .6rem;"
+      >
+        个人荣誉
+      </h2>
+      <HonorsList {locale} />
+    </div>
+  </section>
+
   <section class="section soft-teal">
     <div class="container content-narrow">
-      <p class="eyebrow">当前问题</p><h2 style="margin-top: .6rem;">
+      <p class="eyebrow">当前研究</p><h2 style="margin-top: .6rem;">
         研究兴趣
       </h2>
       <ul class="method-list" aria-label="研究兴趣">

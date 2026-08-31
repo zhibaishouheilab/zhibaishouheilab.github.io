@@ -7,7 +7,14 @@ const locale = "en" as const;
 const publications = (await getCollection("publications")).map(
   (entry) => entry.data,
 );
-const projects = (await getCollection("projects")).map((entry) => entry.data);
+const projectOrder = [
+  "cervical-spine-ai",
+  "vertebral-fracture-assessment",
+  "medical-anomaly-detection",
+];
+const projects = (await getCollection("projects"))
+  .map((entry) => entry.data)
+  .sort((a, b) => projectOrder.indexOf(a.id) - projectOrder.indexOf(b.id));
 const publicationTitle = new Map(
   publications.map((publication) => [publication.id, publication.title]),
 );
@@ -17,10 +24,10 @@ const publicationTitle = new Map(
   {locale}
   routeName="research"
   eyebrow="Research"
-  heading="Imaging evidence that can be measured and inspected"
-  intro="The projects below are organised around published work. They distinguish completed evidence from longer-term research interests and avoid disclosing unpublished clinical details."
+  heading="Current research"
+  intro="My current work focuses on cervical spine imaging, interpretable vertebral-fracture assessment, and medical anomaly detection."
   title="Research | Qi Zhang"
-  description="Research projects by Qi Zhang in cervical spine imaging, medical anomaly detection, and multimodal medical image analysis."
+  description="Research projects by Qi Zhang in cervical spine imaging, vertebral-fracture assessment, and medical anomaly detection."
 >
   <section class="section">
     <div class="container projects-stack">
@@ -40,14 +47,13 @@ const publicationTitle = new Map(
 
   <section class="section soft-teal">
     <div class="container content-narrow">
-      <p class="eyebrow">Long-term direction</p>
-      <h2 style="margin-top: .6rem;">Clinically reliable AI</h2>
+      <p class="eyebrow">Next steps</p>
+      <h2 style="margin-top: .6rem;">From images to quantitative assessment</h2>
       <div class="prose" style="margin-top: 1rem;">
         <p>
-          Beyond individual tasks, I am interested in how medical-imaging
-          systems communicate evidence, identify uncertainty and failure modes,
-          and support expert review. This is a research direction rather than a
-          claim of clinical deployment.
+          I am extending these projects toward multimodal cervical imaging,
+          isotropic 3D reconstruction, structured quantitative analysis, and
+          uncertainty-aware review.
         </p>
       </div>
     </div>

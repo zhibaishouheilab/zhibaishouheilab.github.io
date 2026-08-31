@@ -18,15 +18,15 @@ test("publication metadata remains unique and evidence-marked", () => {
     publications.length,
   );
   assert.equal(
-    new Set(publications.map((item) => item.doi)).size,
-    publications.length,
+    new Set(publications.map((item) => item.doi).filter(Boolean)).size,
+    publications.filter((item) => item.doi).length,
   );
   assert.ok(
     publications.every((item) =>
       item.authors.some((author) => author.self && author.name === "Qi Zhang"),
     ),
   );
-  assert.equal(publications.filter((item) => item.featured).length, 6);
+  assert.equal(publications.filter((item) => item.featured).length, 7);
 });
 
 test("all project publication references resolve", () => {
@@ -59,6 +59,8 @@ test("publication page exposes filters and BibTeX dialogs", async () => {
   assert.match(html, /data-publication-search/);
   assert.match(html, /<dialog/);
   assert.match(html, /Copy BibTeX/);
+  assert.match(html, /Conference presentations/);
+  assert.match(html, /MICCAI 2026/);
 });
 
 test("generated pages include canonical and bilingual alternates", async () => {

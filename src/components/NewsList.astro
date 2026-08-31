@@ -7,17 +7,29 @@ interface Props {
 }
 
 const { locale } = Astro.props;
+const sortedNews = news.slice().sort((a, b) => b.date.localeCompare(a.date));
 ---
 
 <ol class="news-list">
   {
-    news.slice(0, 5).map((item) => (
-      <li>
-        <time datetime={item.date}>{item.date}</time>
-        <a href={item.related_link} target="_blank" rel="noopener noreferrer">
-          {locale === "en" ? item.title_en : item.title_zh}
-        </a>
-      </li>
-    ))
+    sortedNews.slice(0, 8).map((item) => {
+      const href =
+        locale === "zh" && "related_link_zh" in item
+          ? item.related_link_zh
+          : item.related_link;
+      const isExternal = href.startsWith("http");
+      return (
+        <li>
+          <time datetime={item.date}>{item.date}</time>
+          <a
+            href={href}
+            target={isExternal ? "_blank" : undefined}
+            rel={isExternal ? "noopener noreferrer" : undefined}
+          >
+            {locale === "en" ? item.title_en : item.title_zh}
+          </a>
+        </li>
+      );
+    })
   }
 </ol>

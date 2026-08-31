@@ -4,6 +4,7 @@ import ContentLayout from "../layouts/ContentLayout.astro";
 import { education } from "../data/education";
 import { profile } from "../data/profile";
 import { dictionaries } from "../i18n/routes";
+import HonorsList from "../components/HonorsList.astro";
 
 const locale = "en" as const;
 const t = dictionaries[locale];
@@ -20,9 +21,9 @@ const selected = publications
   routeName="cv"
   eyebrow="Curriculum vitae"
   heading={t.labels.webCv}
-  intro="A concise, public web CV based on verified education and publication records."
+  intro="Education, research interests, selected publications, and honors."
   title="CV | Qi Zhang"
-  description="Web CV of Qi Zhang, PhD Student at the School of Biomedical Engineering, Shanghai Jiao Tong University."
+  description="Curriculum vitae of Qi Zhang, PhD Student at the School of Biomedical Engineering, Shanghai Jiao Tong University."
 >
   <section class="section">
     <div class="container split-layout">
@@ -45,6 +46,9 @@ const selected = publications
             ))
           }
         </ol>
+
+        <p class="eyebrow" style="margin-top: 3rem;">Honors</p>
+        <HonorsList {locale} />
 
         <p class="eyebrow" style="margin-top: 3rem;">Selected publications</p>
         <ol class="timeline" style="margin-top: 1rem;">
@@ -83,10 +87,6 @@ const selected = publications
               Quantitative imaging
             </li>
           </ul>
-        </div>
-        <div class="side-panel">
-          <h2>PDF CV</h2>
-          <p>{t.labels.noPdfCv}</p>
         </div>
       </aside>
     </div>

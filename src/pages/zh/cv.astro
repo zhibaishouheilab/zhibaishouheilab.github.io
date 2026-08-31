@@ -4,6 +4,7 @@ import ContentLayout from "../../layouts/ContentLayout.astro";
 import { education } from "../../data/education";
 import { profile } from "../../data/profile";
 import { dictionaries } from "../../i18n/routes";
+import HonorsList from "../../components/HonorsList.astro";
 
 const locale = "zh" as const;
 const t = dictionaries[locale];
@@ -20,9 +21,9 @@ const selected = publications
   routeName="cv"
   eyebrow="个人简历"
   heading={t.labels.webCv}
-  intro="基于已核验教育经历与论文记录整理的精简公开网页简历。"
+  intro="教育经历、研究方向、代表性论文与个人荣誉。"
   title="简历 | 张琦"
-  description="上海交通大学生物医学工程学院博士研究生张琦的网页简历。"
+  description="上海交通大学生物医学工程学院博士研究生张琦的个人简历。"
 >
   <section class="section">
     <div class="container split-layout">
@@ -45,6 +46,8 @@ const selected = publications
             ))
           }
         </ol>
+        <p class="eyebrow" style="margin-top: 3rem;">个人荣誉</p>
+        <HonorsList {locale} />
         <p class="eyebrow" style="margin-top: 3rem;">代表性论文</p>
         <ol class="timeline" style="margin-top: 1rem;">
           {
@@ -79,7 +82,6 @@ const selected = publications
             </li><li>不确定性估计</li><li>定量影像</li>
           </ul>
         </div>
-        <div class="side-panel"><h2>PDF 简历</h2><p>{t.labels.noPdfCv}</p></div>
       </aside>
     </div>
   </section>

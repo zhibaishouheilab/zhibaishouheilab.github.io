@@ -4,6 +4,8 @@ import ContentLayout from "../layouts/ContentLayout.astro";
 import FeaturedPublicationCard from "../components/FeaturedPublicationCard.astro";
 import PublicationFilters from "../components/PublicationFilters.astro";
 import PublicationListItem from "../components/PublicationListItem.astro";
+import ConferenceCard from "../components/ConferenceCard.astro";
+import { conferences } from "../data/conferences";
 import { dictionaries } from "../i18n/routes";
 
 const locale = "en" as const;
@@ -27,10 +29,10 @@ const topics = [
   {locale}
   routeName="publications"
   eyebrow="Publications"
-  heading="Peer-reviewed research"
-  intro="Verified publications are listed with official author order, publication status, DOI, and available public code. Citation counts are intentionally omitted."
+  heading="Publications and conference presentations"
+  intro="My work spans cervical spine imaging, medical anomaly detection, image reconstruction, and quantitative imaging."
   title="Publications | Qi Zhang"
-  description="Verified publications by Qi Zhang in medical image analysis, cervical spine imaging, anomaly detection, and multimodal learning."
+  description="Publications, manuscripts, and conference presentations by Qi Zhang in medical image analysis, cervical spine imaging, and anomaly detection."
 >
   <section class="section" aria-labelledby="featured-heading">
     <div class="container">
@@ -40,8 +42,8 @@ const topics = [
           <h2 id="featured-heading">{t.labels.featuredFirstAuthor}</h2>
         </div>
         <p>
-          Each card uses a representative method or workflow figure extracted
-          from the author-provided paper PDF.
+          The cards show representative method or workflow figures from each
+          paper.
         </p>
       </div>
       <div class="featured-grid">
@@ -54,12 +56,35 @@ const topics = [
     </div>
   </section>
 
+  <section
+    class="section soft-blue"
+    id="conferences"
+    aria-labelledby="conferences-heading"
+  >
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Academic meetings</p>
+          <h2 id="conferences-heading">Conference presentations</h2>
+        </div>
+        <p>Oral presentations, posters, and meeting awards from 2025-2026.</p>
+      </div>
+      <div class="conference-grid">
+        {
+          conferences.map((conference) => (
+            <ConferenceCard {conference} {locale} />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
   <section class="section surface" aria-labelledby="all-heading">
     <div class="container">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">Complete verified list</p>
-          <h2 id="all-heading">{t.labels.allPublications}</h2>
+          <p class="eyebrow">Publication list</p>
+          <h2 id="all-heading">Publications and manuscripts</h2>
         </div>
       </div>
       <PublicationFilters {locale} {years} {statuses} {topics} />

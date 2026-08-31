@@ -2,6 +2,7 @@
 import ContentLayout from "../layouts/ContentLayout.astro";
 import { biography, profile } from "../data/profile";
 import { education } from "../data/education";
+import HonorsList from "../components/HonorsList.astro";
 import { dictionaries } from "../i18n/routes";
 
 const locale = "en" as const;
@@ -12,8 +13,8 @@ const t = dictionaries[locale];
   {locale}
   routeName="about"
   eyebrow="About"
-  heading="Engineering methods, clinically meaningful questions"
-  intro="My work brings medical image analysis into close contact with anatomy, quantitative assessment, and reliable evaluation."
+  heading="Medical image analysis for spine imaging"
+  intro="I work on cervical MRI and CT, medical anomaly detection, image reconstruction, and quantitative imaging."
   title="About Qi Zhang | Medical Image Analysis"
   description="Biography, education, research experience, and clinical collaboration of Qi Zhang at Shanghai Jiao Tong University."
 >
@@ -39,11 +40,15 @@ const t = dictionaries[locale];
         </div>
         <div class="side-panel">
           <h2>{t.labels.clinicalCollaboration}</h2>
-          <p>
-            Published work includes collaboration with spine-surgery and
-            radiology teams at affiliated clinical institutions, with emphasis
-            on reproducible imaging assessment.
-          </p>
+          <p>My current clinical collaborators include:</p>
+          <ul class="collaboration-list">
+            <li>Department of Spine Surgery, Renji Hospital</li>
+            <li>
+              Department of Orthopaedics, Shanghai Sixth People’s Hospital
+            </li>
+            <li>Department of Radiology, Ruijin Hospital</li>
+            <li>Department of Radiology, Renji Hospital</li>
+          </ul>
         </div>
       </aside>
     </div>
@@ -73,9 +78,17 @@ const t = dictionaries[locale];
     </div>
   </section>
 
+  <section class="section" aria-labelledby="honors-heading">
+    <div class="container content-narrow">
+      <p class="eyebrow">Awards and scholarships</p>
+      <h2 id="honors-heading" style="margin-top: .6rem;">Honors</h2>
+      <HonorsList {locale} />
+    </div>
+  </section>
+
   <section class="section soft-teal">
     <div class="container content-narrow">
-      <p class="eyebrow">Current questions</p>
+      <p class="eyebrow">Current work</p>
       <h2 style="margin-top: .6rem;">Research interests</h2>
       <ul class="method-list" aria-label="Research interests">
         <li>Cervical spine MRI and CT</li><li>Medical anomaly detection</li><li>

@@ -17,7 +17,7 @@ export const en = {
     menu: "Open navigation menu",
     language: "Switch language",
     viewPublications: "View publications",
-    viewCv: "View web CV",
+    viewCv: "View CV",
     email: "Email Qi Zhang",
     researchInterests: "Research interests",
     selectedPublications: "Selected publications",
@@ -50,7 +50,7 @@ export const en = {
     biography: "Biography",
     clinicalCollaboration: "Clinical collaboration",
     supervisor: "Supervisor",
-    webCv: "Web CV",
+    webCv: "Curriculum Vitae",
     selectedExperience: "Research profile",
     skills: "Research methods",
     relatedPublications: "Related publications",
@@ -61,7 +61,5 @@ export const en = {
     alternativeEmail: "Alternative email",
     institution: "Institution",
     location: "Location",
-    noPdfCv:
-      "A public PDF CV is not currently available. This page is the maintained web version.",
   },
 } as const;

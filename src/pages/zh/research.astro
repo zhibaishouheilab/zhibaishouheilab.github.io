@@ -7,7 +7,14 @@ const locale = "zh" as const;
 const publications = (await getCollection("publications")).map(
   (entry) => entry.data,
 );
-const projects = (await getCollection("projects")).map((entry) => entry.data);
+const projectOrder = [
+  "cervical-spine-ai",
+  "vertebral-fracture-assessment",
+  "medical-anomaly-detection",
+];
+const projects = (await getCollection("projects"))
+  .map((entry) => entry.data)
+  .sort((a, b) => projectOrder.indexOf(a.id) - projectOrder.indexOf(b.id));
 const publicationTitle = new Map(
   publications.map((publication) => [publication.id, publication.title]),
 );
@@ -17,10 +24,10 @@ const publicationTitle = new Map(
   {locale}
   routeName="research"
   eyebrow="研究"
-  heading="可测量、可检查的医学影像证据"
-  intro="以下项目围绕已发表工作组织，明确区分已完成证据与长期研究兴趣，并避免披露未发表临床细节。"
+  heading="当前研究"
+  intro="目前主要开展颈椎影像、可解释椎体骨折评估与医学异常检测研究。"
   title="研究 | 张琦"
-  description="张琦在颈椎影像、医学异常检测与多模态医学图像分析方向的研究项目。"
+  description="张琦在颈椎影像、椎体骨折评估与医学异常检测方向的研究项目。"
 >
   <section class="section">
     <div class="container projects-stack">
@@ -40,12 +47,12 @@ const publicationTitle = new Map(
 
   <section class="section soft-teal">
     <div class="container content-narrow">
-      <p class="eyebrow">长期方向</p><h2 style="margin-top: .6rem;">
-        临床可靠人工智能
+      <p class="eyebrow">下一步工作</p><h2 style="margin-top: .6rem;">
+        从医学图像到定量评估
       </h2>
       <div class="prose" style="margin-top: 1rem;">
         <p>
-          除具体任务外，我还关注医学影像系统如何表达证据、识别不确定性与失效模式，并支持专家复核。这是一项长期研究方向，并不代表系统已经进入临床部署。
+          我正在将这些研究拓展到多模态颈椎影像、各向同性三维重建、结构化定量分析与不确定性感知复核。
         </p>
       </div>
     </div>
