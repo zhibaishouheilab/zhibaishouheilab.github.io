@@ -1,0 +1,52 @@
+---
+import ContentLayout from "../../layouts/ContentLayout.astro";
+import PresentationCard from "../../components/PresentationCard.astro";
+import PresentationFilters from "../../components/PresentationFilters.astro";
+import presentations from "../../data/presentations.json";
+
+const locale = "zh" as const;
+const years = [...new Set(presentations.map((item) => item.year))].sort(
+  (a, b) => b - a,
+);
+---
+
+<ContentLayout
+  {locale}
+  routeName="presentations"
+  eyebrow="会议展示"
+  heading="会议汇报与海报"
+  intro="记录我参加的口头汇报、海报展示与会议获奖，并对应到所汇报的研究成果。"
+  title="会议展示 | 张琦"
+  description="张琦在CSRS-AP、MICCAI与ISMRM的会议汇报、海报展示和获奖记录。"
+>
+  <section class="section" aria-labelledby="presentation-record-heading">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">参会记录</p>
+          <h2 id="presentation-record-heading">口头汇报与海报</h2>
+        </div>
+        <p>点击展示图片可查看完整大图。</p>
+      </div>
+      <PresentationFilters {locale} />
+      {
+        years.map((year) => (
+          <section class="presentation-year" aria-labelledby={`year-${year}`}>
+            <h2 id={`year-${year}`}>{year}</h2>
+            <div class="presentation-stack">
+              {presentations
+                .filter((item) => item.year === year)
+                .map((presentation, index) => (
+                  <PresentationCard
+                    {presentation}
+                    {locale}
+                    featured={year === 2026 && index === 0}
+                  />
+                ))}
+            </div>
+          </section>
+        ))
+      }
+    </div>
+  </section>
+</ContentLayout>

@@ -4,16 +4,17 @@ import ContentLayout from "../layouts/ContentLayout.astro";
 import FeaturedPublicationCard from "../components/FeaturedPublicationCard.astro";
 import PublicationFilters from "../components/PublicationFilters.astro";
 import PublicationListItem from "../components/PublicationListItem.astro";
-import ConferenceCard from "../components/ConferenceCard.astro";
-import { conferences } from "../data/conferences";
-import { dictionaries } from "../i18n/routes";
+import PublicationTabs from "../components/PublicationTabs.astro";
+import { dictionaries, pathFor } from "../i18n/routes";
 
 const locale = "en" as const;
 const t = dictionaries[locale];
 const publications = (await getCollection("publications"))
   .map((entry) => entry.data)
   .sort((a, b) => b.year - a.year || a.title.localeCompare(b.title));
-const featured = publications.filter((publication) => publication.featured);
+const primaryAuthorWork = publications.filter(
+  (publication) => publication.first_author || publication.co_first_author,
+);
 const years = [
   ...new Set(publications.map((publication) => publication.year)),
 ].sort((a, b) => b - a);
@@ -29,72 +30,72 @@ const topics = [
   {locale}
   routeName="publications"
   eyebrow="Publications"
-  heading="Publications and conference presentations"
+  heading="Publications"
   intro="My work spans cervical spine imaging, medical anomaly detection, image reconstruction, and quantitative imaging."
   title="Publications | Qi Zhang"
-  description="Publications, manuscripts, and conference presentations by Qi Zhang in medical image analysis, cervical spine imaging, and anomaly detection."
+  description="Publications and manuscripts by Qi Zhang in medical image analysis, cervical spine imaging, and anomaly detection."
 >
-  <section class="section" aria-labelledby="featured-heading">
+  <section class="section" aria-labelledby="publication-views-heading">
     <div class="container">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">Selected work</p>
-          <h2 id="featured-heading">{t.labels.featuredFirstAuthor}</h2>
+          <p class="eyebrow">Publication record</p>
+          <h2 id="publication-views-heading">Browse publications</h2>
         </div>
-        <p>
-          Journal badges use 2025 JIF/JCR data and the 2025 CAS journal
-          partition; MICCAI uses the March 2026 CCF list.
-        </p>
+        <a class="button secondary" href="/qi-zhang-publications.bib" download>
+          {t.labels.downloadBibtex}
+        </a>
       </div>
-      <div class="featured-grid">
-        {
-          featured.map((publication) => (
-            <FeaturedPublicationCard {publication} {locale} />
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  <section
-    class="section soft-blue"
-    id="conferences"
-    aria-labelledby="conferences-heading"
-  >
-    <div class="container">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">Academic meetings</p>
-          <h2 id="conferences-heading">Conference presentations</h2>
+      <PublicationTabs {locale}>
+        <div slot="first" class="publication-tab-content">
+          <div class="section-heading compact-heading">
+            <div>
+              <p class="eyebrow">Author role</p>
+              <h2>{t.labels.featuredFirstAuthor}</h2>
+            </div>
+            <p>
+              Journal badges use 2025 JIF/JCR data and the 2025 CAS journal
+              partition; MICCAI uses the March 2026 CCF list.
+            </p>
+          </div>
+          <div class="featured-grid">
+            {
+              primaryAuthorWork.map((publication) => (
+                <FeaturedPublicationCard {publication} {locale} />
+              ))
+            }
+          </div>
+          <aside class="presentations-cta">
+            <div>
+              <p class="eyebrow">Conference record</p>
+              <h2>Talks, posters, and meeting awards</h2>
+              <p>
+                View presentation formats, materials, related papers, and awards
+                from CSRS-AP, MICCAI, and ISMRM.
+              </p>
+            </div>
+            <a class="button secondary" href={pathFor(locale, "presentations")}
+              >View presentations</a
+            >
+          </aside>
         </div>
-        <p>Oral presentations, posters, and meeting awards from 2025-2026.</p>
-      </div>
-      <div class="conference-grid">
-        {
-          conferences.map((conference) => (
-            <ConferenceCard {conference} {locale} />
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  <section class="section surface" aria-labelledby="all-heading">
-    <div class="container">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">Publication list</p>
-          <h2 id="all-heading">Publications and manuscripts</h2>
+        <div slot="all" class="publication-tab-content">
+          <div class="section-heading compact-heading">
+            <div>
+              <p class="eyebrow">Complete record</p>
+              <h2>Publications and manuscripts</h2>
+            </div>
+          </div>
+          <PublicationFilters {locale} {years} {statuses} {topics} />
+          <div class="publication-list" style="margin-top: 1.5rem;">
+            {
+              publications.map((publication) => (
+                <PublicationListItem {publication} {locale} />
+              ))
+            }
+          </div>
         </div>
-      </div>
-      <PublicationFilters {locale} {years} {statuses} {topics} />
-      <div class="publication-list" style="margin-top: 1.5rem;">
-        {
-          publications.map((publication) => (
-            <PublicationListItem {publication} {locale} />
-          ))
-        }
-      </div>
+      </PublicationTabs>
     </div>
   </section>
 </ContentLayout>

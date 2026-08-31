@@ -3,7 +3,7 @@ name: Site quality checks
 on:
   pull_request:
   push:
-    branches: [main, codex/academic-homepage-v1]
+    branches: [main, codex/academic-homepage-v1, codex/site-refinement-likes-v2]
 
 permissions:
   contents: read
@@ -39,3 +39,34 @@ jobs:
         run: npm run check-links
       - name: Run tests
         run: npm test
+      - name: Test configured homepage like rendering
+        run: npm run test:like-render
+      - name: Verify frozen content and preserved images
+        run: npm run verify-invariants
+
+  likes-worker:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: services/likes-worker
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Use Node.js 24
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: services/likes-worker/package-lock.json
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Check formatting
+        run: npm run format:check
+      - name: Lint
+        run: npm run lint
+      - name: Type-check
+        run: npm run typecheck
+      - name: Test
+        run: npm test
+      - name: Build deployment bundle
+        run: npm run deploy:dry-run

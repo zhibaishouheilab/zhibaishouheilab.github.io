@@ -1,15 +1,30 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { dictionaries, type Locale } from "../i18n/routes";
+import { dictionaries, pathFor, type Locale } from "../i18n/routes";
 
 interface Props {
   project: CollectionEntry<"projects">["data"];
   locale: Locale;
-  relatedTitles: string[];
+  detailUrl: string;
+  relatedPublications: Array<{
+    id: string;
+    year: number;
+    title: string;
+    status: string;
+    paper: string | null;
+    code: string | null;
+  }>;
 }
 
-const { project, locale, relatedTitles } = Astro.props;
+const { project, locale, detailUrl, relatedPublications } = Astro.props;
 const t = dictionaries[locale];
+const statusLabels: Record<string, string> = {
+  Published: locale === "en" ? "Published" : "已发表",
+  Accepted: locale === "en" ? "Accepted" : "已接收",
+  "In Press": locale === "en" ? "In Press" : "在线优先",
+  "Under Review": locale === "en" ? "Under Review" : "在投",
+  Preprint: locale === "en" ? "Preprint" : "预印本",
+};
 ---
 
 <article class="project-card" id={project.slug}>
@@ -54,14 +69,55 @@ const t = dictionaries[locale];
       </div>
       <div>
         <dt>{t.labels.relatedPublications}</dt>
-        <dd>{relatedTitles.join("; ")}</dd>
+        <dd>
+          <ul class="related-publication-list">
+            {
+              relatedPublications.map((publication) => (
+                <li>
+                  <a
+                    href={`${pathFor(locale, "publications")}#${publication.id}`}
+                  >
+                    <span>
+                      {publication.year} ·{" "}
+                      {statusLabels[publication.status] ?? publication.status}
+                    </span>
+                    <strong>{publication.title}</strong>
+                  </a>
+                  <span class="related-publication-actions">
+                    {publication.paper && (
+                      <a
+                        href={publication.paper}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {t.labels.paper}
+                      </a>
+                    )}
+                    {publication.code && (
+                      <a
+                        href={publication.code}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {t.labels.code}
+                      </a>
+                    )}
+                  </span>
+                </li>
+              ))
+            }
+          </ul>
+        </dd>
       </div>
     </dl>
     <div class="button-row compact-row">
+      <a class="button mini primary" href={detailUrl}>
+        {locale === "en" ? "Project details" : "项目详情"}
+      </a>
       {
         project.links.paper && (
           <a
-            class="button mini primary"
+            class="button mini secondary"
             href={project.links.paper}
             target="_blank"
             rel="noopener noreferrer"

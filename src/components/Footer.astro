@@ -27,6 +27,8 @@ const t = dictionaries[locale];
       </p>
     </div>
     <div class="footer-links">
+      <a href={pathFor(locale, "news")}>{t.labels.news}</a>
+      <a href={pathFor(locale, "privacy")}>{t.labels.privacy}</a>
       <a href={pathFor(locale, "contact")}>{t.nav.contact}</a>
       <a href={`mailto:${profile.email}`}>{profile.email}</a>
       <SocialLinks compact />

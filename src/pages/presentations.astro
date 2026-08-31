@@ -1,0 +1,52 @@
+---
+import ContentLayout from "../layouts/ContentLayout.astro";
+import PresentationCard from "../components/PresentationCard.astro";
+import PresentationFilters from "../components/PresentationFilters.astro";
+import presentations from "../data/presentations.json";
+
+const locale = "en" as const;
+const years = [...new Set(presentations.map((item) => item.year))].sort(
+  (a, b) => b - a,
+);
+---
+
+<ContentLayout
+  {locale}
+  routeName="presentations"
+  eyebrow="Presentations"
+  heading="Conference presentations"
+  intro="Oral presentations, posters, and meeting awards, with the work I presented and the corresponding publication record."
+  title="Presentations | Qi Zhang"
+  description="Conference presentations and awards by Qi Zhang at CSRS-AP, MICCAI, and ISMRM."
+>
+  <section class="section" aria-labelledby="presentation-record-heading">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Presentation record</p>
+          <h2 id="presentation-record-heading">Talks and posters</h2>
+        </div>
+        <p>Each image opens at full size for closer inspection.</p>
+      </div>
+      <PresentationFilters {locale} />
+      {
+        years.map((year) => (
+          <section class="presentation-year" aria-labelledby={`year-${year}`}>
+            <h2 id={`year-${year}`}>{year}</h2>
+            <div class="presentation-stack">
+              {presentations
+                .filter((item) => item.year === year)
+                .map((presentation, index) => (
+                  <PresentationCard
+                    {presentation}
+                    {locale}
+                    featured={year === 2026 && index === 0}
+                  />
+                ))}
+            </div>
+          </section>
+        ))
+      }
+    </div>
+  </section>
+</ContentLayout>

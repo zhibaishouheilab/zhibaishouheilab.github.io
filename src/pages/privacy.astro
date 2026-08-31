@@ -1,0 +1,48 @@
+---
+import ContentLayout from "../layouts/ContentLayout.astro";
+
+const locale = "en" as const;
+---
+
+<ContentLayout
+  {locale}
+  routeName="privacy"
+  eyebrow="Privacy"
+  heading="Privacy"
+  intro="How this site handles the small amount of data needed for the homepage like counter."
+  title="Privacy | Qi Zhang"
+  description="Privacy information for the Qi Zhang academic website and its homepage like counter."
+>
+  <section class="section">
+    <div class="container content-narrow prose">
+      <h2>No tracking or advertising</h2>
+      <p>
+        This site uses no analytics, advertising, or cross-site profiling. It
+        does not use the like counter to identify visitors or associate a like
+        with a real-world identity.
+      </p>
+      <h2>Homepage likes</h2>
+      <p>
+        If the like service is enabled, the browser creates a random identifier
+        and stores it locally under
+        <code>qi-zhang-homepage-like-visitor-id</code>. The server applies
+        HMAC-SHA-256 before storing that identifier. It also uses an HMAC of the
+        network address only to enforce short-term abuse limits; raw IP
+        addresses and user-agent strings are not stored.
+      </p>
+      <p>
+        Removing a like deletes its stored like record. Clearing browser local
+        storage removes this browser’s local recognition of its previous like,
+        but does not by itself remove an existing server record because the
+        identifier needed to find that record has been erased.
+      </p>
+      <h2>Contact</h2>
+      <p>
+        Questions about this page may be sent to
+        <a href="mailto:zhi-bai-shou-hei@sjtu.edu.cn"
+          >zhi-bai-shou-hei@sjtu.edu.cn</a
+        >.
+      </p>
+    </div>
+  </section>
+</ContentLayout>

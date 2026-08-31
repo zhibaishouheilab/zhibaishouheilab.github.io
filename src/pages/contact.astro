@@ -13,7 +13,7 @@ const t = dictionaries[locale];
   routeName="contact"
   eyebrow="Contact"
   heading="Contact"
-  intro="For questions about my work or potential collaboration, please contact me by email."
+  intro="I welcome research discussions and collaboration in cervical spine imaging, medical anomaly detection, quantitative imaging, and clinically grounded evaluation."
   title="Contact | Qi Zhang"
   description="Contact information and academic profiles for Qi Zhang at Shanghai Jiao Tong University."
 >
@@ -34,11 +34,32 @@ const t = dictionaries[locale];
         </div>
         <div>
           <dt>{t.labels.institution}</dt><dd>
-            {profile.department}<br />{profile.institution}
+            <a
+              href={profile.departmentUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {profile.department}
+            </a><br />
+            <a
+              href={profile.institutionUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {profile.institution}
+            </a>
           </dd>
         </div>
         <div><dt>{t.labels.location}</dt><dd>{profile.location}</dd></div>
-        <div><dt>{t.labels.supervisor}</dt><dd>{profile.supervisor}</dd></div>
+        <div>
+          <dt>{t.labels.supervisor}</dt><dd>
+            <a
+              href={profile.supervisorUrl}
+              target="_blank"
+              rel="noopener noreferrer">{profile.supervisor}</a
+            >
+          </dd>
+        </div>
       </dl>
       <div style="margin-top: 2rem;"><SocialLinks /></div>
     </div>

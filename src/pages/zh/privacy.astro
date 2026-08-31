@@ -1,0 +1,40 @@
+---
+import ContentLayout from "../../layouts/ContentLayout.astro";
+
+const locale = "zh" as const;
+---
+
+<ContentLayout
+  {locale}
+  routeName="privacy"
+  eyebrow="隐私"
+  heading="隐私说明"
+  intro="说明本站首页点赞计数所需的少量数据如何被处理。"
+  title="隐私 | 张琦"
+  description="张琦学术主页及首页点赞计数的隐私说明。"
+>
+  <section class="section">
+    <div class="container content-narrow prose">
+      <h2>不进行追踪或广告分析</h2>
+      <p>
+        本站不使用访问分析、广告或跨站用户画像。点赞计数不会用于识别访客，也不会将点赞与现实身份相关联。
+      </p>
+      <h2>首页点赞</h2>
+      <p>
+        如果点赞服务已启用，浏览器会随机生成一个标识符，并以
+        <code>qi-zhang-homepage-like-visitor-id</code>
+        为键保存在本地。服务器在存储该标识符前会进行HMAC-SHA-256处理；网络地址也只会经过HMAC处理后用于短期防滥用限流。服务器不保存原始IP地址或浏览器User-Agent。
+      </p>
+      <p>
+        取消点赞会删除对应的点赞记录。清除浏览器本地存储会使该浏览器失去对既往点赞状态的本地识别，但由于用于查找记录的随机标识符也被清除，这一操作本身不会删除服务器上已有的点赞记录。
+      </p>
+      <h2>联系</h2>
+      <p>
+        如对本说明有疑问，可发送邮件至<a
+          href="mailto:zhi-bai-shou-hei@sjtu.edu.cn"
+          >zhi-bai-shou-hei@sjtu.edu.cn</a
+        >。
+      </p>
+    </div>
+  </section>
+</ContentLayout>

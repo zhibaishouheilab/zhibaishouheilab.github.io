@@ -35,7 +35,7 @@
       "paper": null,
       "preprint": null,
       "code": "https://github.com/zhibaishouheilab/JointSR",
-      "project": "/research/#cervical-spine-ai"
+      "project": "/research/cervical-spine-imaging/"
     },
     "image": {
       "src": "/assets/publications/jointsr-miccai2026.webp",
@@ -125,7 +125,7 @@
       "paper": "https://doi.org/10.1109/TMI.2026.3711975",
       "preprint": null,
       "code": "https://github.com/zhibaishouheilab/UniTransAD",
-      "project": "/research/#medical-anomaly-detection"
+      "project": "/research/medical-anomaly-detection/"
     },
     "image": {
       "src": "/assets/publications/unitransad.webp",
@@ -176,7 +176,7 @@
       "paper": "https://doi.org/10.1016/j.media.2026.103939",
       "preprint": null,
       "code": "https://github.com/zhibaishouheilab/U2AD",
-      "project": "/research/#cervical-spine-ai"
+      "project": "/research/cervical-spine-imaging/"
     },
     "image": {
       "src": "/assets/publications/u2ad.webp",
@@ -227,7 +227,7 @@
       "paper": "https://doi.org/10.1109/JBHI.2025.3598469",
       "preprint": null,
       "code": "https://github.com/zhibaishouheilab/CervAI-X",
-      "project": "/research/#cervical-spine-ai"
+      "project": "/research/cervical-spine-imaging/"
     },
     "image": {
       "src": "/assets/publications/cervai-x.webp",
@@ -330,7 +330,7 @@
       "paper": "https://doi.org/10.1109/JBHI.2025.3572458",
       "preprint": null,
       "code": "https://github.com/zhibaishouheilab/HealthiVert-GAN",
-      "project": "/research/#vertebral-fracture-assessment"
+      "project": "/research/vertebral-fracture-assessment/"
     },
     "image": {
       "src": "/assets/publications/healthivert-gan.webp",
@@ -377,7 +377,7 @@
       "paper": "https://doi.org/10.1007/978-3-032-04937-7_37",
       "preprint": null,
       "code": "https://github.com/zhibaishouheilab/MT-AD",
-      "project": "/research/#medical-anomaly-detection"
+      "project": "/research/medical-anomaly-detection/"
     },
     "image": {
       "src": "/assets/publications/multitransad.webp",

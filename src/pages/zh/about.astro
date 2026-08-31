@@ -13,7 +13,7 @@ const t = dictionaries[locale];
   {locale}
   routeName="about"
   eyebrow="关于"
-  heading="面向脊柱影像的医学图像分析"
+  heading="面向临床可靠性的医学图像分析"
   intro="我的研究涉及颈椎MRI与CT、医学异常检测、图像重建和定量影像。"
   title="关于张琦 | 医学图像分析"
   description="张琦在上海交通大学的个人简介、教育经历、研究经验与临床合作背景。"
@@ -33,9 +33,12 @@ const t = dictionaries[locale];
       <aside>
         <div class="side-panel">
           <h2>{t.labels.supervisor}</h2><p>
-            <strong>{profile.supervisorZh}</strong><br />{
-              profile.institutionZh
-            }{profile.departmentZh}
+            <a
+              href={profile.supervisorUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              ><strong>{profile.supervisorZh}</strong></a
+            ><br />{profile.institutionZh}{profile.departmentZh}
           </p>
         </div>
         <div class="side-panel">

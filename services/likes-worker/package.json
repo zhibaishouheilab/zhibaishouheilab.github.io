@@ -1,0 +1,26 @@
+{
+  "name": "qi-zhang-homepage-likes",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "deploy:dry-run": "wrangler deploy --dry-run --outdir .wrangler/dry-run",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-plugin": "latest",
+    "@cloudflare/workers-types": "latest",
+    "@typescript-eslint/parser": "^8.68.0",
+    "@types/ws": "latest",
+    "eslint": "^10.9.1",
+    "prettier": "^3.9.6",
+    "typescript": "^6.0.0",
+    "vitest": "^4.1.0",
+    "wrangler": "latest"
+  }
+}

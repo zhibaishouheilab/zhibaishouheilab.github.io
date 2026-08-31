@@ -8,8 +8,8 @@ export const honors = [
   },
   {
     period: "2025.05",
-    title_en: "ISMRM AMPC Highlight (top 1% of abstracts)",
-    title_zh: "ISMRM AMPC 高亮摘要（前1%）",
+    title_en: "ISMRM AMPC Highlight",
+    title_zh: "ISMRM AMPC 高亮摘要",
     detail_en: "33rd ISMRM Annual Meeting, Honolulu",
     detail_zh: "第33届国际医学磁共振学会年会，檀香山",
   },

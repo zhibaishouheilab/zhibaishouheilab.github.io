@@ -1,0 +1,22 @@
+---
+import ContentLayout from "../layouts/ContentLayout.astro";
+import NewsList from "../components/NewsList.astro";
+
+const locale = "en" as const;
+---
+
+<ContentLayout
+  {locale}
+  routeName="news"
+  eyebrow="News"
+  heading="Research news"
+  intro="Publication, conference, presentation, and award updates."
+  title="News | Qi Zhang"
+  description="Research publication, conference presentation, and award news from Qi Zhang."
+>
+  <section class="section">
+    <div class="container content-narrow">
+      <NewsList {locale} />
+    </div>
+  </section>
+</ContentLayout>

@@ -1,0 +1,148 @@
+---
+import type { CollectionEntry } from "astro:content";
+import ContentLayout from "../layouts/ContentLayout.astro";
+import {
+  dictionaries,
+  pathFor,
+  type Locale,
+  type RouteName,
+} from "../i18n/routes";
+
+interface Detail {
+  routeName: RouteName;
+  title_en: string;
+  title_zh: string;
+  challenge_en: readonly string[];
+  challenge_zh: readonly string[];
+  progression_en: readonly string[];
+  progression_zh: readonly string[];
+  directions_en: readonly string[];
+  directions_zh: readonly string[];
+}
+
+interface Props {
+  locale: Locale;
+  project: CollectionEntry<"projects">["data"];
+  detail: Detail;
+  publications: CollectionEntry<"publications">["data"][];
+}
+
+const { locale, project, detail, publications } = Astro.props;
+const t = dictionaries[locale];
+const title = locale === "en" ? detail.title_en : detail.title_zh;
+const motivation =
+  locale === "en"
+    ? project.clinical_motivation_en
+    : project.clinical_motivation_zh;
+const challenges = locale === "en" ? detail.challenge_en : detail.challenge_zh;
+const progression =
+  locale === "en" ? detail.progression_en : detail.progression_zh;
+const directions =
+  locale === "en" ? detail.directions_en : detail.directions_zh;
+---
+
+<ContentLayout
+  {locale}
+  routeName={detail.routeName}
+  eyebrow={locale === "en" ? "Research" : "研究"}
+  heading={title}
+  intro={locale === "en" ? project.summary_en : project.summary_zh}
+  title={`${title} | ${locale === "en" ? "Qi Zhang" : "张琦"}`}
+  description={locale === "en" ? project.summary_en : project.summary_zh}
+>
+  <section class="section">
+    <div class="container research-detail-intro">
+      <figure class="research-detail-image">
+        <img
+          src={project.image.src}
+          alt={locale === "en" ? project.image.alt_en : project.image.alt_zh}
+          width="1200"
+          height="750"
+          decoding="async"
+        />
+      </figure>
+      <div>
+        <p class="eyebrow">
+          {locale === "en" ? "Clinical motivation" : "临床动机"}
+        </p>
+        <h2>{motivation}</h2>
+        <p class="eyebrow detail-subheading">
+          {locale === "en" ? "Technical challenges" : "技术挑战"}
+        </p>
+        <ul class="detail-list">{challenges.map((item) => <li>{item}</li>)}</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section surface">
+    <div class="container detail-grid">
+      <div>
+        <p class="eyebrow">
+          {locale === "en" ? "Research progression" : "研究推进"}
+        </p>
+        <ol class="detail-steps">
+          {progression.map((item) => <li>{item}</li>)}
+        </ol>
+      </div>
+      <div>
+        <p class="eyebrow">
+          {locale === "en" ? "Current directions" : "当前方向"}
+        </p>
+        <ul class="detail-list">{directions.map((item) => <li>{item}</li>)}</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="representative-publications">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">{t.labels.relatedPublications}</p>
+          <h2 id="representative-publications">
+            {locale === "en" ? "Representative publications" : "代表性论文"}
+          </h2>
+        </div>
+      </div>
+      <div class="research-publication-grid">
+        {
+          publications.map((publication) => (
+            <article class="research-publication-card">
+              <p>
+                {publication.year} · {publication.status}
+              </p>
+              <h3>{publication.title}</h3>
+              <div class="button-row compact-row">
+                <a
+                  class="button mini ghost"
+                  href={`${pathFor(locale, "publications")}#${publication.id}`}
+                >
+                  {locale === "en" ? "Publication record" : "论文记录"}
+                </a>
+                {publication.links.paper && (
+                  <a
+                    class="button mini secondary"
+                    href={publication.links.paper}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {t.labels.paper}
+                  </a>
+                )}
+                {publication.links.code && (
+                  <a
+                    class="button mini secondary"
+                    href={publication.links.code}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {t.labels.code}
+                  </a>
+                )}
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</ContentLayout>

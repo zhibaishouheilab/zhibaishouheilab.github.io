@@ -15,10 +15,17 @@
     "lint": "eslint .",
     "typecheck": "astro check",
     "validate-content": "node scripts/validate-content.mjs",
+    "capture-baseline": "node scripts/capture-site-baseline.mjs",
+    "verify-preserved-images": "node scripts/verify-preserved-publication-images.mjs",
+    "verify-frozen-review": "node scripts/verify-frozen-dcm-review.mjs",
+    "verify-invariants": "npm run verify-preserved-images && npm run verify-frozen-review",
     "check-links": "node scripts/check-links.mjs",
     "check-doi": "node scripts/check-doi.mjs",
     "optimize-images": "node scripts/optimize-images.mjs",
-    "test": "node --test tests/site.test.mjs"
+    "test": "node --test tests/site.test.mjs",
+    "test:like-render": "node scripts/test-configured-like-render.mjs",
+    "test:worker": "npm --prefix services/likes-worker test",
+    "typecheck:worker": "npm --prefix services/likes-worker run typecheck"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",

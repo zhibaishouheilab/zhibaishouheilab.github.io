@@ -13,7 +13,7 @@ const t = dictionaries[locale];
   {locale}
   routeName="about"
   eyebrow="About"
-  heading="Medical image analysis for spine imaging"
+  heading="Clinically Reliable Medical Image Analysis"
   intro="I work on cervical MRI and CT, medical anomaly detection, image reconstruction, and quantitative imaging."
   title="About Qi Zhang | Medical Image Analysis"
   description="Biography, education, research experience, and clinical collaboration of Qi Zhang at Shanghai Jiao Tong University."
@@ -34,8 +34,11 @@ const t = dictionaries[locale];
         <div class="side-panel">
           <h2>{t.labels.supervisor}</h2>
           <p>
-            <strong>{profile.supervisor}</strong><br />{profile.department}<br
-            />{profile.institution}
+            <a
+              href={profile.supervisorUrl}
+              target="_blank"
+              rel="noopener noreferrer"><strong>{profile.supervisor}</strong></a
+            ><br />{profile.department}<br />{profile.institution}
           </p>
         </div>
         <div class="side-panel">

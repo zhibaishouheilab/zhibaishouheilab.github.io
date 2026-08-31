@@ -8,6 +8,9 @@ const publications = JSON.parse(
 const projects = JSON.parse(
   await readFile(path.join(root, "src/data/projects.json"), "utf8"),
 );
+const presentations = JSON.parse(
+  await readFile(path.join(root, "src/data/presentations.json"), "utf8"),
+);
 const errors = [];
 const allowedStatuses = new Set([
   "Published",
@@ -37,6 +40,10 @@ unique(
 unique(
   projects.map((item) => item.id),
   "project id",
+);
+unique(
+  presentations.map((item) => item.id),
+  "presentation id",
 );
 
 const publicationIds = new Set(publications.map((item) => item.id));
@@ -124,12 +131,31 @@ for (const project of projects) {
   }
 }
 
+for (const presentation of presentations) {
+  if (localPathPattern.test(JSON.stringify(presentation)))
+    errors.push(`Local path exposed: ${presentation.id}`);
+  for (const item of presentation.presentations) {
+    if (!publicationIds.has(item.related_publication)) {
+      errors.push(
+        `Unknown related publication ${item.related_publication} in ${presentation.id}`,
+      );
+    }
+  }
+  try {
+    await access(
+      path.join(root, "public", presentation.image.src.replace(/^\//, "")),
+    );
+  } catch {
+    errors.push(`Presentation image missing: ${presentation.image.src}`);
+  }
+}
+
 const publicSourceFiles = [
   "src/data/profile.ts",
   "src/data/education.ts",
   "src/data/news.ts",
   "src/data/honors.ts",
-  "src/data/conferences.ts",
+  "src/data/presentations.json",
   "src/data/publications.json",
   "src/data/projects.json",
 ];
@@ -152,5 +178,5 @@ if (errors.length) {
 }
 
 console.log(
-  `Validated ${publications.length} publications and ${projects.length} projects.`,
+  `Validated ${publications.length} publications, ${projects.length} projects, and ${presentations.length} presentations.`,
 );

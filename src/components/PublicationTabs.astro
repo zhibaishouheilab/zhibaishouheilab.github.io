@@ -1,0 +1,117 @@
+---
+import { dictionaries, type Locale } from "../i18n/routes";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = dictionaries[locale];
+---
+
+<div class="publication-tabs" data-publication-tabs>
+  <div
+    class="publication-tablist"
+    role="tablist"
+    aria-label={locale === "en" ? "Publication views" : "论文视图"}
+  >
+    <button
+      id="tab-first-author"
+      type="button"
+      role="tab"
+      aria-selected="true"
+      aria-controls="panel-first-author"
+      tabindex="0"
+      data-tab="first-author"
+    >
+      {t.labels.firstAuthorWork}
+    </button>
+    <button
+      id="tab-all-publications"
+      type="button"
+      role="tab"
+      aria-selected="false"
+      aria-controls="panel-all-publications"
+      tabindex="-1"
+      data-tab="all-publications"
+    >
+      {t.labels.completePublicationList}
+    </button>
+  </div>
+  <section
+    id="panel-first-author"
+    role="tabpanel"
+    aria-labelledby="tab-first-author"
+    data-tab-panel="first-author"
+  >
+    <slot name="first" />
+  </section>
+  <section
+    id="panel-all-publications"
+    role="tabpanel"
+    aria-labelledby="tab-all-publications"
+    data-tab-panel="all-publications"
+  >
+    <slot name="all" />
+  </section>
+</div>
+
+<script>
+  const publicationTabs = document.querySelector<HTMLElement>(
+    "[data-publication-tabs]",
+  );
+  if (publicationTabs && publicationTabs.dataset.ready !== "true") {
+    publicationTabs.dataset.ready = "true";
+    const tabs = Array.from(
+      publicationTabs.querySelectorAll<HTMLButtonElement>("[role='tab']"),
+    );
+    const panels = Array.from(
+      publicationTabs.querySelectorAll<HTMLElement>("[role='tabpanel']"),
+    );
+    const activate = (
+      id: string,
+      options: { focus?: boolean; updateHash?: boolean } = {},
+    ) => {
+      tabs.forEach((tab) => {
+        const selected = tab.dataset.tab === id;
+        tab.setAttribute("aria-selected", String(selected));
+        tab.tabIndex = selected ? 0 : -1;
+        if (selected && options.focus) tab.focus();
+      });
+      panels.forEach((panel) => {
+        panel.hidden = panel.dataset.tabPanel !== id;
+      });
+      if (options.updateHash) {
+        history.replaceState(null, "", `#${id}`);
+      }
+    };
+    tabs.forEach((tab, index) => {
+      tab.addEventListener("click", () =>
+        activate(tab.dataset.tab ?? "first-author", { updateHash: true }),
+      );
+      tab.addEventListener("keydown", (event) => {
+        if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key))
+          return;
+        event.preventDefault();
+        let targetIndex = index;
+        if (event.key === "ArrowLeft")
+          targetIndex = (index - 1 + tabs.length) % tabs.length;
+        if (event.key === "ArrowRight") targetIndex = (index + 1) % tabs.length;
+        if (event.key === "Home") targetIndex = 0;
+        if (event.key === "End") targetIndex = tabs.length - 1;
+        activate(tabs[targetIndex]?.dataset.tab ?? "first-author", {
+          focus: true,
+          updateHash: true,
+        });
+      });
+    });
+    const requested = location.hash.slice(1);
+    const target = requested ? document.getElementById(requested) : null;
+    const initial =
+      requested === "all-publications" ||
+      (target && panels[1]?.contains(target) && !panels[0]?.contains(target))
+        ? "all-publications"
+        : "first-author";
+    activate(initial);
+  }
+</script>

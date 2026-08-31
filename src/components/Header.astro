@@ -3,7 +3,7 @@ import LanguageSwitch from "./LanguageSwitch.astro";
 import {
   dictionaries,
   pathFor,
-  routeNames,
+  navigationRoutes,
   type Locale,
   type RouteName,
 } from "../i18n/routes";
@@ -15,6 +15,7 @@ interface Props {
 
 const { locale, routeName } = Astro.props;
 const t = dictionaries[locale];
+const activeRoute = routeName.startsWith("research") ? "research" : routeName;
 ---
 
 <header class="site-header">
@@ -24,9 +25,11 @@ const t = dictionaries[locale];
       href={pathFor(locale, "home")}
       aria-label={locale === "en" ? "Qi Zhang home" : "张琦主页"}
     >
-      <span class="wordmark-name">QZ</span>
+      <span class="wordmark-name">Qi Zhang</span>
       <span class="wordmark-rule" aria-hidden="true"></span>
-      <span class="wordmark-field">Medical Image Analysis</span>
+      <span class="wordmark-field"
+        >{locale === "en" ? "Medical Image Analysis" : "医学图像分析"}</span
+      >
     </a>
     <button
       class="menu-button"
@@ -46,11 +49,11 @@ const t = dictionaries[locale];
     >
       <ul>
         {
-          routeNames.map((route) => (
+          navigationRoutes.map((route) => (
             <li>
               <a
                 href={pathFor(locale, route)}
-                aria-current={route === routeName ? "page" : undefined}
+                aria-current={route === activeRoute ? "page" : undefined}
               >
                 {t.nav[route]}
               </a>
@@ -77,5 +80,25 @@ const t = dictionaries[locale];
       menuButton?.setAttribute("aria-expanded", "false");
       navigation?.classList.remove("is-open");
     });
+  });
+  const closeMenu = () => {
+    menuButton?.setAttribute("aria-expanded", "false");
+    navigation?.classList.remove("is-open");
+  };
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeMenu();
+      menuButton?.focus();
+    }
+  });
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+    if (
+      target instanceof Node &&
+      !menuButton?.contains(target) &&
+      !navigation?.contains(target)
+    ) {
+      closeMenu();
+    }
   });
 </script>

@@ -1,0 +1,107 @@
+---
+import { dictionaries, pathFor, type Locale } from "../i18n/routes";
+import MediaLightbox from "./MediaLightbox.astro";
+
+interface PresentationItem {
+  title_en: string;
+  title_zh: string;
+  format_en: string;
+  format_zh: string;
+  related_publication: string;
+}
+
+interface Presentation {
+  id: string;
+  year: number;
+  name_en: string;
+  name_zh: string;
+  dates_en: string;
+  dates_zh: string;
+  location_en: string;
+  location_zh: string;
+  formats_en: string[];
+  formats_zh: string[];
+  type: string;
+  presentations: PresentationItem[];
+  award_en: string | null;
+  award_zh: string | null;
+  image: { src: string; alt_en: string; alt_zh: string };
+  official_url: string | null;
+}
+
+interface Props {
+  presentation: Presentation;
+  locale: Locale;
+  featured?: boolean;
+}
+
+const { presentation, locale, featured = false } = Astro.props;
+const t = dictionaries[locale];
+const name = locale === "en" ? presentation.name_en : presentation.name_zh;
+const formats =
+  locale === "en" ? presentation.formats_en : presentation.formats_zh;
+const award = locale === "en" ? presentation.award_en : presentation.award_zh;
+const imageAlt =
+  locale === "en" ? presentation.image.alt_en : presentation.image.alt_zh;
+---
+
+<article
+  class:list={["presentation-card", { "presentation-featured": featured }]}
+  id={presentation.id}
+  data-presentation
+  data-type={presentation.type}
+  data-formats={presentation.formats_en.join(" ").toLowerCase()}
+>
+  <figure class="presentation-image">
+    <MediaLightbox
+      id={`${presentation.id}-${locale}`}
+      src={presentation.image.src}
+      alt={imageAlt}
+      label={`${t.labels.openImage}: ${name}`}
+      closeLabel={t.labels.close}
+      className="publication-image-button"
+    />
+    <figcaption>
+      {locale === "en" ? "Presentation material" : "会议展示材料"}
+    </figcaption>
+  </figure>
+  <div class="presentation-content">
+    <div class="conference-formats">
+      {formats.map((format) => <span>{format}</span>)}
+      {award && <span class="award-badge">{award}</span>}
+    </div>
+    <p class="presentation-meta">
+      {locale === "en" ? presentation.dates_en : presentation.dates_zh} · {
+        locale === "en" ? presentation.location_en : presentation.location_zh
+      }
+    </p>
+    <h2>{name}</h2>
+    <ul class="presentation-list">
+      {
+        presentation.presentations.map((item) => (
+          <li>
+            <span>{locale === "en" ? item.format_en : item.format_zh}</span>
+            <strong>{locale === "en" ? item.title_en : item.title_zh}</strong>
+            <a
+              href={`${pathFor(locale, "publications")}#${item.related_publication}`}
+            >
+              {locale === "en" ? "Related publication" : "相关论文"}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    {
+      presentation.official_url && (
+        <a
+          class="button mini ghost presentation-link"
+          href={presentation.official_url}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {locale === "en" ? "Conference website" : "会议官网"}
+        </a>
+      )
+    }
+  </div>
+</article>

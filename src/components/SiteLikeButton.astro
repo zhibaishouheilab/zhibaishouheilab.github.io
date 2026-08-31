@@ -1,0 +1,72 @@
+---
+import { likeApiBaseUrl } from "../config/likes";
+import { pathFor, type Locale } from "../i18n/routes";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+---
+
+{
+  likeApiBaseUrl && (
+    <section
+      class="section like-section"
+      aria-labelledby="like-heading"
+      data-site-like
+      data-api-base={likeApiBaseUrl}
+      data-locale={locale}
+    >
+      <div class="container content-narrow like-panel">
+        <div>
+          <p class="eyebrow">
+            {locale === "en" ? "Homepage feedback" : "主页反馈"}
+          </p>
+          <h2 id="like-heading" data-like-heading>
+            {locale === "en" ? "Like this academic profile" : "为学术主页点赞"}
+          </h2>
+          <p data-like-description>
+            {locale === "en"
+              ? "Found the research useful or interesting?"
+              : "如果这些研究内容对你有所帮助或启发，欢迎点赞。"}
+          </p>
+          <a class="like-privacy" href={pathFor(locale, "privacy")}>
+            {locale === "en" ? "How likes protect privacy" : "了解点赞隐私保护"}
+          </a>
+        </div>
+        <div class="like-control">
+          <button
+            class="like-button"
+            type="button"
+            aria-pressed="false"
+            aria-label={
+              locale === "en" ? "Like this academic profile" : "为学术主页点赞"
+            }
+            disabled
+            data-like-button
+          >
+            <span aria-hidden="true" class="like-heart">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21.2l7.8-7.7 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z" />
+              </svg>
+            </span>
+            <span data-like-label>
+              {locale === "en"
+                ? "Like this academic profile"
+                : "为学术主页点赞"}
+            </span>
+            <output class="like-count" data-like-count aria-live="polite">
+              {locale === "en" ? "Loading likes…" : "正在加载点赞数……"}
+            </output>
+          </button>
+          <p class="like-status" data-like-status aria-live="polite" />
+        </div>
+      </div>
+    </section>
+  )
+}
+
+<script>
+  import "../scripts/site-like";
+</script>

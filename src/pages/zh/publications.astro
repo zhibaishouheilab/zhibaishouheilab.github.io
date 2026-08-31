@@ -4,16 +4,17 @@ import ContentLayout from "../../layouts/ContentLayout.astro";
 import FeaturedPublicationCard from "../../components/FeaturedPublicationCard.astro";
 import PublicationFilters from "../../components/PublicationFilters.astro";
 import PublicationListItem from "../../components/PublicationListItem.astro";
-import ConferenceCard from "../../components/ConferenceCard.astro";
-import { conferences } from "../../data/conferences";
-import { dictionaries } from "../../i18n/routes";
+import PublicationTabs from "../../components/PublicationTabs.astro";
+import { dictionaries, pathFor } from "../../i18n/routes";
 
 const locale = "zh" as const;
 const t = dictionaries[locale];
 const publications = (await getCollection("publications"))
   .map((entry) => entry.data)
   .sort((a, b) => b.year - a.year || a.title.localeCompare(b.title));
-const featured = publications.filter((publication) => publication.featured);
+const primaryAuthorWork = publications.filter(
+  (publication) => publication.first_author || publication.co_first_author,
+);
 const years = [
   ...new Set(publications.map((publication) => publication.year)),
 ].sort((a, b) => b - a);
@@ -29,74 +30,70 @@ const topics = [
   {locale}
   routeName="publications"
   eyebrow="论文"
-  heading="论文与学术会议"
+  heading="论文"
   intro="我的研究涉及颈椎影像、医学异常检测、图像重建与定量影像。"
   title="论文 | 张琦"
-  description="张琦在医学图像分析、颈椎影像与异常检测方向的论文、在投稿件和学术会议记录。"
+  description="张琦在医学图像分析、颈椎影像与异常检测方向的论文与在投稿件。"
 >
-  <section class="section" aria-labelledby="featured-heading">
+  <section class="section" aria-labelledby="publication-views-heading">
     <div class="container">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">重点成果</p><h2 id="featured-heading">
-            {t.labels.featuredFirstAuthor}
-          </h2>
+          <p class="eyebrow">论文记录</p>
+          <h2 id="publication-views-heading">浏览论文</h2>
         </div>
-        <p>
-          期刊标签采用2025年度JIF/JCR数据与2025年中科院分区；MICCAI采用2026年3月CCF目录。
-        </p>
+        <a class="button secondary" href="/qi-zhang-publications.bib" download>
+          {t.labels.downloadBibtex}
+        </a>
       </div>
-      <div class="featured-grid">
-        {
-          featured.map((publication) => (
-            <FeaturedPublicationCard {publication} {locale} />
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  <section
-    class="section soft-blue"
-    id="conferences"
-    aria-labelledby="conferences-heading"
-  >
-    <div class="container">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">学术交流</p><h2 id="conferences-heading">
-            参会与报告
-          </h2>
+      <PublicationTabs {locale}>
+        <div slot="first" class="publication-tab-content">
+          <div class="section-heading compact-heading">
+            <div>
+              <p class="eyebrow">作者角色</p>
+              <h2>{t.labels.featuredFirstAuthor}</h2>
+            </div>
+            <p>
+              期刊标签采用2025年度JIF/JCR数据与2025年中科院分区；MICCAI采用2026年3月CCF目录。
+            </p>
+          </div>
+          <div class="featured-grid">
+            {
+              primaryAuthorWork.map((publication) => (
+                <FeaturedPublicationCard {publication} {locale} />
+              ))
+            }
+          </div>
+          <aside class="presentations-cta">
+            <div>
+              <p class="eyebrow">会议记录</p>
+              <h2>口头汇报、海报与会议获奖</h2>
+              <p>
+                查看CSRS-AP、MICCAI与ISMRM的汇报形式、展示材料、相关论文和获奖记录。
+              </p>
+            </div>
+            <a class="button secondary" href={pathFor(locale, "presentations")}
+              >查看会议展示</a
+            >
+          </aside>
         </div>
-        <p>2025至2026年的口头汇报、海报展示与会议获奖记录。</p>
-      </div>
-      <div class="conference-grid">
-        {
-          conferences.map((conference) => (
-            <ConferenceCard {conference} {locale} />
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  <section class="section surface" aria-labelledby="all-heading">
-    <div class="container">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">论文列表</p><h2 id="all-heading">
-            论文与在投稿件
-          </h2>
+        <div slot="all" class="publication-tab-content">
+          <div class="section-heading compact-heading">
+            <div>
+              <p class="eyebrow">完整记录</p>
+              <h2>论文与在投稿件</h2>
+            </div>
+          </div>
+          <PublicationFilters {locale} {years} {statuses} {topics} />
+          <div class="publication-list" style="margin-top: 1.5rem;">
+            {
+              publications.map((publication) => (
+                <PublicationListItem {publication} {locale} />
+              ))
+            }
+          </div>
         </div>
-      </div>
-      <PublicationFilters {locale} {years} {statuses} {topics} />
-      <div class="publication-list" style="margin-top: 1.5rem;">
-        {
-          publications.map((publication) => (
-            <PublicationListItem {publication} {locale} />
-          ))
-        }
-      </div>
+      </PublicationTabs>
     </div>
   </section>
 </ContentLayout>

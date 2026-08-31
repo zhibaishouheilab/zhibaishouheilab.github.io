@@ -4,15 +4,28 @@ import type { Locale } from "../i18n/routes";
 
 interface Props {
   locale: Locale;
+  limit?: number;
 }
 
-const { locale } = Astro.props;
+const { locale, limit } = Astro.props;
 const sortedNews = news.slice().sort((a, b) => b.date.localeCompare(a.date));
+const visibleNews =
+  typeof limit === "number" ? sortedNews.slice(0, limit) : sortedNews;
+const formatDate = (value: string) => {
+  const [year, month, day] = value.split("-").map(Number);
+  const date = new Date(Date.UTC(year, (month ?? 1) - 1, day ?? 1));
+  return new Intl.DateTimeFormat(locale === "en" ? "en-US" : "zh-CN", {
+    year: "numeric",
+    month: month ? (day ? "short" : "long") : undefined,
+    day: day ? "numeric" : undefined,
+    timeZone: "UTC",
+  }).format(date);
+};
 ---
 
 <ol class="news-list">
   {
-    sortedNews.slice(0, 8).map((item) => {
+    visibleNews.map((item) => {
       const href =
         locale === "zh" && "related_link_zh" in item
           ? item.related_link_zh
@@ -20,7 +33,7 @@ const sortedNews = news.slice().sort((a, b) => b.date.localeCompare(a.date));
       const isExternal = href.startsWith("http");
       return (
         <li>
-          <time datetime={item.date}>{item.date}</time>
+          <time datetime={item.date}>{formatDate(item.date)}</time>
           <a
             href={href}
             target={isExternal ? "_blank" : undefined}

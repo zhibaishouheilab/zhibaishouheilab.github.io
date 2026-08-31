@@ -1,0 +1,86 @@
+---
+interface Props {
+  id: string;
+  src: string;
+  alt: string;
+  label: string;
+  closeLabel: string;
+  className?: string;
+  width?: number;
+  height?: number;
+  loading?: "eager" | "lazy";
+}
+
+const {
+  id,
+  src,
+  alt,
+  label,
+  closeLabel,
+  className = "media-lightbox-trigger",
+  width = 1200,
+  height = 750,
+  loading = "lazy",
+} = Astro.props;
+---
+
+<button
+  class={className}
+  type="button"
+  aria-label={label}
+  aria-haspopup="dialog"
+  aria-controls={`lightbox-${id}`}
+  data-lightbox-open={id}
+>
+  <img {src} {alt} {width} {height} {loading} decoding="async" />
+</button>
+<dialog
+  class="media-lightbox"
+  id={`lightbox-${id}`}
+  aria-label={alt}
+  data-lightbox={id}
+>
+  <button
+    class="icon-button media-lightbox-close"
+    type="button"
+    aria-label={closeLabel}
+    data-lightbox-close
+  >
+    ×
+  </button>
+  <img src={src} alt={alt} width={width} height={height} />
+</dialog>
+
+<script>
+  const restoreOverflow = () => {
+    if (!document.querySelector<HTMLDialogElement>(".media-lightbox[open]")) {
+      document.body.classList.remove("dialog-open");
+    }
+  };
+
+  document
+    .querySelectorAll<HTMLButtonElement>("[data-lightbox-open]")
+    .forEach((button) => {
+      if (button.dataset.lightboxReady === "true") return;
+      button.dataset.lightboxReady = "true";
+      const id = button.dataset.lightboxOpen;
+      const dialog = document.querySelector<HTMLDialogElement>(
+        `[data-lightbox="${CSS.escape(id ?? "")}"]`,
+      );
+      button.addEventListener("click", () => {
+        dialog?.showModal();
+        document.body.classList.add("dialog-open");
+      });
+      dialog
+        ?.querySelector("[data-lightbox-close]")
+        ?.addEventListener("click", () => dialog.close());
+      dialog?.addEventListener("click", (event) => {
+        if (event.target === dialog) dialog.close();
+      });
+      dialog?.addEventListener("close", () => {
+        restoreOverflow();
+        button.focus();
+      });
+      dialog?.addEventListener("cancel", restoreOverflow);
+    });
+</script>

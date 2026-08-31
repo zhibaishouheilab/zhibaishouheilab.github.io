@@ -1,0 +1,47 @@
+---
+import ContentLayout from "../layouts/ContentLayout.astro";
+import { resourceGroups } from "../data/resources";
+
+const locale = "en" as const;
+---
+
+<ContentLayout
+  {locale}
+  routeName="resources"
+  eyebrow="Resources"
+  heading="Research resources"
+  intro="Public code, model weights, data access, evaluation tools, and citation files connected to my publications."
+  title="Resources | Qi Zhang"
+  description="Public code, models, data, evaluation tools, and citation resources for research by Qi Zhang."
+>
+  <section class="section">
+    <div class="container resource-grid">
+      {
+        resourceGroups.map((group) => (
+          <section class="resource-card" id={group.id}>
+            <p class="eyebrow">Public resource</p>
+            <h2>{group.title_en}</h2>
+            <p>{group.description_en}</p>
+            <ul>
+              {group.items.map(([label, href]) => (
+                <li>
+                  <a
+                    href={href}
+                    target={href.startsWith("http") ? "_blank" : undefined}
+                    rel={
+                      href.startsWith("http")
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
+                  >
+                    {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))
+      }
+    </div>
+  </section>
+</ContentLayout>

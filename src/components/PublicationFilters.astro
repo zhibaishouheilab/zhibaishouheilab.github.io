@@ -81,11 +81,16 @@ const statusLabels: Record<string, string> = {
   <button class="button mini ghost" type="reset">{t.labels.clearFilters}</button
   >
 </form>
-<div class="filter-summary" aria-live="polite">
-  <strong data-result-count></strong>
-  {t.labels.results}
+<div
+  class="filter-summary"
+  aria-live="polite"
+  data-result-summary
+  data-locale={locale}
+>
 </div>
-<p class="empty-state" data-empty-state hidden>{t.labels.noResults}</p>
+<p class="empty-state" data-empty-state aria-live="polite" hidden>
+  {t.labels.noResults}
+</p>
 
 <script>
   const form = document.querySelector<HTMLFormElement>(
@@ -94,7 +99,7 @@ const statusLabels: Record<string, string> = {
   const items = Array.from(
     document.querySelectorAll<HTMLElement>("[data-publication]"),
   );
-  const count = document.querySelector<HTMLElement>("[data-result-count]");
+  const summary = document.querySelector<HTMLElement>("[data-result-summary]");
   const empty = document.querySelector<HTMLElement>("[data-empty-state]");
   const applyFilters = () => {
     if (!form) return;
@@ -115,7 +120,12 @@ const statusLabels: Record<string, string> = {
       item.hidden = !matches;
       if (matches) visible += 1;
     });
-    if (count) count.textContent = String(visible);
+    if (summary) {
+      summary.textContent =
+        summary.dataset.locale === "zh"
+          ? `共 ${visible} 篇论文`
+          : `${visible} ${visible === 1 ? "publication" : "publications"}`;
+    }
     if (empty) empty.hidden = visible !== 0;
   };
   form?.addEventListener("input", applyFilters);

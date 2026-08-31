@@ -4,18 +4,44 @@ import { zh } from "./zh";
 export type Locale = "en" | "zh";
 export const dictionaries = { en, zh } as const;
 
-export const routeNames = [
+export const navigationRoutes = [
   "home",
   "about",
   "publications",
   "research",
+  "presentations",
+  "resources",
   "cv",
   "contact",
 ] as const;
+export const routeNames = [
+  ...navigationRoutes,
+  "news",
+  "privacy",
+  "researchCervical",
+  "researchVertebral",
+  "researchAnomaly",
+] as const;
 export type RouteName = (typeof routeNames)[number];
 
+const routeSegments: Record<RouteName, string> = {
+  home: "",
+  about: "about/",
+  publications: "publications/",
+  research: "research/",
+  presentations: "presentations/",
+  resources: "resources/",
+  cv: "cv/",
+  contact: "contact/",
+  news: "news/",
+  privacy: "privacy/",
+  researchCervical: "research/cervical-spine-imaging/",
+  researchVertebral: "research/vertebral-fracture-assessment/",
+  researchAnomaly: "research/medical-anomaly-detection/",
+};
+
 export function pathFor(locale: Locale, route: RouteName): string {
-  const segment = route === "home" ? "" : `${route}/`;
+  const segment = routeSegments[route];
   return locale === "zh" ? `/zh/${segment}` : `/${segment}`;
 }
 

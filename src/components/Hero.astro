@@ -14,17 +14,15 @@ const t = dictionaries[locale];
 <section class="hero-section">
   <div class="container hero-grid">
     <div class="hero-copy">
-      <p class="eyebrow">{locale === "en" ? "Academic profile" : "学术主页"}</p>
       <h1>{locale === "en" ? profile.name : profile.chineseName}</h1>
       <p class="hero-alt-name" lang={locale === "en" ? "zh-CN" : "en"}>
         {locale === "en" ? profile.chineseName : profile.name}
       </p>
       <div class="hero-role">
         <p>{locale === "en" ? profile.position : profile.positionZh}</p>
-        <p>{locale === "en" ? profile.department : profile.departmentZh}</p>
         <p>
           {locale === "en" ? profile.institution : profile.institutionZh} · {
-            locale === "en" ? profile.location : profile.locationZh
+            locale === "en" ? profile.department : profile.departmentZh
           }
         </p>
       </div>

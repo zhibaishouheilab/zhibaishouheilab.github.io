@@ -1,0 +1,38 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import ResearchDetailPage from "../../components/ResearchDetailPage.astro";
+import { researchDetails } from "../../data/researchDetails";
+
+export async function getStaticPaths() {
+  const projects = (await getCollection("projects")).map((entry) => entry.data);
+  const publications = (await getCollection("publications")).map(
+    (entry) => entry.data,
+  );
+  return researchDetails.map((detail) => {
+    const project = projects.find((item) => item.id === detail.projectId);
+    if (!project) throw new Error(`Missing project: ${detail.projectId}`);
+    return {
+      params: { slug: detail.slug },
+      props: {
+        detail,
+        project,
+        publications: project.related_publications
+          .map((id) =>
+            publications.find((publication) => publication.id === id),
+          )
+          .filter((publication) => Boolean(publication)),
+      },
+    };
+  });
+}
+
+interface Props {
+  detail: (typeof researchDetails)[number];
+  project: CollectionEntry<"projects">["data"];
+  publications: CollectionEntry<"publications">["data"][];
+}
+
+const { detail, project, publications } = Astro.props;
+---
+
+<ResearchDetailPage locale="en" {detail} {project} {publications} />

@@ -1,0 +1,22 @@
+---
+import ContentLayout from "../../layouts/ContentLayout.astro";
+import NewsList from "../../components/NewsList.astro";
+
+const locale = "zh" as const;
+---
+
+<ContentLayout
+  {locale}
+  routeName="news"
+  eyebrow="动态"
+  heading="研究动态"
+  intro="论文发表、会议汇报与获奖记录。"
+  title="动态 | 张琦"
+  description="张琦的论文发表、会议汇报与获奖动态。"
+>
+  <section class="section">
+    <div class="container content-narrow">
+      <NewsList {locale} />
+    </div>
+  </section>
+</ContentLayout>

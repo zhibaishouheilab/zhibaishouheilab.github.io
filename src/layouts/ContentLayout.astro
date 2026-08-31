@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
-import type { Locale, RouteName } from "../i18n/routes";
+import { pathFor, type Locale, type RouteName } from "../i18n/routes";
 
 interface Props {
   locale: Locale;
@@ -19,6 +19,15 @@ const { locale, routeName, eyebrow, heading, intro, title, description } =
 <BaseLayout {locale} {routeName} {title} {description}>
   <section class="page-intro">
     <div class="container content-narrow">
+      <nav
+        class="breadcrumb"
+        aria-label={locale === "en" ? "Breadcrumb" : "面包屑导航"}
+      >
+        <a href={pathFor(locale, "home")}>{locale === "en" ? "Home" : "首页"}</a
+        >
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{heading}</span>
+      </nav>
       <p class="eyebrow">{eyebrow}</p>
       <h1>{heading}</h1>
       <p class="page-lead">{intro}</p>

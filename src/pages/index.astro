@@ -5,8 +5,9 @@ import Hero from "../components/Hero.astro";
 import ResearchInterestCard from "../components/ResearchInterestCard.astro";
 import FeaturedPublicationCard from "../components/FeaturedPublicationCard.astro";
 import NewsList from "../components/NewsList.astro";
+import SiteLikeButton from "../components/SiteLikeButton.astro";
 import { researchInterests } from "../data/researchInterests";
-import { dictionaries, pathFor } from "../i18n/routes";
+import { dictionaries, pathFor, type RouteName } from "../i18n/routes";
 
 const locale = "en" as const;
 const t = dictionaries[locale];
@@ -32,6 +33,11 @@ const projects = (await getCollection("projects"))
       ].indexOf(b.id),
   )
   .slice(0, 3);
+const detailRoutes: Record<string, RouteName> = {
+  "cervical-spine-ai": "researchCervical",
+  "vertebral-fracture-assessment": "researchVertebral",
+  "medical-anomaly-detection": "researchAnomaly",
+};
 ---
 
 <BaseLayout {locale} routeName="home">
@@ -100,8 +106,18 @@ const projects = (await getCollection("projects"))
           projects.map((project) => (
             <a
               class="home-project-link"
-              href={`${pathFor(locale, "research")}#${project.slug}`}
+              href={pathFor(locale, detailRoutes[project.id])}
             >
+              <span class="home-project-image">
+                <img
+                  src={project.image.src}
+                  alt={project.image.alt_en}
+                  width="1200"
+                  height="750"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </span>
               <p class="eyebrow">{project.status}</p>
               <h3>{project.title}</h3>
               <span>{project.summary_en}</span>
@@ -120,7 +136,11 @@ const projects = (await getCollection("projects"))
           <h2 id="news-heading">{t.labels.latestNews}</h2>
         </div>
       </div>
-      <NewsList {locale} />
+      <NewsList {locale} limit={5} />
+      <a class="button text-button news-more" href={pathFor(locale, "news")}
+        >{t.labels.viewAllNews}</a
+      >
     </div>
   </section>
+  <SiteLikeButton {locale} />
 </BaseLayout>

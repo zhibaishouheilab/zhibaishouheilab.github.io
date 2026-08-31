@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import ContentLayout from "../layouts/ContentLayout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
+import { pathFor, type RouteName } from "../i18n/routes";
 
 const locale = "en" as const;
 const publications = (await getCollection("publications")).map(
@@ -15,9 +16,14 @@ const projectOrder = [
 const projects = (await getCollection("projects"))
   .map((entry) => entry.data)
   .sort((a, b) => projectOrder.indexOf(a.id) - projectOrder.indexOf(b.id));
-const publicationTitle = new Map(
-  publications.map((publication) => [publication.id, publication.title]),
+const publicationById = new Map(
+  publications.map((publication) => [publication.id, publication]),
 );
+const detailRoutes: Record<string, RouteName> = {
+  "cervical-spine-ai": "researchCervical",
+  "vertebral-fracture-assessment": "researchVertebral",
+  "medical-anomaly-detection": "researchAnomaly",
+};
 ---
 
 <ContentLayout
@@ -36,9 +42,18 @@ const publicationTitle = new Map(
           <ProjectCard
             {project}
             {locale}
-            relatedTitles={project.related_publications
-              .map((id) => publicationTitle.get(id))
-              .filter((title): title is string => Boolean(title))}
+            detailUrl={pathFor(locale, detailRoutes[project.id])}
+            relatedPublications={project.related_publications
+              .map((id) => publicationById.get(id))
+              .filter((publication) => Boolean(publication))
+              .map((publication) => ({
+                id: publication!.id,
+                year: publication!.year,
+                title: publication!.title,
+                status: publication!.status,
+                paper: publication!.links.paper,
+                code: publication!.links.code,
+              }))}
           />
         ))
       }

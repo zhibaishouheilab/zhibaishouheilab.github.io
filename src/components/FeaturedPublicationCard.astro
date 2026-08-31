@@ -2,6 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import { dictionaries, type Locale } from "../i18n/routes";
 import CopyBibtexButton from "./CopyBibtexButton.astro";
+import MediaLightbox from "./MediaLightbox.astro";
 
 interface Props {
   publication: CollectionEntry<"publications">["data"];
@@ -37,15 +38,15 @@ const metricNote = publication.venue_metrics
 
 <article class="publication-card featured-card" id={publication.id}>
   <figure class="publication-image">
-    <img
+    <MediaLightbox
+      id={`featured-${publication.id}-${locale}`}
       src={publication.image.src}
       alt={locale === "en"
         ? publication.image.alt_en
         : publication.image.alt_zh}
-      width="1200"
-      height="750"
-      loading="lazy"
-      decoding="async"
+      label={`${t.labels.openImage}: ${publication.title}`}
+      closeLabel={t.labels.close}
+      className="publication-image-button"
     />
     <figcaption class="figure-source-badge">
       {

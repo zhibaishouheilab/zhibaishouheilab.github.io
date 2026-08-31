@@ -21,16 +21,16 @@ export const news = [
     title_en:
       "Received the Best Oral Presentation Award at the 16th CSRS-AP Annual Meeting in Shanghai.",
     title_zh: "在上海举行的第16届 CSRS-AP 年会上获得最佳口头汇报奖。",
-    related_link: "/publications/#conferences",
-    related_link_zh: "/zh/publications/#conferences",
+    related_link: "/presentations/#csrs-ap-2026",
+    related_link_zh: "/zh/presentations/#csrs-ap-2026",
     category: "Award",
   },
   {
     date: "2025-09-24",
     title_en: "Presented MultiTransAD as a poster at MICCAI 2025 in Daejeon.",
     title_zh: "在韩国大田举行的 MICCAI 2025 以海报形式汇报 MultiTransAD。",
-    related_link: "/publications/#conferences",
-    related_link_zh: "/zh/publications/#conferences",
+    related_link: "/presentations/#miccai-2025",
+    related_link_zh: "/zh/presentations/#miccai-2025",
     category: "Conference",
   },
   {
@@ -46,8 +46,8 @@ export const news = [
       "Presented one oral, one traditional poster, and one digital poster at ISMRM 2025; the traditional-poster abstract received an AMPC Highlight.",
     title_zh:
       "在 ISMRM 2025 完成1项口头汇报、1项传统海报和1项数字海报，其中传统海报摘要获 AMPC Highlight。",
-    related_link: "/publications/#conferences",
-    related_link_zh: "/zh/publications/#conferences",
+    related_link: "/presentations/#ismrm-2025",
+    related_link_zh: "/zh/presentations/#ismrm-2025",
     category: "Conference",
   },
   {

@@ -1,0 +1,51 @@
+---
+import ContentLayout from "../../layouts/ContentLayout.astro";
+import { resourceGroups } from "../../data/resources";
+
+const locale = "zh" as const;
+---
+
+<ContentLayout
+  {locale}
+  routeName="resources"
+  eyebrow="资源"
+  heading="研究资源"
+  intro="汇总与论文对应的公开代码、模型权重、数据访问、评估工具与引用文件。"
+  title="资源 | 张琦"
+  description="张琦研究工作的公开代码、模型、数据、评估工具与引用资源。"
+>
+  <section class="section">
+    <div class="container resource-grid">
+      {
+        resourceGroups.map((group) => (
+          <section class="resource-card" id={group.id}>
+            <p class="eyebrow">公开资源</p>
+            <h2>{group.title_zh}</h2>
+            <p>{group.description_zh}</p>
+            <ul>
+              {group.items.map(([label, rawHref]) => {
+                const href =
+                  rawHref === "/publications/" ? "/zh/publications/" : rawHref;
+                return (
+                  <li>
+                    <a
+                      href={href}
+                      target={href.startsWith("http") ? "_blank" : undefined}
+                      rel={
+                        href.startsWith("http")
+                          ? "noopener noreferrer"
+                          : undefined
+                      }
+                    >
+                      {label}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        ))
+      }
+    </div>
+  </section>
+</ContentLayout>
