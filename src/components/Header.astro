@@ -1,0 +1,81 @@
+---
+import LanguageSwitch from "./LanguageSwitch.astro";
+import {
+  dictionaries,
+  pathFor,
+  routeNames,
+  type Locale,
+  type RouteName,
+} from "../i18n/routes";
+
+interface Props {
+  locale: Locale;
+  routeName: RouteName;
+}
+
+const { locale, routeName } = Astro.props;
+const t = dictionaries[locale];
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a
+      class="wordmark"
+      href={pathFor(locale, "home")}
+      aria-label={locale === "en" ? "Qi Zhang home" : "张琦主页"}
+    >
+      <span class="wordmark-name">QZ</span>
+      <span class="wordmark-rule" aria-hidden="true"></span>
+      <span class="wordmark-field">Medical Image Analysis</span>
+    </a>
+    <button
+      class="menu-button"
+      type="button"
+      aria-expanded="false"
+      aria-controls="primary-navigation"
+      aria-label={t.labels.menu}
+      data-menu-button
+    >
+      <span></span><span></span><span></span>
+    </button>
+    <nav
+      id="primary-navigation"
+      class="primary-navigation"
+      aria-label="Primary"
+      data-navigation
+    >
+      <ul>
+        {
+          routeNames.map((route) => (
+            <li>
+              <a
+                href={pathFor(locale, route)}
+                aria-current={route === routeName ? "page" : undefined}
+              >
+                {t.nav[route]}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <LanguageSwitch {locale} />
+    </nav>
+  </div>
+</header>
+
+<script>
+  const menuButton =
+    document.querySelector<HTMLButtonElement>("[data-menu-button]");
+  const navigation = document.querySelector<HTMLElement>("[data-navigation]");
+  menuButton?.addEventListener("click", () => {
+    const expanded = menuButton.getAttribute("aria-expanded") === "true";
+    menuButton.setAttribute("aria-expanded", String(!expanded));
+    navigation?.classList.toggle("is-open", !expanded);
+  });
+  navigation?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      menuButton?.setAttribute("aria-expanded", "false");
+      navigation?.classList.remove("is-open");
+    });
+  });
+</script>

@@ -1,0 +1,26 @@
+---
+import { socialLinks } from "../data/social";
+
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+---
+
+<div class:list={["social-links", { compact }]} aria-label="Academic profiles">
+  {
+    socialLinks.map((link) => (
+      <a href={link.href} target="_blank" rel="noopener noreferrer">
+        <span class="social-mark" aria-hidden="true">
+          {link.label === "Google Scholar"
+            ? "GS"
+            : link.label === "GitHub"
+              ? "GH"
+              : "ID"}
+        </span>
+        <span>{link.label}</span>
+      </a>
+    ))
+  }
+</div>

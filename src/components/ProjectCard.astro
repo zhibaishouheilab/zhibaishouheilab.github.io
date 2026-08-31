@@ -1,0 +1,85 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { dictionaries, type Locale } from "../i18n/routes";
+
+interface Props {
+  project: CollectionEntry<"projects">["data"];
+  locale: Locale;
+  relatedTitles: string[];
+}
+
+const { project, locale, relatedTitles } = Astro.props;
+const t = dictionaries[locale];
+---
+
+<article class="project-card" id={project.slug}>
+  <img
+    src={project.image.src}
+    alt={locale === "en" ? project.image.alt_en : project.image.alt_zh}
+    width="1200"
+    height="750"
+    loading="lazy"
+    decoding="async"
+  />
+  <div class="project-content">
+    <div class="badge-row">
+      <span class="status-badge status-published">{project.status}</span>
+    </div>
+    <h2>{project.title}</h2>
+    <p class="project-summary">
+      {locale === "en" ? project.summary_en : project.summary_zh}
+    </p>
+    <dl class="project-details">
+      <div>
+        <dt>{t.labels.clinicalMotivation}</dt>
+        <dd>
+          {
+            locale === "en"
+              ? project.clinical_motivation_en
+              : project.clinical_motivation_zh
+          }
+        </dd>
+      </div>
+      <div>
+        <dt>{t.labels.technicalFocus}</dt>
+        <dd>
+          {
+            locale === "en"
+              ? project.technical_focus_en
+              : project.technical_focus_zh
+          }
+        </dd>
+      </div>
+      <div>
+        <dt>{t.labels.relatedPublications}</dt>
+        <dd>{relatedTitles.join("; ")}</dd>
+      </div>
+    </dl>
+    <div class="button-row compact-row">
+      {
+        project.links.paper && (
+          <a
+            class="button mini primary"
+            href={project.links.paper}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {t.labels.paper}
+          </a>
+        )
+      }
+      {
+        project.links.code && (
+          <a
+            class="button mini secondary"
+            href={project.links.code}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {t.labels.code}
+          </a>
+        )
+      }
+    </div>
+  </div>
+</article>

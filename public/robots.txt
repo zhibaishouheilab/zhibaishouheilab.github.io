@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zhibaishouheilab.github.io/sitemap-index.xml
+

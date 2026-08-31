@@ -1,0 +1,114 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { dictionaries, type Locale } from "../i18n/routes";
+import CopyBibtexButton from "./CopyBibtexButton.astro";
+
+interface Props {
+  publication: CollectionEntry<"publications">["data"];
+  locale: Locale;
+}
+
+const { publication, locale } = Astro.props;
+const t = dictionaries[locale];
+const summary =
+  locale === "en" ? publication.summary_en : publication.summary_zh;
+---
+
+<article class="publication-card featured-card">
+  <div class="publication-image">
+    <img
+      src={publication.image.src}
+      alt={locale === "en"
+        ? publication.image.alt_en
+        : publication.image.alt_zh}
+      width="1200"
+      height="750"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <div class="publication-content">
+    <div class="badge-row">
+      <span
+        class={`status-badge status-${publication.status.toLowerCase().replace(" ", "-")}`}
+        >{publication.status}</span
+      >
+      {
+        publication.co_first_author ? (
+          <span class="author-badge">{t.labels.coFirstAuthor}</span>
+        ) : (
+          <span class="author-badge">{t.labels.firstAuthor}</span>
+        )
+      }
+    </div>
+    <h3>{publication.title}</h3>
+    <p class="authors">
+      {
+        publication.authors.map((author, index) => (
+          <>
+            {author.self ? (
+              <strong class="author-self">{author.name}</strong>
+            ) : (
+              <span>{author.name}</span>
+            )}
+            {author.equal_contribution && (
+              <sup title={t.labels.equalContribution}>†</sup>
+            )}
+            {index < publication.authors.length - 1 ? ", " : ""}
+          </>
+        ))
+      }
+    </p>
+    <p class="venue-line">
+      <strong>{publication.venue}</strong> · {publication.year}
+    </p>
+    <p class="publication-summary">{summary}</p>
+    <p class="doi">
+      <span>{t.labels.doi}</span>
+      <a
+        href={publication.links.paper ?? undefined}
+        target="_blank"
+        rel="noopener noreferrer">{publication.doi}</a
+      >
+    </p>
+    <div class="button-row compact-row">
+      {
+        publication.links.paper && (
+          <a
+            class="button mini primary"
+            href={publication.links.paper}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {t.labels.paper}
+          </a>
+        )
+      }
+      {
+        publication.links.code && (
+          <a
+            class="button mini secondary"
+            href={publication.links.code}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {t.labels.code}
+          </a>
+        )
+      }
+      {
+        publication.links.project && (
+          <a class="button mini ghost" href={publication.links.project}>
+            {t.labels.project}
+          </a>
+        )
+      }
+      <CopyBibtexButton
+        id={publication.id}
+        title={publication.title}
+        bibtex={publication.bibtex}
+        {locale}
+      />
+    </div>
+  </div>
+</article>

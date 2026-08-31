@@ -1,0 +1,94 @@
+---
+import { getCollection } from "astro:content";
+import ContentLayout from "../layouts/ContentLayout.astro";
+import { education } from "../data/education";
+import { profile } from "../data/profile";
+import { dictionaries } from "../i18n/routes";
+
+const locale = "en" as const;
+const t = dictionaries[locale];
+const publications = (await getCollection("publications"))
+  .map((entry) => entry.data)
+  .sort((a, b) => b.year - a.year);
+const selected = publications
+  .filter((publication) => publication.featured)
+  .slice(0, 6);
+---
+
+<ContentLayout
+  {locale}
+  routeName="cv"
+  eyebrow="Curriculum vitae"
+  heading={t.labels.webCv}
+  intro="A concise, public web CV based on verified education and publication records."
+  title="CV | Qi Zhang"
+  description="Web CV of Qi Zhang, PhD Student at the School of Biomedical Engineering, Shanghai Jiao Tong University."
+>
+  <section class="section">
+    <div class="container split-layout">
+      <div>
+        <p class="eyebrow">{t.labels.education}</p>
+        <ol class="timeline" style="margin-top: 1rem;">
+          {
+            education.map((item) => (
+              <li>
+                <>
+                  <time>{item.period}</time>
+                  <div>
+                    <>
+                      <strong>{item.title}</strong>
+                      <span>{item.detail}</span>
+                    </>
+                  </div>
+                </>
+              </li>
+            ))
+          }
+        </ol>
+
+        <p class="eyebrow" style="margin-top: 3rem;">Selected publications</p>
+        <ol class="timeline" style="margin-top: 1rem;">
+          {
+            selected.map((publication) => (
+              <li>
+                <>
+                  <time>{publication.year}</time>
+                  <div>
+                    <>
+                      <strong>{publication.title}</strong>
+                      <span>{publication.venue}</span>
+                    </>
+                  </div>
+                </>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+      <aside>
+        <div class="side-panel">
+          <h2>Profile</h2>
+          <p>
+            <strong>{profile.position}</strong><br />{profile.department}<br />{
+              profile.institution
+            }
+          </p>
+        </div>
+        <div class="side-panel">
+          <h2>{t.labels.skills}</h2>
+          <ul class="method-list">
+            <li>Medical image segmentation</li><li>Anomaly detection</li><li>
+              Multimodal learning
+            </li><li>Image translation</li><li>Uncertainty estimation</li><li>
+              Quantitative imaging
+            </li>
+          </ul>
+        </div>
+        <div class="side-panel">
+          <h2>PDF CV</h2>
+          <p>{t.labels.noPdfCv}</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+</ContentLayout>

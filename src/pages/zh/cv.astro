@@ -1,0 +1,86 @@
+---
+import { getCollection } from "astro:content";
+import ContentLayout from "../../layouts/ContentLayout.astro";
+import { education } from "../../data/education";
+import { profile } from "../../data/profile";
+import { dictionaries } from "../../i18n/routes";
+
+const locale = "zh" as const;
+const t = dictionaries[locale];
+const publications = (await getCollection("publications"))
+  .map((entry) => entry.data)
+  .sort((a, b) => b.year - a.year);
+const selected = publications
+  .filter((publication) => publication.featured)
+  .slice(0, 6);
+---
+
+<ContentLayout
+  {locale}
+  routeName="cv"
+  eyebrow="个人简历"
+  heading={t.labels.webCv}
+  intro="基于已核验教育经历与论文记录整理的精简公开网页简历。"
+  title="简历 | 张琦"
+  description="上海交通大学生物医学工程学院博士研究生张琦的网页简历。"
+>
+  <section class="section">
+    <div class="container split-layout">
+      <div>
+        <p class="eyebrow">{t.labels.education}</p>
+        <ol class="timeline" style="margin-top: 1rem;">
+          {
+            education.map((item) => (
+              <li>
+                <>
+                  <time>{item.periodZh}</time>
+                  <div>
+                    <>
+                      <strong>{item.titleZh}</strong>
+                      <span>{item.detailZh}</span>
+                    </>
+                  </div>
+                </>
+              </li>
+            ))
+          }
+        </ol>
+        <p class="eyebrow" style="margin-top: 3rem;">代表性论文</p>
+        <ol class="timeline" style="margin-top: 1rem;">
+          {
+            selected.map((publication) => (
+              <li>
+                <>
+                  <time>{publication.year}</time>
+                  <div>
+                    <>
+                      <strong>{publication.title}</strong>
+                      <span>{publication.venue}</span>
+                    </>
+                  </div>
+                </>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+      <aside>
+        <div class="side-panel">
+          <h2>身份</h2><p>
+            <strong>{profile.positionZh}</strong><br />{profile.institutionZh}{
+              profile.departmentZh
+            }
+          </p>
+        </div>
+        <div class="side-panel">
+          <h2>{t.labels.skills}</h2><ul class="method-list">
+            <li>医学图像分割</li><li>异常检测</li><li>多模态学习</li><li>
+              图像翻译
+            </li><li>不确定性估计</li><li>定量影像</li>
+          </ul>
+        </div>
+        <div class="side-panel"><h2>PDF 简历</h2><p>{t.labels.noPdfCv}</p></div>
+      </aside>
+    </div>
+  </section>
+</ContentLayout>

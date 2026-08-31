@@ -1,0 +1,103 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { profile } from "../data/profile";
+import { socialLinks } from "../data/social";
+import {
+  dictionaries,
+  pathFor,
+  type Locale,
+  type RouteName,
+} from "../i18n/routes";
+import "../styles/global.css";
+
+interface Props {
+  locale: Locale;
+  routeName: RouteName;
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  locale,
+  routeName,
+  title,
+  description,
+  image = "/og/qi-zhang-academic-profile.png",
+} = Astro.props;
+const t = dictionaries[locale];
+const pageTitle = title ?? t.siteTitle;
+const pageDescription = description ?? t.siteDescription;
+const canonicalPath = pathFor(locale, routeName);
+const canonical = new URL(canonicalPath, Astro.site);
+const enUrl = new URL(pathFor("en", routeName), Astro.site);
+const zhUrl = new URL(pathFor("zh", routeName), Astro.site);
+const socialImage = new URL(image, Astro.site);
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  alternateName: profile.chineseName,
+  jobTitle: profile.position,
+  affiliation: {
+    "@type": "CollegeOrUniversity",
+    name: profile.institution,
+    department: profile.department,
+  },
+  email: `mailto:${profile.email}`,
+  sameAs: socialLinks.map((link) => link.href),
+  knowsAbout: [
+    "Medical Image Analysis",
+    "Cervical Spine Imaging",
+    "Medical Anomaly Detection",
+    "Multimodal Learning",
+    "Clinically Reliable AI",
+  ],
+};
+---
+
+<!doctype html>
+<html lang={t.lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="zh-CN" href={zhUrl} />
+    <link rel="alternate" hreflang="x-default" href={enUrl} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" sizes="any" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:site_name" content="Qi Zhang Academic Profile" />
+    <meta property="og:locale" content={t.locale} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={socialImage} />
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(jsonLd)}
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">{t.labels.skip}</a>
+    <Header {locale} {routeName} />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer {locale} />
+  </body>
+</html>

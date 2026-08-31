@@ -1,0 +1,99 @@
+---
+import { dictionaries, type Locale } from "../i18n/routes";
+
+interface Props {
+  id: string;
+  title: string;
+  bibtex: string;
+  locale: Locale;
+}
+
+const { id, title, bibtex, locale } = Astro.props;
+const t = dictionaries[locale];
+const dialogId = `bibtex-${id}`;
+---
+
+<button class="button mini ghost" type="button" data-dialog-open={dialogId}
+  >{t.labels.bibtex}</button
+>
+<dialog
+  class="bibtex-dialog"
+  id={dialogId}
+  aria-labelledby={`${dialogId}-title`}
+>
+  <div class="dialog-head">
+    <div>
+      <p class="eyebrow">BibTeX</p>
+      <h2 id={`${dialogId}-title`}>{title}</h2>
+    </div>
+    <button
+      class="icon-button"
+      type="button"
+      data-dialog-close
+      aria-label={t.labels.close}>×</button
+    >
+  </div>
+  <pre><code>{bibtex}</code></pre>
+  <div class="dialog-actions">
+    <button class="button primary mini" type="button" data-copy-bibtex
+      >{t.labels.copy}</button
+    >
+    <span class="copy-status" role="status" aria-live="polite" data-copy-status
+    ></span>
+  </div>
+</dialog>
+
+<script>
+  let lastDialogTrigger: HTMLButtonElement | null = null;
+  document
+    .querySelectorAll<HTMLButtonElement>("[data-dialog-open]")
+    .forEach((button) => {
+      button.addEventListener("click", () => {
+        lastDialogTrigger = button;
+        const dialog = document.getElementById(
+          button.dataset.dialogOpen ?? "",
+        ) as HTMLDialogElement | null;
+        dialog?.showModal();
+        dialog
+          ?.querySelector<HTMLButtonElement>("[data-dialog-close]")
+          ?.focus();
+      });
+    });
+  document
+    .querySelectorAll<HTMLDialogElement>(".bibtex-dialog")
+    .forEach((dialog) => {
+      const closeDialog = () => {
+        dialog.close();
+        lastDialogTrigger?.focus();
+      };
+      dialog
+        .querySelector<HTMLButtonElement>("[data-dialog-close]")
+        ?.addEventListener("click", closeDialog);
+      dialog.addEventListener("cancel", (event) => {
+        event.preventDefault();
+        closeDialog();
+      });
+      dialog.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          event.preventDefault();
+          closeDialog();
+        }
+      });
+      dialog.addEventListener("click", (event) => {
+        if (event.target === dialog) closeDialog();
+      });
+      dialog
+        .querySelector<HTMLButtonElement>("[data-copy-bibtex]")
+        ?.addEventListener("click", async () => {
+          const text = dialog.querySelector("code")?.textContent ?? "";
+          await navigator.clipboard.writeText(text);
+          const status =
+            dialog.querySelector<HTMLElement>("[data-copy-status]");
+          if (status) {
+            status.textContent =
+              document.documentElement.lang === "zh-CN" ? "已复制" : "Copied";
+            window.setTimeout(() => (status.textContent = ""), 1800);
+          }
+        });
+    });
+</script>

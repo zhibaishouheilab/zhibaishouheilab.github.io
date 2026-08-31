@@ -1,0 +1,81 @@
+---
+import { biography, profile } from "../data/profile";
+import { dictionaries, pathFor, type Locale } from "../i18n/routes";
+import SocialLinks from "./SocialLinks.astro";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = dictionaries[locale];
+---
+
+<section class="hero-section">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">{locale === "en" ? "Academic profile" : "学术主页"}</p>
+      <h1>{locale === "en" ? profile.name : profile.chineseName}</h1>
+      <p class="hero-alt-name" lang={locale === "en" ? "zh-CN" : "en"}>
+        {locale === "en" ? profile.chineseName : profile.name}
+      </p>
+      <div class="hero-role">
+        <p>{locale === "en" ? profile.position : profile.positionZh}</p>
+        <p>{locale === "en" ? profile.department : profile.departmentZh}</p>
+        <p>
+          {locale === "en" ? profile.institution : profile.institutionZh} · {
+            locale === "en" ? profile.location : profile.locationZh
+          }
+        </p>
+      </div>
+      <p class="hero-summary">
+        {locale === "en" ? biography.shortEn : biography.shortZh}
+      </p>
+      <div class="button-row">
+        <a class="button primary" href={pathFor(locale, "publications")}
+          >{t.labels.viewPublications}</a
+        >
+        <a class="button secondary" href={pathFor(locale, "cv")}
+          >{t.labels.viewCv}</a
+        >
+        <a class="button text-button" href={`mailto:${profile.email}`}
+          >{t.labels.email}</a
+        >
+      </div>
+      <SocialLinks />
+    </div>
+    <div class="hero-portrait-wrap">
+      <div class="portrait-frame">
+        <img
+          src={profile.avatar}
+          alt={locale === "en" ? profile.avatarAlt : profile.avatarAltZh}
+          width="620"
+          height="797"
+          fetchpriority="high"
+          decoding="async"
+        />
+        <div class="portrait-caption">
+          <span>{locale === "en" ? "Research focus" : "研究聚焦"}</span>
+          <strong
+            >{
+              locale === "en"
+                ? "Clinically reliable medical imaging AI"
+                : "临床可靠医学影像人工智能"
+            }</strong
+          >
+        </div>
+      </div>
+      <svg class="hero-contours" viewBox="0 0 420 520" aria-hidden="true">
+        <path
+          d="M72 60c84-48 184-24 238 38 58 68 58 172 2 238-44 52-121 79-190 48-70-31-111-112-91-190 16-61 20-104 41-134Z"
+        ></path>
+        <path
+          d="M91 93c65-38 145-20 187 30 46 54 46 137 2 190-36 43-98 62-152 39-54-24-86-88-70-149 12-48 16-83 33-110Z"
+        ></path>
+        <path
+          d="M112 128c46-27 104-13 134 24 32 39 32 98 1 136-25 31-70 45-108 28-39-17-62-63-51-107 9-34 12-60 24-81Z"
+        ></path>
+      </svg>
+    </div>
+  </div>
+</section>

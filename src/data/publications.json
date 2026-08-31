@@ -1,0 +1,349 @@
+[
+  {
+    "id": "unitransad",
+    "title": "UniTransAD: Unified Translation Framework for Anomaly Detection in Brain MRI",
+    "authors": [
+      { "name": "Qi Zhang", "self": true, "equal_contribution": false },
+      { "name": "Xia Li", "self": false, "equal_contribution": false },
+      { "name": "Yibo Hu", "self": false, "equal_contribution": false },
+      { "name": "Jianqi Sun", "self": false, "equal_contribution": false }
+    ],
+    "venue": "IEEE Transactions on Medical Imaging",
+    "year": 2026,
+    "volume": "",
+    "issue": "",
+    "pages": "",
+    "article_number": "",
+    "doi": "10.1109/TMI.2026.3711975",
+    "status": "In Press",
+    "first_author": true,
+    "co_first_author": false,
+    "featured": true,
+    "topics": ["medical-anomaly-detection", "multimodal-learning", "brain-mri"],
+    "links": {
+      "paper": "https://doi.org/10.1109/TMI.2026.3711975",
+      "preprint": null,
+      "code": "https://github.com/zhibaishouheilab/UniTransAD",
+      "project": "/research/#medical-anomaly-detection"
+    },
+    "image": {
+      "src": "/assets/publications/unitransad.webp",
+      "alt_en": "Conceptual cover showing unified cyclic translation across MRI sequences",
+      "alt_zh": "展示多序列MRI统一循环翻译的概念封面"
+    },
+    "summary_en": "A unified translation framework addresses brain MRI anomaly detection across diseases, sequences, and missing-input settings. Dynamic style prototypes and dual-level evidence support flexible inference without presenting invented clinical results.",
+    "summary_zh": "该工作面向不同疾病、序列与缺失输入场景，构建统一的脑MRI翻译式异常检测框架。动态风格原型与双层证据机制支持更加灵活的推理。",
+    "bibtex": "@article{zhang2026unitransad,\n  title={UniTransAD: Unified Translation Framework for Anomaly Detection in Brain MRI},\n  author={Zhang, Qi and Li, Xia and Hu, Yibo and Sun, Jianqi},\n  journal={IEEE Transactions on Medical Imaging},\n  year={2026},\n  doi={10.1109/TMI.2026.3711975},\n  note={Online ahead of print}\n}"
+  },
+  {
+    "id": "u2ad",
+    "title": "U2AD: Uncertainty-based unsupervised anomaly detection framework for detecting T2 hyperintensity in MRI spinal cord",
+    "authors": [
+      { "name": "Qi Zhang", "self": true, "equal_contribution": true },
+      { "name": "Xiuyuan Chen", "self": false, "equal_contribution": true },
+      { "name": "Ziyi He", "self": false, "equal_contribution": true },
+      { "name": "Kun Wang", "self": false, "equal_contribution": true },
+      { "name": "Lianming Wu", "self": false, "equal_contribution": false },
+      { "name": "Hongxing Shen", "self": false, "equal_contribution": false },
+      { "name": "Jianqi Sun", "self": false, "equal_contribution": false }
+    ],
+    "venue": "Medical Image Analysis",
+    "year": 2026,
+    "volume": "109",
+    "issue": "",
+    "pages": "",
+    "article_number": "103939",
+    "doi": "10.1016/j.media.2026.103939",
+    "status": "Published",
+    "first_author": true,
+    "co_first_author": true,
+    "featured": true,
+    "topics": ["cervical-spine", "medical-anomaly-detection", "uncertainty"],
+    "links": {
+      "paper": "https://doi.org/10.1016/j.media.2026.103939",
+      "preprint": null,
+      "code": "https://github.com/zhibaishouheilab/U2AD",
+      "project": "/research/#cervical-spine-ai"
+    },
+    "image": {
+      "src": "/assets/publications/u2ad.webp",
+      "alt_en": "Conceptual cover showing uncertainty-guided masking around the spinal cord",
+      "alt_zh": "展示脊髓区域不确定性引导掩码的概念封面"
+    },
+    "summary_en": "U2AD detects spinal-cord T2 hyperintensity without requiring abnormal-region annotations. Its uncertainty-guided masking strategy balances reconstruction of normal anatomy with sensitivity to anomalies.",
+    "summary_zh": "U2AD在不依赖异常区域标注的条件下检测脊髓T2高信号。其不确定性引导掩码在正常结构重建与异常敏感性之间取得平衡。",
+    "bibtex": "@article{zhang2026u2ad,\n  title={U2AD: Uncertainty-based unsupervised anomaly detection framework for detecting T2 hyperintensity in MRI spinal cord},\n  author={Zhang, Qi and Chen, Xiuyuan and He, Ziyi and Wang, Kun and Wu, Lianming and Shen, Hongxing and Sun, Jianqi},\n  journal={Medical Image Analysis},\n  volume={109},\n  pages={103939},\n  year={2026},\n  doi={10.1016/j.media.2026.103939}\n}"
+  },
+  {
+    "id": "cervai-x",
+    "title": "Pathology-Guided AI System for Accurate Segmentation and Diagnosis of Cervical Spondylosis",
+    "authors": [
+      { "name": "Qi Zhang", "self": true, "equal_contribution": true },
+      { "name": "Xiuyuan Chen", "self": false, "equal_contribution": true },
+      { "name": "Ziyi He", "self": false, "equal_contribution": true },
+      { "name": "Lianming Wu", "self": false, "equal_contribution": false },
+      { "name": "Kun Wang", "self": false, "equal_contribution": false },
+      { "name": "Jianqi Sun", "self": false, "equal_contribution": false },
+      { "name": "Hongxing Shen", "self": false, "equal_contribution": false }
+    ],
+    "venue": "IEEE Journal of Biomedical and Health Informatics",
+    "year": 2026,
+    "volume": "30",
+    "issue": "2",
+    "pages": "1216-1229",
+    "article_number": "",
+    "doi": "10.1109/JBHI.2025.3598469",
+    "status": "Published",
+    "first_author": true,
+    "co_first_author": true,
+    "featured": true,
+    "topics": ["cervical-spine", "segmentation", "clinically-reliable-ai"],
+    "links": {
+      "paper": "https://doi.org/10.1109/JBHI.2025.3598469",
+      "preprint": null,
+      "code": "https://github.com/zhibaishouheilab/CervAI-X",
+      "project": "/research/#cervical-spine-ai"
+    },
+    "image": {
+      "src": "/assets/publications/cervai-x.webp",
+      "alt_en": "Conceptual cover linking cervical anatomy segmentation to measurable clinical indicators",
+      "alt_zh": "连接颈椎解剖分割与临床量化指标的概念封面"
+    },
+    "summary_en": "This pathology-guided system links cervical MRI segmentation with automated calculation of clinically relevant indicators. The design emphasises interpretable measurements and validation across clinical data sources.",
+    "summary_zh": "该病理引导系统将颈椎MRI分割与临床相关指标的自动计算相连接，强调可解释测量以及跨临床数据来源的验证。",
+    "bibtex": "@article{zhang2026pathology,\n  title={Pathology-Guided AI System for Accurate Segmentation and Diagnosis of Cervical Spondylosis},\n  author={Zhang, Qi and Chen, Xiuyuan and He, Ziyi and Wu, Lianming and Wang, Kun and Sun, Jianqi and Shen, Hongxing},\n  journal={IEEE Journal of Biomedical and Health Informatics},\n  volume={30},\n  number={2},\n  pages={1216--1229},\n  year={2026},\n  doi={10.1109/JBHI.2025.3598469}\n}"
+  },
+  {
+    "id": "ardmr",
+    "title": "ARDMR: Adaptive recursive inference and representation disentanglement for multimodal large deformation registration",
+    "authors": [
+      { "name": "Yibo Hu", "self": false, "equal_contribution": false },
+      { "name": "Qi Zhang", "self": true, "equal_contribution": false },
+      { "name": "Ziqi Zhao", "self": false, "equal_contribution": false },
+      { "name": "Xiaoyi Ding", "self": false, "equal_contribution": false },
+      { "name": "Wentao Li", "self": false, "equal_contribution": false },
+      { "name": "Jijin Yang", "self": false, "equal_contribution": false },
+      { "name": "Jianqi Sun", "self": false, "equal_contribution": false },
+      { "name": "Lisa X. Xu", "self": false, "equal_contribution": false }
+    ],
+    "venue": "Medical Image Analysis",
+    "year": 2026,
+    "volume": "107",
+    "issue": "Pt B",
+    "pages": "",
+    "article_number": "103844",
+    "doi": "10.1016/j.media.2025.103844",
+    "status": "Published",
+    "first_author": false,
+    "co_first_author": false,
+    "featured": false,
+    "topics": ["multimodal-learning", "registration"],
+    "links": {
+      "paper": "https://doi.org/10.1016/j.media.2025.103844",
+      "preprint": null,
+      "code": "https://github.com/ybby2020/ARDMR_MIA",
+      "project": "/research/#multimodal-registration"
+    },
+    "image": {
+      "src": "/assets/publications/ardmr.webp",
+      "alt_en": "Conceptual cover showing recursive alignment of multimodal image grids",
+      "alt_zh": "展示多模态图像网格递归对齐的概念封面"
+    },
+    "summary_en": "ARDMR studies multimodal deformable registration under large anatomical changes using representation disentanglement and adaptive recursive inference.",
+    "summary_zh": "ARDMR通过表征解耦与自适应递归推理研究大形变条件下的多模态可变形配准。",
+    "bibtex": "@article{hu2026ardmr,\n  title={ARDMR: Adaptive recursive inference and representation disentanglement for multimodal large deformation registration},\n  author={Hu, Yibo and Zhang, Qi and Zhao, Ziqi and Ding, Xiaoyi and Li, Wentao and Yang, Jijin and Sun, Jianqi and Xu, Lisa X.},\n  journal={Medical Image Analysis},\n  volume={107},\n  pages={103844},\n  year={2026},\n  doi={10.1016/j.media.2025.103844}\n}"
+  },
+  {
+    "id": "healthivert-gan",
+    "title": "HealthiVert-GAN: A Novel Framework of Pseudo-Healthy Vertebral Image Synthesis for Interpretable Compression Fracture Grading",
+    "authors": [
+      { "name": "Qi Zhang", "self": true, "equal_contribution": false },
+      { "name": "Cheng Chuang", "self": false, "equal_contribution": false },
+      { "name": "Shunan Zhang", "self": false, "equal_contribution": false },
+      { "name": "Ziqi Zhao", "self": false, "equal_contribution": false },
+      { "name": "Kun Wang", "self": false, "equal_contribution": false },
+      { "name": "Jun Xu", "self": false, "equal_contribution": false },
+      { "name": "Jianqi Sun", "self": false, "equal_contribution": false }
+    ],
+    "venue": "IEEE Journal of Biomedical and Health Informatics",
+    "year": 2025,
+    "volume": "29",
+    "issue": "10",
+    "pages": "7299-7311",
+    "article_number": "",
+    "doi": "10.1109/JBHI.2025.3572458",
+    "status": "Published",
+    "first_author": true,
+    "co_first_author": false,
+    "featured": true,
+    "topics": ["cervical-spine", "ct", "image-synthesis"],
+    "links": {
+      "paper": "https://doi.org/10.1109/JBHI.2025.3572458",
+      "preprint": null,
+      "code": "https://github.com/zhibaishouheilab/HealthiVert-GAN",
+      "project": "/research/#vertebral-fracture-assessment"
+    },
+    "image": {
+      "src": "/assets/publications/healthivert-gan.webp",
+      "alt_en": "Conceptual cover comparing compressed and pseudo-healthy vertebral contours",
+      "alt_zh": "对比压缩椎体与伪健康椎体轮廓的概念封面"
+    },
+    "summary_en": "HealthiVert-GAN synthesises a pseudo-healthy vertebral reference from CT to support interpretable compression-fracture assessment. Relative height loss turns image synthesis into a measurable grading workflow.",
+    "summary_zh": "HealthiVert-GAN从CT合成伪健康椎体参照，用于可解释的压缩性骨折评估。相对高度损失将图像合成连接到可量化的分级流程。",
+    "bibtex": "@article{zhang2025healthivert,\n  title={HealthiVert-GAN: A Novel Framework of Pseudo-Healthy Vertebral Image Synthesis for Interpretable Compression Fracture Grading},\n  author={Zhang, Qi and Chuang, Cheng and Zhang, Shunan and Zhao, Ziqi and Wang, Kun and Xu, Jun and Sun, Jianqi},\n  journal={IEEE Journal of Biomedical and Health Informatics},\n  volume={29},\n  number={10},\n  pages={7299--7311},\n  year={2025},\n  doi={10.1109/JBHI.2025.3572458}\n}"
+  },
+  {
+    "id": "multitransad",
+    "title": "MultiTransAD: Cross-Sequence Translation-Driven Anomaly Detection in Multi-sequence Brain MRI",
+    "authors": [
+      { "name": "Qi Zhang", "self": true, "equal_contribution": false },
+      { "name": "Yibo Hu", "self": false, "equal_contribution": false },
+      { "name": "Jianqi Sun", "self": false, "equal_contribution": false }
+    ],
+    "venue": "Medical Image Computing and Computer Assisted Intervention - MICCAI 2025",
+    "year": 2025,
+    "volume": "LNCS 15961",
+    "issue": "",
+    "pages": "389-398",
+    "article_number": "",
+    "doi": "10.1007/978-3-032-04937-7_37",
+    "status": "Published",
+    "first_author": true,
+    "co_first_author": false,
+    "featured": true,
+    "topics": ["medical-anomaly-detection", "multimodal-learning", "brain-mri"],
+    "links": {
+      "paper": "https://doi.org/10.1007/978-3-032-04937-7_37",
+      "preprint": null,
+      "code": "https://github.com/zhibaishouheilab/MT-AD",
+      "project": "/research/#medical-anomaly-detection"
+    },
+    "image": {
+      "src": "/assets/publications/multitransad.webp",
+      "alt_en": "Conceptual cover showing cross-sequence MRI translation and anomaly evidence",
+      "alt_zh": "展示MRI跨序列翻译与异常证据的概念封面"
+    },
+    "summary_en": "MultiTransAD uses translation between MRI sequences to expose anomalies as cross-sequence inconsistencies. Content-style disentanglement and dual-level evidence combine anatomical structure with contrast information.",
+    "summary_zh": "MultiTransAD利用MRI序列间翻译，将异常表征为跨序列不一致。内容风格解耦与双层证据结合了解剖结构与对比信息。",
+    "bibtex": "@inproceedings{zhang2025multitransad,\n  title={MultiTransAD: Cross-Sequence Translation-Driven Anomaly Detection in Multi-sequence Brain MRI},\n  author={Zhang, Qi and Hu, Yibo and Sun, Jianqi},\n  booktitle={Medical Image Computing and Computer Assisted Intervention -- MICCAI 2025},\n  series={Lecture Notes in Computer Science},\n  volume={15961},\n  pages={389--398},\n  publisher={Springer Nature Switzerland},\n  year={2025},\n  doi={10.1007/978-3-032-04937-7_37}\n}"
+  },
+  {
+    "id": "rdmr",
+    "title": "RDMR: Recursive Inference and Representation Disentanglement for Multimodal Large Deformation Registration",
+    "authors": [
+      { "name": "Yibo Hu", "self": false, "equal_contribution": false },
+      { "name": "Ziqi Zhao", "self": false, "equal_contribution": false },
+      { "name": "Qi Zhang", "self": true, "equal_contribution": false },
+      { "name": "Lisa X. Xu", "self": false, "equal_contribution": false },
+      { "name": "Jianqi Sun", "self": false, "equal_contribution": false }
+    ],
+    "venue": "Medical Image Computing and Computer Assisted Intervention - MICCAI 2025",
+    "year": 2025,
+    "volume": "LNCS 15962",
+    "issue": "",
+    "pages": "512-522",
+    "article_number": "",
+    "doi": "10.1007/978-3-032-04947-6_49",
+    "status": "Published",
+    "first_author": false,
+    "co_first_author": false,
+    "featured": false,
+    "topics": ["multimodal-learning", "registration"],
+    "links": {
+      "paper": "https://doi.org/10.1007/978-3-032-04947-6_49",
+      "preprint": null,
+      "code": "https://github.com/ybby2020/RDMR",
+      "project": "/research/#multimodal-registration"
+    },
+    "image": {
+      "src": "/assets/publications/rdmr.webp",
+      "alt_en": "Conceptual cover showing recursive multimodal deformation alignment",
+      "alt_zh": "展示递归多模态形变对齐的概念封面"
+    },
+    "summary_en": "RDMR combines modality-invariant representation learning with recursive inference for multimodal large-deformation registration.",
+    "summary_zh": "RDMR结合模态不变表征学习与递归推理，用于多模态大形变配准。",
+    "bibtex": "@inproceedings{hu2025rdmr,\n  title={RDMR: Recursive Inference and Representation Disentanglement for Multimodal Large Deformation Registration},\n  author={Hu, Yibo and Zhao, Ziqi and Zhang, Qi and Xu, Lisa X. and Sun, Jianqi},\n  booktitle={Medical Image Computing and Computer Assisted Intervention -- MICCAI 2025},\n  series={Lecture Notes in Computer Science},\n  volume={15962},\n  pages={512--522},\n  publisher={Springer Nature Switzerland},\n  year={2025},\n  doi={10.1007/978-3-032-04947-6_49}\n}"
+  },
+  {
+    "id": "ipf-ct-ai-review",
+    "title": "The applications of CT with artificial intelligence in the prognostic model of idiopathic pulmonary fibrosis",
+    "authors": [
+      { "name": "Zeyu Chen", "self": false, "equal_contribution": true },
+      { "name": "Zheng Lin", "self": false, "equal_contribution": true },
+      { "name": "Zihan Lin", "self": false, "equal_contribution": false },
+      { "name": "Qi Zhang", "self": true, "equal_contribution": false },
+      { "name": "Haoyun Zhang", "self": false, "equal_contribution": false },
+      { "name": "Haiwen Li", "self": false, "equal_contribution": false },
+      { "name": "Qing Chang", "self": false, "equal_contribution": false },
+      { "name": "Jianqi Sun", "self": false, "equal_contribution": false },
+      { "name": "Feng Li", "self": false, "equal_contribution": false }
+    ],
+    "venue": "Therapeutic Advances in Respiratory Disease",
+    "year": 2024,
+    "volume": "18",
+    "issue": "",
+    "pages": "",
+    "article_number": "17534666241282538",
+    "doi": "10.1177/17534666241282538",
+    "status": "Published",
+    "first_author": false,
+    "co_first_author": false,
+    "featured": false,
+    "topics": ["ct", "multimodal-learning"],
+    "links": {
+      "paper": "https://doi.org/10.1177/17534666241282538",
+      "preprint": null,
+      "code": null,
+      "project": null
+    },
+    "image": {
+      "src": "/assets/publications/ipf-ct-ai-review.webp",
+      "alt_en": "Conceptual cover for a review of CT and AI in pulmonary fibrosis prognosis",
+      "alt_zh": "肺纤维化预后中CT与人工智能综述的概念封面"
+    },
+    "summary_en": "This review surveys how CT-derived measures and artificial-intelligence methods contribute to prognostic modelling for idiopathic pulmonary fibrosis.",
+    "summary_zh": "该综述系统讨论CT衍生指标与人工智能方法如何用于特发性肺纤维化预后建模。",
+    "bibtex": "@article{chen2024ipf,\n  title={The applications of CT with artificial intelligence in the prognostic model of idiopathic pulmonary fibrosis},\n  author={Chen, Zeyu and Lin, Zheng and Lin, Zihan and Zhang, Qi and Zhang, Haoyun and Li, Haiwen and Chang, Qing and Sun, Jianqi and Li, Feng},\n  journal={Therapeutic Advances in Respiratory Disease},\n  volume={18},\n  pages={17534666241282538},\n  year={2024},\n  doi={10.1177/17534666241282538}\n}"
+  },
+  {
+    "id": "knee-cartilage-qsm",
+    "title": "Cartilage morphometry and magnetic susceptibility measurement for knee osteoarthritis with automatic cartilage segmentation",
+    "authors": [
+      { "name": "Qi Zhang", "self": true, "equal_contribution": false },
+      { "name": "Jiaolun Geng", "self": false, "equal_contribution": false },
+      { "name": "Ming Zhang", "self": false, "equal_contribution": false },
+      { "name": "Tianyou Kan", "self": false, "equal_contribution": false },
+      { "name": "Liao Wang", "self": false, "equal_contribution": false },
+      { "name": "Songtao Ai", "self": false, "equal_contribution": false },
+      { "name": "Hongjiang Wei", "self": false, "equal_contribution": false },
+      { "name": "Lichi Zhang", "self": false, "equal_contribution": false },
+      { "name": "Chenglei Liu", "self": false, "equal_contribution": false }
+    ],
+    "venue": "Quantitative Imaging in Medicine and Surgery",
+    "year": 2023,
+    "volume": "13",
+    "issue": "6",
+    "pages": "3508-3521",
+    "article_number": "",
+    "doi": "10.21037/qims-22-1245",
+    "status": "Published",
+    "first_author": true,
+    "co_first_author": false,
+    "featured": true,
+    "topics": ["segmentation", "quantitative-mri", "knee-cartilage"],
+    "links": {
+      "paper": "https://doi.org/10.21037/qims-22-1245",
+      "preprint": null,
+      "code": null,
+      "project": null
+    },
+    "image": {
+      "src": "/assets/publications/knee-cartilage-qsm.webp",
+      "alt_en": "Conceptual cover showing cartilage contours and quantitative MRI measurements",
+      "alt_zh": "展示软骨轮廓与定量MRI测量的概念封面"
+    },
+    "summary_en": "This study combines automatic cartilage segmentation with morphometric and magnetic-susceptibility measurements in knee MRI. It links image analysis to reproducible quantitative assessment of osteoarthritis-related cartilage changes.",
+    "summary_zh": "该研究将自动软骨分割与膝关节MRI形态及磁化率测量结合，把图像分析连接到骨关节炎相关软骨变化的可复现定量评估。",
+    "bibtex": "@article{zhang2023cartilage,\n  title={Cartilage morphometry and magnetic susceptibility measurement for knee osteoarthritis with automatic cartilage segmentation},\n  author={Zhang, Qi and Geng, Jiaolun and Zhang, Ming and Kan, Tianyou and Wang, Liao and Ai, Songtao and Wei, Hongjiang and Zhang, Lichi and Liu, Chenglei},\n  journal={Quantitative Imaging in Medicine and Surgery},\n  volume={13},\n  number={6},\n  pages={3508--3521},\n  year={2023},\n  doi={10.21037/qims-22-1245}\n}"
+  }
+]

@@ -1,0 +1,91 @@
+---
+import ContentLayout from "../layouts/ContentLayout.astro";
+import { biography, profile } from "../data/profile";
+import { education } from "../data/education";
+import { dictionaries } from "../i18n/routes";
+
+const locale = "en" as const;
+const t = dictionaries[locale];
+---
+
+<ContentLayout
+  {locale}
+  routeName="about"
+  eyebrow="About"
+  heading="Engineering methods, clinically meaningful questions"
+  intro="My work brings medical image analysis into close contact with anatomy, quantitative assessment, and reliable evaluation."
+  title="About Qi Zhang | Medical Image Analysis"
+  description="Biography, education, research experience, and clinical collaboration of Qi Zhang at Shanghai Jiao Tong University."
+>
+  <section class="section">
+    <div class="container split-layout">
+      <div>
+        <p class="eyebrow">{t.labels.biography}</p>
+        <div class="prose" style="margin-top: 1rem;">
+          {
+            biography.longEn
+              .split("\n\n")
+              .map((paragraph) => <p>{paragraph}</p>)
+          }
+        </div>
+      </div>
+      <aside>
+        <div class="side-panel">
+          <h2>{t.labels.supervisor}</h2>
+          <p>
+            <strong>{profile.supervisor}</strong><br />{profile.department}<br
+            />{profile.institution}
+          </p>
+        </div>
+        <div class="side-panel">
+          <h2>{t.labels.clinicalCollaboration}</h2>
+          <p>
+            Published work includes collaboration with spine-surgery and
+            radiology teams at affiliated clinical institutions, with emphasis
+            on reproducible imaging assessment.
+          </p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section surface" aria-labelledby="education-heading">
+    <div class="container content-narrow">
+      <p class="eyebrow">Training</p>
+      <h2 id="education-heading" style="margin-top: .6rem;">
+        {t.labels.education}
+      </h2>
+      <ol class="timeline" style="margin-top: 1.5rem;">
+        {
+          education.map((item) => (
+            <li>
+              <time>{item.period}</time>
+              <div>
+                <>
+                  <strong>{item.title}</strong>
+                  <span>{item.detail}</span>
+                </>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="section soft-teal">
+    <div class="container content-narrow">
+      <p class="eyebrow">Current questions</p>
+      <h2 style="margin-top: .6rem;">Research interests</h2>
+      <ul class="method-list" aria-label="Research interests">
+        <li>Cervical spine MRI and CT</li><li>Medical anomaly detection</li><li>
+          Image segmentation
+        </li><li>Multimodal learning</li><li>Uncertainty estimation</li><li>
+          External validation
+        </li><li>Interpretable measurement</li><li>
+          Human-in-the-loop correction
+        </li>
+      </ul>
+    </div>
+  </section>
+</ContentLayout>

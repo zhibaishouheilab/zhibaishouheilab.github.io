@@ -1,0 +1,112 @@
+---
+import { dictionaries, type Locale } from "../i18n/routes";
+
+interface Props {
+  locale: Locale;
+  years: number[];
+  statuses: string[];
+  topics: string[];
+}
+
+const { locale, years, statuses, topics } = Astro.props;
+const t = dictionaries[locale];
+const topicLabels: Record<string, string> = {
+  "medical-anomaly-detection":
+    locale === "en" ? "Anomaly detection" : "异常检测",
+  "multimodal-learning": locale === "en" ? "Multimodal learning" : "多模态学习",
+  "brain-mri": locale === "en" ? "Brain MRI" : "脑MRI",
+  "cervical-spine": locale === "en" ? "Cervical spine" : "颈椎影像",
+  uncertainty: locale === "en" ? "Uncertainty" : "不确定性",
+  segmentation: locale === "en" ? "Segmentation" : "分割",
+  "clinically-reliable-ai": locale === "en" ? "Reliable AI" : "可靠人工智能",
+  registration: locale === "en" ? "Registration" : "图像配准",
+  ct: "CT",
+  "image-synthesis": locale === "en" ? "Image synthesis" : "图像合成",
+  "quantitative-mri": locale === "en" ? "Quantitative MRI" : "定量MRI",
+  "knee-cartilage": locale === "en" ? "Knee cartilage" : "膝软骨",
+};
+---
+
+<form class="publication-filters" data-publication-filters>
+  <label class="search-field">
+    <span>{t.labels.search}</span>
+    <input
+      type="search"
+      name="search"
+      data-publication-search
+      placeholder={locale === "en"
+        ? "Title, author, or venue"
+        : "题目、作者或期刊/会议"}
+      autocomplete="off"
+    />
+  </label>
+  <label>
+    <span>{t.labels.year}</span>
+    <select name="year">
+      <option value="">{t.labels.allYears}</option>
+      {years.map((year) => <option value={year}>{year}</option>)}
+    </select>
+  </label>
+  <label>
+    <span>{t.labels.status}</span>
+    <select name="status">
+      <option value="">{t.labels.allStatuses}</option>
+      {statuses.map((status) => <option value={status}>{status}</option>)}
+    </select>
+  </label>
+  <label>
+    <span>{t.labels.topic}</span>
+    <select name="topic">
+      <option value="">{t.labels.allTopics}</option>
+      {
+        topics.map((topic) => (
+          <option value={topic}>{topicLabels[topic] ?? topic}</option>
+        ))
+      }
+    </select>
+  </label>
+  <button class="button mini ghost" type="reset">{t.labels.clearFilters}</button
+  >
+</form>
+<div class="filter-summary" aria-live="polite">
+  <strong data-result-count></strong>
+  {t.labels.results}
+</div>
+<p class="empty-state" data-empty-state hidden>{t.labels.noResults}</p>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>(
+    "[data-publication-filters]",
+  );
+  const items = Array.from(
+    document.querySelectorAll<HTMLElement>("[data-publication]"),
+  );
+  const count = document.querySelector<HTMLElement>("[data-result-count]");
+  const empty = document.querySelector<HTMLElement>("[data-empty-state]");
+  const applyFilters = () => {
+    if (!form) return;
+    const data = new FormData(form);
+    const search = String(data.get("search") ?? "")
+      .trim()
+      .toLowerCase();
+    const year = String(data.get("year") ?? "");
+    const status = String(data.get("status") ?? "");
+    const topic = String(data.get("topic") ?? "");
+    let visible = 0;
+    items.forEach((item) => {
+      const matches =
+        (!search || item.dataset.search?.includes(search)) &&
+        (!year || item.dataset.year === year) &&
+        (!status || item.dataset.status === status) &&
+        (!topic || item.dataset.topics?.split(" ").includes(topic));
+      item.hidden = !matches;
+      if (matches) visible += 1;
+    });
+    if (count) count.textContent = String(visible);
+    if (empty) empty.hidden = visible !== 0;
+  };
+  form?.addEventListener("input", applyFilters);
+  form?.addEventListener("change", applyFilters);
+  form?.addEventListener("reset", () => window.setTimeout(applyFilters, 0));
+  applyFilters();
+</script>

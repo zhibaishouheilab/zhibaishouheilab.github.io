@@ -1,0 +1,35 @@
+---
+import { alternatePath, dictionaries, type Locale } from "../i18n/routes";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = dictionaries[locale];
+const targetLocale: Locale = locale === "en" ? "zh" : "en";
+const target = alternatePath(Astro.url.pathname, locale);
+---
+
+<a
+  class="language-switch"
+  href={target}
+  hreflang={targetLocale === "zh" ? "zh-CN" : "en"}
+  aria-label={t.labels.language}
+  data-language-switch
+  data-locale={targetLocale}
+>
+  <span class:list={{ active: locale === "en" }}>EN</span>
+  <span aria-hidden="true">/</span>
+  <span class:list={{ active: locale === "zh" }}>中文</span>
+</a>
+
+<script>
+  document
+    .querySelectorAll<HTMLAnchorElement>("[data-language-switch]")
+    .forEach((link) => {
+      link.addEventListener("click", () => {
+        localStorage.setItem("preferred-language", link.dataset.locale ?? "en");
+      });
+    });
+</script>

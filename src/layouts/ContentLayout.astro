@@ -1,0 +1,28 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import type { Locale, RouteName } from "../i18n/routes";
+
+interface Props {
+  locale: Locale;
+  routeName: RouteName;
+  eyebrow: string;
+  heading: string;
+  intro: string;
+  title: string;
+  description: string;
+}
+
+const { locale, routeName, eyebrow, heading, intro, title, description } =
+  Astro.props;
+---
+
+<BaseLayout {locale} {routeName} {title} {description}>
+  <section class="page-intro">
+    <div class="container content-narrow">
+      <p class="eyebrow">{eyebrow}</p>
+      <h1>{heading}</h1>
+      <p class="page-lead">{intro}</p>
+    </div>
+  </section>
+  <slot />
+</BaseLayout>

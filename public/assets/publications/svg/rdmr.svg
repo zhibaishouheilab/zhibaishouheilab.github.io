@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750" role="img" aria-label="RDMR conceptual cover">
+  <rect width="1200" height="750" fill="#EAF1F5"/>
+  <g stroke="#BFCED6" stroke-width="1" opacity="0.7">
+    <path d="M80 0V750"/><path d="M172 0V750"/><path d="M264 0V750"/><path d="M356 0V750"/><path d="M448 0V750"/><path d="M540 0V750"/><path d="M632 0V750"/><path d="M724 0V750"/><path d="M816 0V750"/><path d="M908 0V750"/><path d="M1000 0V750"/><path d="M1092 0V750"/>
+    <path d="M0 65H1200"/><path d="M0 157H1200"/><path d="M0 249H1200"/><path d="M0 341H1200"/><path d="M0 433H1200"/><path d="M0 525H1200"/><path d="M0 617H1200"/><path d="M0 709H1200"/>
+  </g>
+  <rect x="72" y="70" width="8" height="610" rx="4" fill="#2F7C83"/>
+  <text x="126" y="175" fill="#2F7C83" font-family="Segoe UI,Arial,sans-serif" font-size="24" font-weight="700" letter-spacing="4">QI ZHANG · MEDICAL IMAGE ANALYSIS</text>
+  <text x="126" y="325" fill="#173B57" font-family="Segoe UI,Arial,sans-serif" font-size="72" font-weight="700">RDMR</text>
+  <text x="126" y="392" fill="#1C2730" font-family="Segoe UI,Arial,sans-serif" font-size="34" font-weight="500">Recursive multimodal alignment</text>
+  <text x="126" y="585" fill="#5F6F78" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="700" letter-spacing="3">REPRESENT / REGISTER / RECUR</text>
+  <g fill="none" stroke="#2F7C83" stroke-width="3" opacity="0.48">
+    <path d="M790 122C943 80 1094 170 1132 315C1171 462 1078 601 929 633C777 665 650 551 670 405C686 289 688 151 790 122Z"/><path d="M841 174C952 146 1066 211 1094 317C1123 426 1052 526 945 550C834 573 745 490 758 384C770 299 768 194 841 174Z"/><path d="M886 226C960 208 1036 249 1055 321C1074 394 1026 461 955 476C881 491 822 436 831 365C839 308 837 239 886 226Z"/>
+  </g>
+  <circle cx="946" cy="349" r="12" fill="#2F7C83"/>
+</svg>

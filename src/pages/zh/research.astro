@@ -1,0 +1,53 @@
+---
+import { getCollection } from "astro:content";
+import ContentLayout from "../../layouts/ContentLayout.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+
+const locale = "zh" as const;
+const publications = (await getCollection("publications")).map(
+  (entry) => entry.data,
+);
+const projects = (await getCollection("projects")).map((entry) => entry.data);
+const publicationTitle = new Map(
+  publications.map((publication) => [publication.id, publication.title]),
+);
+---
+
+<ContentLayout
+  {locale}
+  routeName="research"
+  eyebrow="研究"
+  heading="可测量、可检查的医学影像证据"
+  intro="以下项目围绕已发表工作组织，明确区分已完成证据与长期研究兴趣，并避免披露未发表临床细节。"
+  title="研究 | 张琦"
+  description="张琦在颈椎影像、医学异常检测与多模态医学图像分析方向的研究项目。"
+>
+  <section class="section">
+    <div class="container projects-stack">
+      {
+        projects.map((project) => (
+          <ProjectCard
+            {project}
+            {locale}
+            relatedTitles={project.related_publications
+              .map((id) => publicationTitle.get(id))
+              .filter((title): title is string => Boolean(title))}
+          />
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section soft-teal">
+    <div class="container content-narrow">
+      <p class="eyebrow">长期方向</p><h2 style="margin-top: .6rem;">
+        临床可靠人工智能
+      </h2>
+      <div class="prose" style="margin-top: 1rem;">
+        <p>
+          除具体任务外，我还关注医学影像系统如何表达证据、识别不确定性与失效模式，并支持专家复核。这是一项长期研究方向，并不代表系统已经进入临床部署。
+        </p>
+      </div>
+    </div>
+  </section>
+</ContentLayout>

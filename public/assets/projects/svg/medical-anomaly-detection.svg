@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750" role="img" aria-label="ANOMALY DETECTION project cover">
+  <rect width="1200" height="750" fill="#E7F2F2"/>
+  <path d="M0 555C205 459 369 475 529 557C715 652 904 646 1200 498V750H0Z" fill="#D7E8E9"/>
+  <g fill="none" stroke="#173B57" stroke-width="2" opacity="0.25">
+    <path d="M770 72c-73 118-70 246 7 359 69 101 69 182 2 247"/>
+    <path d="M841 72c-73 118-70 246 7 359 69 101 69 182 2 247"/>
+    <path d="M912 72c-73 118-70 246 7 359 69 101 69 182 2 247"/>
+  </g>
+  <rect x="84" y="96" width="74" height="6" fill="#2F7C83"/>
+  <text x="84" y="182" fill="#2F7C83" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="700" letter-spacing="4">PUBLISHED RESEARCH</text>
+  <text x="84" y="335" fill="#173B57" font-family="Segoe UI,Arial,sans-serif" font-size="62" font-weight="700">ANOMALY DETECTION</text>
+  <text x="84" y="410" fill="#5F6F78" font-family="Segoe UI,Arial,sans-serif" font-size="30">Translation · uncertainty · evidence</text>
+  <g stroke="#2F7C83" stroke-width="3" fill="#FFFFFF">
+    <circle cx="858" cy="240" r="34"/><circle cx="962" cy="342" r="34"/><circle cx="850" cy="456" r="34"/>
+    <path d="M884 264l52 52M938 369l-62 62" fill="none"/>
+  </g>
+</svg>

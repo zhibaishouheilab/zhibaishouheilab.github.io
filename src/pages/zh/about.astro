@@ -1,0 +1,91 @@
+---
+import ContentLayout from "../../layouts/ContentLayout.astro";
+import { biography, profile } from "../../data/profile";
+import { education } from "../../data/education";
+import { dictionaries } from "../../i18n/routes";
+
+const locale = "zh" as const;
+const t = dictionaries[locale];
+---
+
+<ContentLayout
+  {locale}
+  routeName="about"
+  eyebrow="关于"
+  heading="以工程方法回答临床相关问题"
+  intro="我的研究让医学图像分析与解剖结构、定量评估和可靠验证保持紧密联系。"
+  title="关于张琦 | 医学图像分析"
+  description="张琦在上海交通大学的个人简介、教育经历、研究经验与临床合作背景。"
+>
+  <section class="section">
+    <div class="container split-layout">
+      <div>
+        <p class="eyebrow">{t.labels.biography}</p>
+        <div class="prose" style="margin-top: 1rem;">
+          {
+            biography.longZh
+              .split("\n\n")
+              .map((paragraph) => <p>{paragraph}</p>)
+          }
+        </div>
+      </div>
+      <aside>
+        <div class="side-panel">
+          <h2>{t.labels.supervisor}</h2><p>
+            <strong>{profile.supervisorZh}</strong><br />{
+              profile.institutionZh
+            }{profile.departmentZh}
+          </p>
+        </div>
+        <div class="side-panel">
+          <h2>{t.labels.clinicalCollaboration}</h2><p>
+            已发表工作包含与附属临床机构脊柱外科和放射科团队的合作，强调可复现的医学影像评价。
+          </p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section surface" aria-labelledby="education-heading">
+    <div class="container content-narrow">
+      <p class="eyebrow">培养经历</p><h2
+        id="education-heading"
+        style="margin-top: .6rem;"
+      >
+        {t.labels.education}
+      </h2>
+      <ol class="timeline" style="margin-top: 1.5rem;">
+        {
+          education.map((item) => (
+            <li>
+              <>
+                <time>{item.periodZh}</time>
+                <div>
+                  <>
+                    <strong>{item.titleZh}</strong>
+                    <span>{item.detailZh}</span>
+                  </>
+                </div>
+              </>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="section soft-teal">
+    <div class="container content-narrow">
+      <p class="eyebrow">当前问题</p><h2 style="margin-top: .6rem;">
+        研究兴趣
+      </h2>
+      <ul class="method-list" aria-label="研究兴趣">
+        <li>颈椎MRI与CT</li><li>医学异常检测</li><li>医学图像分割</li><li>
+          多模态学习
+        </li><li>不确定性估计</li><li>外部验证</li><li>可解释测量</li><li>
+          医生介入修正
+        </li>
+      </ul>
+    </div>
+  </section>
+</ContentLayout>

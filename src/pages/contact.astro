@@ -1,0 +1,46 @@
+---
+import ContentLayout from "../layouts/ContentLayout.astro";
+import SocialLinks from "../components/SocialLinks.astro";
+import { profile } from "../data/profile";
+import { dictionaries } from "../i18n/routes";
+
+const locale = "en" as const;
+const t = dictionaries[locale];
+---
+
+<ContentLayout
+  {locale}
+  routeName="contact"
+  eyebrow="Contact"
+  heading="Research conversation and collaboration"
+  intro="For questions about the published work, reproducibility, or research collaboration, institutional email is the preferred contact channel."
+  title="Contact | Qi Zhang"
+  description="Contact information and academic profiles for Qi Zhang at Shanghai Jiao Tong University."
+>
+  <section class="section">
+    <div class="container content-narrow">
+      <dl class="fact-grid">
+        <div>
+          <dt>{t.labels.primaryEmail}</dt><dd>
+            <a href={`mailto:${profile.email}`}>{profile.email}</a>
+          </dd>
+        </div>
+        <div>
+          <dt>{t.labels.alternativeEmail}</dt><dd>
+            <a href={`mailto:${profile.alternativeEmail}`}
+              >{profile.alternativeEmail}</a
+            >
+          </dd>
+        </div>
+        <div>
+          <dt>{t.labels.institution}</dt><dd>
+            {profile.department}<br />{profile.institution}
+          </dd>
+        </div>
+        <div><dt>{t.labels.location}</dt><dd>{profile.location}</dd></div>
+        <div><dt>{t.labels.supervisor}</dt><dd>{profile.supervisor}</dd></div>
+      </dl>
+      <div style="margin-top: 2rem;"><SocialLinks /></div>
+    </div>
+  </section>
+</ContentLayout>

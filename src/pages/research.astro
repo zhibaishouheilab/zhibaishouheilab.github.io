@@ -1,0 +1,55 @@
+---
+import { getCollection } from "astro:content";
+import ContentLayout from "../layouts/ContentLayout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+
+const locale = "en" as const;
+const publications = (await getCollection("publications")).map(
+  (entry) => entry.data,
+);
+const projects = (await getCollection("projects")).map((entry) => entry.data);
+const publicationTitle = new Map(
+  publications.map((publication) => [publication.id, publication.title]),
+);
+---
+
+<ContentLayout
+  {locale}
+  routeName="research"
+  eyebrow="Research"
+  heading="Imaging evidence that can be measured and inspected"
+  intro="The projects below are organised around published work. They distinguish completed evidence from longer-term research interests and avoid disclosing unpublished clinical details."
+  title="Research | Qi Zhang"
+  description="Research projects by Qi Zhang in cervical spine imaging, medical anomaly detection, and multimodal medical image analysis."
+>
+  <section class="section">
+    <div class="container projects-stack">
+      {
+        projects.map((project) => (
+          <ProjectCard
+            {project}
+            {locale}
+            relatedTitles={project.related_publications
+              .map((id) => publicationTitle.get(id))
+              .filter((title): title is string => Boolean(title))}
+          />
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section soft-teal">
+    <div class="container content-narrow">
+      <p class="eyebrow">Long-term direction</p>
+      <h2 style="margin-top: .6rem;">Clinically reliable AI</h2>
+      <div class="prose" style="margin-top: 1rem;">
+        <p>
+          Beyond individual tasks, I am interested in how medical-imaging
+          systems communicate evidence, identify uncertainty and failure modes,
+          and support expert review. This is a research direction rather than a
+          claim of clinical deployment.
+        </p>
+      </div>
+    </div>
+  </section>
+</ContentLayout>

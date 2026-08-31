@@ -1,0 +1,113 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import ResearchInterestCard from "../components/ResearchInterestCard.astro";
+import FeaturedPublicationCard from "../components/FeaturedPublicationCard.astro";
+import NewsList from "../components/NewsList.astro";
+import { researchInterests } from "../data/researchInterests";
+import { dictionaries, pathFor } from "../i18n/routes";
+
+const locale = "en" as const;
+const t = dictionaries[locale];
+const publications = (await getCollection("publications"))
+  .map((entry) => entry.data)
+  .filter((publication) => publication.featured)
+  .sort((a, b) => b.year - a.year)
+  .slice(0, 4);
+const projects = (await getCollection("projects"))
+  .map((entry) => entry.data)
+  .filter((project) => project.featured)
+  .slice(0, 3);
+---
+
+<BaseLayout {locale} routeName="home">
+  <Hero {locale} />
+
+  <section class="section surface" aria-labelledby="interests-heading">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Research agenda</p>
+          <h2 id="interests-heading">{t.labels.researchInterests}</h2>
+        </div>
+        <p>
+          Four connected directions guide my work from imaging representation to
+          evidence that can be inspected in clinical evaluation.
+        </p>
+      </div>
+      <div class="interest-grid">
+        {
+          researchInterests.map((interest) => (
+            <ResearchInterestCard
+              number={interest.number}
+              title={interest.title_en}
+              description={interest.description_en}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="publications-heading">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Peer-reviewed work</p>
+          <h2 id="publications-heading">{t.labels.selectedPublications}</h2>
+        </div>
+        <a class="button secondary" href={pathFor(locale, "publications")}
+          >View all publications</a
+        >
+      </div>
+      <div class="featured-grid">
+        {
+          publications.map((publication) => (
+            <FeaturedPublicationCard {publication} {locale} />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft-blue" aria-labelledby="projects-heading">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">From questions to workflows</p>
+          <h2 id="projects-heading">{t.labels.featuredResearch}</h2>
+        </div>
+        <a class="button secondary" href={pathFor(locale, "research")}
+          >Explore research</a
+        >
+      </div>
+      <div class="home-project-grid">
+        {
+          projects.map((project) => (
+            <a
+              class="home-project-link"
+              href={`${pathFor(locale, "research")}#${project.slug}`}
+            >
+              <p class="eyebrow">{project.status}</p>
+              <h3>{project.title}</h3>
+              <span>{project.summary_en}</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section surface" aria-labelledby="news-heading">
+    <div class="container content-narrow">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Research record</p>
+          <h2 id="news-heading">{t.labels.latestNews}</h2>
+        </div>
+      </div>
+      <NewsList {locale} />
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,75 @@
+---
+import { getCollection } from "astro:content";
+import ContentLayout from "../layouts/ContentLayout.astro";
+import FeaturedPublicationCard from "../components/FeaturedPublicationCard.astro";
+import PublicationFilters from "../components/PublicationFilters.astro";
+import PublicationListItem from "../components/PublicationListItem.astro";
+import { dictionaries } from "../i18n/routes";
+
+const locale = "en" as const;
+const t = dictionaries[locale];
+const publications = (await getCollection("publications"))
+  .map((entry) => entry.data)
+  .sort((a, b) => b.year - a.year || a.title.localeCompare(b.title));
+const featured = publications.filter((publication) => publication.featured);
+const years = [
+  ...new Set(publications.map((publication) => publication.year)),
+].sort((a, b) => b - a);
+const statuses = [
+  ...new Set(publications.map((publication) => publication.status)),
+].sort();
+const topics = [
+  ...new Set(publications.flatMap((publication) => publication.topics)),
+].sort();
+---
+
+<ContentLayout
+  {locale}
+  routeName="publications"
+  eyebrow="Publications"
+  heading="Peer-reviewed research"
+  intro="Verified publications are listed with official author order, publication status, DOI, and available public code. Citation counts are intentionally omitted."
+  title="Publications | Qi Zhang"
+  description="Verified publications by Qi Zhang in medical image analysis, cervical spine imaging, anomaly detection, and multimodal learning."
+>
+  <section class="section" aria-labelledby="featured-heading">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Selected work</p>
+          <h2 id="featured-heading">{t.labels.featuredFirstAuthor}</h2>
+        </div>
+        <p>
+          Enhanced cards are reserved for verified first- or co-first-author
+          journal and conference papers.
+        </p>
+      </div>
+      <div class="featured-grid">
+        {
+          featured.map((publication) => (
+            <FeaturedPublicationCard {publication} {locale} />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section surface" aria-labelledby="all-heading">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Complete verified list</p>
+          <h2 id="all-heading">{t.labels.allPublications}</h2>
+        </div>
+      </div>
+      <PublicationFilters {locale} {years} {statuses} {topics} />
+      <div class="publication-list" style="margin-top: 1.5rem;">
+        {
+          publications.map((publication) => (
+            <PublicationListItem {publication} {locale} />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</ContentLayout>

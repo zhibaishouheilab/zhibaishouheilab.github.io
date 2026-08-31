@@ -1,0 +1,45 @@
+---
+import { profile } from "../data/profile";
+import { dictionaries, pathFor, type Locale } from "../i18n/routes";
+import SocialLinks from "./SocialLinks.astro";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = dictionaries[locale];
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <p class="footer-name">
+        {profile.name}
+        <span lang="zh-CN">{profile.chineseName}</span>
+      </p>
+      <p>
+        {
+          locale === "en"
+            ? `${profile.department}, ${profile.institution}`
+            : `${profile.institutionZh}${profile.departmentZh}`
+        }
+      </p>
+    </div>
+    <div class="footer-links">
+      <a href={pathFor(locale, "contact")}>{t.nav.contact}</a>
+      <a href={`mailto:${profile.email}`}>{profile.email}</a>
+      <SocialLinks compact />
+    </div>
+  </div>
+  <div class="container footer-meta">
+    <p>© {new Date().getFullYear()} Qi Zhang</p>
+    <p>
+      {
+        locale === "en"
+          ? "Built for clarity, accessibility, and long-term academic use."
+          : "为清晰、无障碍与长期学术维护而构建。"
+      }
+    </p>
+  </div>
+</footer>

@@ -1,0 +1,98 @@
+[
+  {
+    "id": "cervical-spine-ai",
+    "title": "Cervical Spine MRI Analysis",
+    "slug": "cervical-spine-ai",
+    "status": "Published",
+    "featured": true,
+    "summary_en": "Interpretable cervical MRI analysis spanning anatomical segmentation, clinical measurements, and spinal-cord T2 hyperintensity detection.",
+    "summary_zh": "面向颈椎MRI的可解释分析，覆盖解剖分割、临床测量与脊髓T2高信号检测。",
+    "clinical_motivation_en": "Cervical spondylosis assessment requires consistent interpretation of multiple anatomical structures, compression patterns, and signal abnormalities.",
+    "clinical_motivation_zh": "颈椎病评估需要一致地解释多种解剖结构、压迫模式与信号异常。",
+    "technical_focus_en": "Pathology-guided segmentation, automated imaging indicators, uncertainty-aware anomaly detection, and external validation.",
+    "technical_focus_zh": "病理引导分割、影像指标自动计算、不确定性感知异常检测与外部验证。",
+    "related_publications": ["cervai-x", "u2ad"],
+    "links": {
+      "code": "https://github.com/zhibaishouheilab/CervAI-X",
+      "paper": "https://doi.org/10.1109/JBHI.2025.3598469",
+      "data": null
+    },
+    "image": {
+      "src": "/assets/projects/cervical-spine-ai.webp",
+      "alt_en": "Conceptual cervical-spine measurement and anomaly-detection workflow",
+      "alt_zh": "颈椎测量与异常检测流程概念图"
+    }
+  },
+  {
+    "id": "vertebral-fracture-assessment",
+    "title": "Interpretable Vertebral Fracture Assessment",
+    "slug": "vertebral-fracture-assessment",
+    "status": "Published",
+    "featured": true,
+    "summary_en": "Pseudo-healthy vertebral synthesis and relative height-loss measurement for quantitative CT-based compression-fracture assessment.",
+    "summary_zh": "利用伪健康椎体合成与相对高度损失测量，实现基于CT的压缩性骨折定量评估。",
+    "clinical_motivation_en": "Compression-fracture grading is difficult when no pre-fracture reference is available and deformity varies across the vertebral body.",
+    "clinical_motivation_zh": "缺少骨折前参照且椎体不同区域变形不一致，使压缩性骨折分级具有挑战。",
+    "technical_focus_en": "Anatomy-informed image synthesis, quantitative height-loss mapping, and interpretable grading.",
+    "technical_focus_zh": "解剖先验图像合成、定量高度损失映射与可解释分级。",
+    "related_publications": ["healthivert-gan"],
+    "links": {
+      "code": "https://github.com/zhibaishouheilab/HealthiVert-GAN",
+      "paper": "https://doi.org/10.1109/JBHI.2025.3572458",
+      "data": null
+    },
+    "image": {
+      "src": "/assets/projects/vertebral-fracture-assessment.webp",
+      "alt_en": "Conceptual comparison of compressed and reconstructed vertebral height",
+      "alt_zh": "压缩椎体与重建椎体高度对比概念图"
+    }
+  },
+  {
+    "id": "medical-anomaly-detection",
+    "title": "Generalizable Medical Anomaly Detection",
+    "slug": "medical-anomaly-detection",
+    "status": "Published",
+    "featured": true,
+    "summary_en": "Translation-, reconstruction-, and uncertainty-based methods for detecting abnormalities across brain and spinal MRI.",
+    "summary_zh": "研究基于翻译、重建与不确定性的医学异常检测方法，覆盖脑MRI与脊髓MRI。",
+    "clinical_motivation_en": "Rare and heterogeneous lesions make exhaustive annotation difficult, while acquisition changes can produce false anomaly signals.",
+    "clinical_motivation_zh": "病灶稀少且异质，难以获得穷尽标注；成像变化还可能造成虚假异常信号。",
+    "technical_focus_en": "Cross-sequence translation, content-style disentanglement, cyclic inference, dual-level evidence, and uncertainty-guided learning.",
+    "technical_focus_zh": "跨序列翻译、内容风格解耦、循环推理、双层证据与不确定性引导学习。",
+    "related_publications": ["unitransad", "u2ad", "multitransad"],
+    "links": {
+      "code": "https://github.com/zhibaishouheilab/UniTransAD",
+      "paper": "https://doi.org/10.1109/TMI.2026.3711975",
+      "data": null
+    },
+    "image": {
+      "src": "/assets/projects/medical-anomaly-detection.webp",
+      "alt_en": "Conceptual cross-sequence anomaly-detection evidence map",
+      "alt_zh": "跨序列异常检测证据图概念示意"
+    }
+  },
+  {
+    "id": "multimodal-registration",
+    "title": "Multimodal Deformable Registration",
+    "slug": "multimodal-registration",
+    "status": "Published",
+    "featured": false,
+    "summary_en": "Collaborative work on modality-invariant representations and recursive inference for large-deformation medical image registration.",
+    "summary_zh": "合作研究模态不变表征与递归推理，用于医学图像大形变配准。",
+    "clinical_motivation_en": "Alignment across CT and MRI is challenged by both contrast differences and large physiological deformations.",
+    "clinical_motivation_zh": "CT与MRI之间的对齐同时受到对比差异与生理大形变的影响。",
+    "technical_focus_en": "Representation disentanglement, multi-scale feature registration, and adaptive recursive refinement.",
+    "technical_focus_zh": "表征解耦、多尺度特征配准与自适应递归细化。",
+    "related_publications": ["ardmr", "rdmr"],
+    "links": {
+      "code": "https://github.com/ybby2020/ARDMR_MIA",
+      "paper": "https://doi.org/10.1016/j.media.2025.103844",
+      "data": null
+    },
+    "image": {
+      "src": "/assets/projects/multimodal-registration.webp",
+      "alt_en": "Conceptual alignment of two multimodal medical image grids",
+      "alt_zh": "两种模态医学图像网格对齐概念图"
+    }
+  }
+]
