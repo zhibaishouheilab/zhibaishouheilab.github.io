@@ -9,7 +9,7 @@ This is a public, bilingual academic website generated with Astro. Keep all chan
 - Do not disclose private or unsuccessful funding applications or represent them as funding, awards, grants, or accomplishments.
 - Preserve publication titles, author order, DOI, venue, year, equal-contribution notes, and status exactly as verified.
 - Preserve every existing file under `public/assets/publications/` byte-for-byte.
-- Treat the `dynamic-cervical-mri-under-review` publication object as frozen; never edit it as part of unrelated maintenance.
+- Treat the `dcm-ai-review` publication object as frozen; never edit it as part of unrelated maintenance.
 - Keep conference papers in Publications and conference participation/presentation cards on the independent Presentations pages.
 - Add English and Chinese copy together. English remains the default locale.
 - Use abstract conceptual graphics only; do not imply clinical results that are not explicitly supported.

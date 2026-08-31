@@ -1,0 +1,22 @@
+{
+  "public/assets/publications/ardmr.webp": "017632b51bbce143671fa9735e2593585705b474445b78d1d0a752ff2197a125",
+  "public/assets/publications/cervai-x.webp": "dd11e324c8da8349c982469d3620dfd52f44446df8012c2f689b34ed6ab06c97",
+  "public/assets/publications/dcm-ai-review.webp": "7ecdf66a8e7b7838bfc5e9fbf0e491f9dec15ee3232bf9fe433e7ea110785ab3",
+  "public/assets/publications/healthivert-gan.webp": "f8d0eca85ceb52437fb123e40bc5cf936c952e8aa7b83316f4ecb7b9064d65b9",
+  "public/assets/publications/ipf-ct-ai-review.webp": "484c9ac16b8fca518893ebcfc028d75f14fa68028b73c1e6105b60546df1e084",
+  "public/assets/publications/jointsr-miccai2026.webp": "439bdc78ff122bfbf5fe115c74903e12209ebd8aceed9c604a941ae5a2314fbb",
+  "public/assets/publications/knee-cartilage-qsm.webp": "2c40c914755a0a546cb9b3948e297a01067294f7c09d052128040e114a14e69b",
+  "public/assets/publications/multitransad.webp": "e060db37f8c4a138ea779677d79aae58ae82814b61f9b4e50b4eb84b66cb4dac",
+  "public/assets/publications/rdmr.webp": "540a54bb13b760b5e8a2fc533cda54968ff540ad7dd344b0da75585cb202ef2b",
+  "public/assets/publications/svg/ardmr.svg": "19328c3baa439c1eae72a137e406cb45dab3d6b1c1a6b7308c9475329af05060",
+  "public/assets/publications/svg/cervai-x.svg": "c57305da3f3e21851be69cff221b57e05c472e69e1cf66c22082a123e5a2ab77",
+  "public/assets/publications/svg/healthivert-gan.svg": "434b525325d97f2169b488547a03b693b629195d64782a26c8941a27f64a4a15",
+  "public/assets/publications/svg/ipf-ct-ai-review.svg": "2d5292e35d46d1d9266af620af5f65cd6e4c98bb838cfcdb0c2478182c94b098",
+  "public/assets/publications/svg/knee-cartilage-qsm.svg": "71203722c69ce78a1620f2d5d7ec5caa6445daa34d36e5466188abbd3c1426cc",
+  "public/assets/publications/svg/multitransad.svg": "a79633dd8ceb45e9477996f6f980256bf24ce4020d19ebff1237c8f442a89ff7",
+  "public/assets/publications/svg/rdmr.svg": "e97ab6e94b9f67c0e736824d81bdd59290d20539ccb8087f867b50c01b0e25b1",
+  "public/assets/publications/svg/u2ad.svg": "705c24024e06412569fa2a0d59dfdf9b062ef192eb4a230944e2e09739ef1873",
+  "public/assets/publications/svg/unitransad.svg": "69572335fc86d283b8be63107e5d53458fd90ad2877590727f5c49b784c03762",
+  "public/assets/publications/u2ad.webp": "c12339e924a3872fb09edb59f0fa443abb498ad44f38f899c8603cb8f015a871",
+  "public/assets/publications/unitransad.webp": "baae1ea7d185f45d55eb5a17b536fc9031336c21c4ef92cf608d27d3539fa526"
+}

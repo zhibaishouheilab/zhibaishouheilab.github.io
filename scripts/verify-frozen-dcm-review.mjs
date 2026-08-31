@@ -7,7 +7,7 @@ const reviewTitle =
   "Artificial intelligence for degenerative cervical myelopathy imaging: a systematic review across tasks and modalities";
 const baseline = JSON.parse(
   await readFile(
-    path.join(root, "audit", "frozen-dcm-review-before.json"),
+    path.join(root, "scripts", "baselines", "frozen-dcm-review-before.json"),
     "utf8",
   ),
 );

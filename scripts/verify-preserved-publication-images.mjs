@@ -5,7 +5,8 @@ import path from "node:path";
 const root = process.cwd();
 const baselinePath = path.join(
   root,
-  "audit",
+  "scripts",
+  "baselines",
   "publication-image-hashes-before.json",
 );
 const baseline = JSON.parse(await readFile(baselinePath, "utf8"));

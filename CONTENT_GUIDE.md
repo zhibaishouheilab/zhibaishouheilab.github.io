@@ -44,7 +44,7 @@ Use WebP for content imagery, SVG for conceptual source graphics, PNG for social
 
 Existing images under `public/assets/publications/` are a preserved set and must remain byte-for-byte unchanged. Run `npm run verify-preserved-images` after any asset work. Do not add source PDFs to the public repository.
 
-`dynamic-cervical-mri-under-review` is a frozen review record. Do not alter any field in that publication object unless the author explicitly supplies a factual correction and authorizes replacing the baseline. Run `npm run verify-frozen-review` after publication edits.
+`dcm-ai-review` is a frozen review record. Do not alter any field in that publication object unless the author explicitly supplies a factual correction and authorizes replacing the baseline. Run `npm run verify-frozen-review` after publication edits.
 
 ## Verification checklist / 核验清单
 
