@@ -3,7 +3,8 @@ import { readFile } from "node:fs/promises";
 const publications = JSON.parse(
   await readFile("src/data/publications.json", "utf8"),
 );
-const invalid = publications.filter(
+const publicationsWithDoi = publications.filter((item) => item.doi);
+const invalid = publicationsWithDoi.filter(
   (item) => !/^10\.\d{4,9}\/.+/.test(item.doi),
 );
 if (invalid.length) {
@@ -15,7 +16,7 @@ if (invalid.length) {
 
 if (process.env.CHECK_REMOTE_LINKS === "1") {
   const failures = [];
-  for (const publication of publications) {
+  for (const publication of publicationsWithDoi) {
     const response = await fetch(`https://doi.org/${publication.doi}`, {
       method: "GET",
       redirect: "manual",
@@ -28,9 +29,9 @@ if (process.env.CHECK_REMOTE_LINKS === "1") {
     console.error(failures.join("\n"));
     process.exit(1);
   }
-  console.log(`Resolved ${publications.length} DOI links.`);
+  console.log(`Resolved ${publicationsWithDoi.length} DOI links.`);
 } else {
   console.log(
-    `Validated DOI syntax for ${publications.length} publications. Set CHECK_REMOTE_LINKS=1 for live checks.`,
+    `Validated DOI syntax for ${publicationsWithDoi.length} publications with assigned DOIs. Set CHECK_REMOTE_LINKS=1 for live checks.`,
   );
 }
