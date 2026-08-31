@@ -34,18 +34,4 @@ export const honors = [
     detail_en: "Finalist distinction, approximately top 2%",
     detail_zh: "特等奖提名，约前2%",
   },
-  {
-    period: "2020-2022",
-    title_en: "Undergraduate Academic Scholarships",
-    title_zh: "本科生学业奖学金",
-    detail_en: "Class C in 2019-2020 and 2020-2021; Class B in 2021-2022",
-    detail_zh: "2019-2020、2020-2021学年C等；2021-2022学年B等",
-  },
-  {
-    period: "2020",
-    title_en: "Advanced Individual in Student Social Practice",
-    title_zh: "学生社会实践“先进个人”",
-    detail_en: "Shanghai Jiao Tong University",
-    detail_zh: "上海交通大学",
-  },
 ] as const;

@@ -13,14 +13,16 @@ const t = dictionaries[locale];
 ---
 
 <article class="project-card" id={project.slug}>
-  <img
-    src={project.image.src}
-    alt={locale === "en" ? project.image.alt_en : project.image.alt_zh}
-    width="1200"
-    height="750"
-    loading="lazy"
-    decoding="async"
-  />
+  <figure class="project-image">
+    <img
+      src={project.image.src}
+      alt={locale === "en" ? project.image.alt_en : project.image.alt_zh}
+      width="1200"
+      height="750"
+      loading="lazy"
+      decoding="async"
+    />
+  </figure>
   <div class="project-content">
     <div class="badge-row">
       <span class="status-badge status-published">{project.status}</span>

@@ -27,6 +27,16 @@ test("publication metadata remains unique and evidence-marked", () => {
     ),
   );
   assert.equal(publications.filter((item) => item.featured).length, 7);
+  assert.ok(
+    publications
+      .filter((item) => item.status !== "Under Review")
+      .every(
+        (item) =>
+          item.venue_metrics &&
+          item.venue_metrics.badges_en.length ===
+            item.venue_metrics.badges_zh.length,
+      ),
+  );
 });
 
 test("all project publication references resolve", () => {
@@ -61,6 +71,8 @@ test("publication page exposes filters and BibTeX dialogs", async () => {
   assert.match(html, /Copy BibTeX/);
   assert.match(html, /Conference presentations/);
   assert.match(html, /MICCAI 2026/);
+  assert.match(html, /2025 JIF · 14\.0/);
+  assert.match(html, /CCF B · 2026/);
 });
 
 test("generated pages include canonical and bilingual alternates", async () => {

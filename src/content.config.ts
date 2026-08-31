@@ -31,6 +31,15 @@ const publicationSchema = z.object({
     "Preprint",
     "Under Review",
   ]),
+  venue_metrics: z
+    .object({
+      badges_en: z.array(z.string().min(1)).min(1),
+      badges_zh: z.array(z.string().min(1)).min(1),
+      note_en: z.string().min(1),
+      note_zh: z.string().min(1),
+      sources: z.array(z.url({ protocol: /^https$/ })).min(1),
+    })
+    .nullable(),
   first_author: z.boolean(),
   co_first_author: z.boolean(),
   featured: z.boolean(),

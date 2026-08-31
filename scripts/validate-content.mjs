@@ -65,6 +65,17 @@ for (const publication of publications) {
   }
   if (!publication.summary_en || !publication.summary_zh)
     errors.push(`Bilingual summary missing: ${publication.id}`);
+  if (publication.status !== "Under Review" && !publication.venue_metrics)
+    errors.push(`Venue metrics missing: ${publication.id}`);
+  if (
+    publication.venue_metrics &&
+    publication.venue_metrics.badges_en.length !==
+      publication.venue_metrics.badges_zh.length
+  ) {
+    errors.push(
+      `Bilingual venue metric badges do not align: ${publication.id}`,
+    );
+  }
   if (
     !publication.image?.alt_en ||
     !publication.image?.alt_zh ||

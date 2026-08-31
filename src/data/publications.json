@@ -17,6 +17,16 @@
     "article_number": "",
     "doi": "",
     "status": "Accepted",
+    "venue_metrics": {
+      "badges_en": ["CCF B · 2026", "MICCAI · Premier conference"],
+      "badges_zh": ["CCF B · 2026", "MICCAI · 医学图像领域顶会"],
+      "note_en": "CCF Recommended List, seventh edition (March 2026); MICCAI is the premier international conference in medical image computing and computer-assisted intervention.",
+      "note_zh": "CCF推荐目录第七版（2026年3月）；MICCAI是医学图像计算与计算机辅助干预领域的国际顶级会议。",
+      "sources": [
+        "https://www.ccf.org.cn/Academic_Evaluation/By_category/2026-03-05/861526.shtml",
+        "https://conferences.miccai.org/2022/files/downloads/MICCAI2022-Program-Book.pdf"
+      ]
+    },
     "first_author": true,
     "co_first_author": true,
     "featured": true,
@@ -58,6 +68,7 @@
     "article_number": "",
     "doi": "",
     "status": "Under Review",
+    "venue_metrics": null,
     "first_author": false,
     "co_first_author": true,
     "featured": false,
@@ -96,6 +107,16 @@
     "article_number": "",
     "doi": "10.1109/TMI.2026.3711975",
     "status": "In Press",
+    "venue_metrics": {
+      "badges_en": ["2025 JIF · 12.4", "JCR Q1", "CAS 2025 · Tier 1 · Top"],
+      "badges_zh": ["2025 IF · 12.4", "JCR Q1", "中科院2025 · 1区 · Top"],
+      "note_en": "2025 Journal Impact Factor and JCR quartile; March 2025 CAS upgraded journal partition.",
+      "note_zh": "2025年度影响因子与JCR分区；2025年3月中科院升级版期刊分区。",
+      "sources": [
+        "https://ieeetmi.org/journal-stats/",
+        "https://www.ablesci.com/journal/detail?id=5EBZyD"
+      ]
+    },
     "first_author": true,
     "co_first_author": false,
     "featured": true,
@@ -137,6 +158,16 @@
     "article_number": "103939",
     "doi": "10.1016/j.media.2026.103939",
     "status": "Published",
+    "venue_metrics": {
+      "badges_en": ["2025 JIF · 14.0", "JCR Q1", "CAS 2025 · Tier 1 · Top"],
+      "badges_zh": ["2025 IF · 14.0", "JCR Q1", "中科院2025 · 1区 · Top"],
+      "note_en": "2025 Journal Impact Factor and JCR quartile; March 2025 CAS upgraded journal partition.",
+      "note_zh": "2025年度影响因子与JCR分区；2025年3月中科院升级版期刊分区。",
+      "sources": [
+        "https://www.wolterskluwer.com/ko-kr/solutions/ovid/medical-image-analysis-12143",
+        "https://sci.justscience.cn/details.html?id=705&sci=1"
+      ]
+    },
     "first_author": true,
     "co_first_author": true,
     "featured": true,
@@ -178,6 +209,16 @@
     "article_number": "",
     "doi": "10.1109/JBHI.2025.3598469",
     "status": "Published",
+    "venue_metrics": {
+      "badges_en": ["2025 JIF · 6.8", "JCR Q1", "CAS 2025 · Tier 2 · Top"],
+      "badges_zh": ["2025 IF · 6.8", "JCR Q1", "中科院2025 · 2区 · Top"],
+      "note_en": "2025 Journal Impact Factor and JCR quartile; March 2025 CAS upgraded journal partition.",
+      "note_zh": "2025年度影响因子与JCR分区；2025年3月中科院升级版期刊分区。",
+      "sources": [
+        "https://open.ieee.org/wp-content/uploads/IEEE-Title-List-January-2026.pdf",
+        "https://www.booksci.cn/journal/13073.htm"
+      ]
+    },
     "first_author": true,
     "co_first_author": true,
     "featured": true,
@@ -220,6 +261,16 @@
     "article_number": "103844",
     "doi": "10.1016/j.media.2025.103844",
     "status": "Published",
+    "venue_metrics": {
+      "badges_en": ["2025 JIF · 14.0", "JCR Q1", "CAS 2025 · Tier 1 · Top"],
+      "badges_zh": ["2025 IF · 14.0", "JCR Q1", "中科院2025 · 1区 · Top"],
+      "note_en": "2025 Journal Impact Factor and JCR quartile; March 2025 CAS upgraded journal partition.",
+      "note_zh": "2025年度影响因子与JCR分区；2025年3月中科院升级版期刊分区。",
+      "sources": [
+        "https://www.wolterskluwer.com/ko-kr/solutions/ovid/medical-image-analysis-12143",
+        "https://sci.justscience.cn/details.html?id=705&sci=1"
+      ]
+    },
     "first_author": false,
     "co_first_author": false,
     "featured": false,
@@ -261,6 +312,16 @@
     "article_number": "",
     "doi": "10.1109/JBHI.2025.3572458",
     "status": "Published",
+    "venue_metrics": {
+      "badges_en": ["2025 JIF · 6.8", "JCR Q1", "CAS 2025 · Tier 2 · Top"],
+      "badges_zh": ["2025 IF · 6.8", "JCR Q1", "中科院2025 · 2区 · Top"],
+      "note_en": "2025 Journal Impact Factor and JCR quartile; March 2025 CAS upgraded journal partition.",
+      "note_zh": "2025年度影响因子与JCR分区；2025年3月中科院升级版期刊分区。",
+      "sources": [
+        "https://open.ieee.org/wp-content/uploads/IEEE-Title-List-January-2026.pdf",
+        "https://www.booksci.cn/journal/13073.htm"
+      ]
+    },
     "first_author": true,
     "co_first_author": false,
     "featured": true,
@@ -298,6 +359,16 @@
     "article_number": "",
     "doi": "10.1007/978-3-032-04937-7_37",
     "status": "Published",
+    "venue_metrics": {
+      "badges_en": ["CCF B · 2026", "MICCAI · Premier conference"],
+      "badges_zh": ["CCF B · 2026", "MICCAI · 医学图像领域顶会"],
+      "note_en": "CCF Recommended List, seventh edition (March 2026); MICCAI is the premier international conference in medical image computing and computer-assisted intervention.",
+      "note_zh": "CCF推荐目录第七版（2026年3月）；MICCAI是医学图像计算与计算机辅助干预领域的国际顶级会议。",
+      "sources": [
+        "https://www.ccf.org.cn/Academic_Evaluation/By_category/2026-03-05/861526.shtml",
+        "https://conferences.miccai.org/2022/files/downloads/MICCAI2022-Program-Book.pdf"
+      ]
+    },
     "first_author": true,
     "co_first_author": false,
     "featured": true,
@@ -337,6 +408,16 @@
     "article_number": "",
     "doi": "10.1007/978-3-032-04947-6_49",
     "status": "Published",
+    "venue_metrics": {
+      "badges_en": ["CCF B · 2026", "MICCAI · Premier conference"],
+      "badges_zh": ["CCF B · 2026", "MICCAI · 医学图像领域顶会"],
+      "note_en": "CCF Recommended List, seventh edition (March 2026); MICCAI is the premier international conference in medical image computing and computer-assisted intervention.",
+      "note_zh": "CCF推荐目录第七版（2026年3月）；MICCAI是医学图像计算与计算机辅助干预领域的国际顶级会议。",
+      "sources": [
+        "https://www.ccf.org.cn/Academic_Evaluation/By_category/2026-03-05/861526.shtml",
+        "https://conferences.miccai.org/2022/files/downloads/MICCAI2022-Program-Book.pdf"
+      ]
+    },
     "first_author": false,
     "co_first_author": false,
     "featured": false,
@@ -380,6 +461,16 @@
     "article_number": "17534666241282538",
     "doi": "10.1177/17534666241282538",
     "status": "Published",
+    "venue_metrics": {
+      "badges_en": ["2025 JIF · 3.2", "JCR Q2", "CAS 2025 · Tier 3"],
+      "badges_zh": ["2025 IF · 3.2", "JCR Q2", "中科院2025 · 3区"],
+      "note_en": "2025 Journal Impact Factor and JCR quartile; March 2025 CAS upgraded journal partition.",
+      "note_zh": "2025年度影响因子与JCR分区；2025年3月中科院升级版期刊分区。",
+      "sources": [
+        "https://services.sagepub.com/journal/therapeutic-advances-in-respiratory-disease-2/",
+        "https://www.ais.cn/journal/database/9564"
+      ]
+    },
     "first_author": false,
     "co_first_author": false,
     "featured": false,
@@ -423,6 +514,16 @@
     "article_number": "",
     "doi": "10.21037/qims-22-1245",
     "status": "Published",
+    "venue_metrics": {
+      "badges_en": ["2025 JIF · 2.8", "JCR Q2", "CAS 2025 · Tier 3"],
+      "badges_zh": ["2025 IF · 2.8", "JCR Q2", "中科院2025 · 3区"],
+      "note_en": "2025 Journal Impact Factor and JCR quartile; March 2025 CAS upgraded journal partition.",
+      "note_zh": "2025年度影响因子与JCR分区；2025年3月中科院升级版期刊分区。",
+      "sources": [
+        "https://qims.amegroups.org/announcement/view/10127",
+        "https://www.ais.cn/journal/database/10084"
+      ]
+    },
     "first_author": true,
     "co_first_author": false,
     "featured": true,

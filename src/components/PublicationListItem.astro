@@ -23,6 +23,16 @@ const venue =
   locale === "zh" && publication.venue === "Manuscript under review"
     ? "在投稿件"
     : publication.venue;
+const metricBadges = publication.venue_metrics
+  ? locale === "en"
+    ? publication.venue_metrics.badges_en
+    : publication.venue_metrics.badges_zh
+  : [];
+const metricNote = publication.venue_metrics
+  ? locale === "en"
+    ? publication.venue_metrics.note_en
+    : publication.venue_metrics.note_zh
+  : undefined;
 ---
 
 <article
@@ -69,6 +79,13 @@ const venue =
         !publication.co_first_author && publication.first_author && (
           <span class="author-badge">{t.labels.firstAuthor}</span>
         )
+      }
+      {
+        metricBadges.map((badge) => (
+          <span class="metric-badge" title={metricNote}>
+            {badge}
+          </span>
+        ))
       }
     </div>
     <h3>{publication.title}</h3>
