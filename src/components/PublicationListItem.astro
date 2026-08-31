@@ -22,7 +22,26 @@ const filterText =
   data-topics={publication.topics.join(" ")}
   data-search={filterText}
 >
-  <div class="publication-year" aria-hidden="true">{publication.year}</div>
+  <div class="publication-list-visual">
+    <img
+      src={publication.image.src}
+      alt={locale === "en"
+        ? publication.image.alt_en
+        : publication.image.alt_zh}
+      width="1200"
+      height="750"
+      loading="lazy"
+      decoding="async"
+    />
+    <span class="figure-source-badge">
+      {
+        locale === "en"
+          ? publication.image.label_en
+          : publication.image.label_zh
+      }
+    </span>
+    <span class="publication-year">{publication.year}</span>
+  </div>
   <div class="publication-list-content">
     <div class="badge-row">
       <span

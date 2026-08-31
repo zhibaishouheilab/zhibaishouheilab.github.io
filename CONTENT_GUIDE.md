@@ -22,7 +22,7 @@ Profile copy lives in `src/data/profile.ts`; education in `src/data/education.ts
 
 ## Images / 图片
 
-Use WebP for content imagery, SVG for conceptual source graphics, PNG for social previews, and a square PNG for the Apple touch icon. Avoid patient scans, identifying clinical data, journal PDF screenshots, and copyrighted publisher artwork. Keep descriptive English and Chinese alt text beside the related content record.
+Use WebP for content imagery, SVG for conceptual source graphics, PNG for social previews, and a square PNG for the Apple touch icon. Author-provided, already-published paper figures may be extracted as tightly cropped, attribution-labelled WebP assets when the figure is methodologically representative and contains no identifying clinical data. Avoid standalone patient scans, result-only clinical examples, full journal-page screenshots, and unrelated publisher artwork. Keep descriptive English and Chinese alt text beside the related content record.
 
 ## Verification checklist / 核验清单
 

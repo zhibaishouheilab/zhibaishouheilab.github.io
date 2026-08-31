@@ -28,8 +28,10 @@
     },
     "image": {
       "src": "/assets/publications/unitransad.webp",
-      "alt_en": "Conceptual cover showing unified cyclic translation across MRI sequences",
-      "alt_zh": "展示多序列MRI统一循环翻译的概念封面"
+      "alt_en": "UniTransAD Figure 3 showing the training framework, cross-sequence alignment, and adaptive fusion module",
+      "alt_zh": "UniTransAD 论文图3，展示训练框架、跨序列对齐与自适应融合模块",
+      "label_en": "Fig. 3 · Paper figure",
+      "label_zh": "图 3 · 论文图示"
     },
     "summary_en": "A unified translation framework addresses brain MRI anomaly detection across diseases, sequences, and missing-input settings. Dynamic style prototypes and dual-level evidence support flexible inference without presenting invented clinical results.",
     "summary_zh": "该工作面向不同疾病、序列与缺失输入场景，构建统一的脑MRI翻译式异常检测框架。动态风格原型与双层证据机制支持更加灵活的推理。",
@@ -67,8 +69,10 @@
     },
     "image": {
       "src": "/assets/publications/u2ad.webp",
-      "alt_en": "Conceptual cover showing uncertainty-guided masking around the spinal cord",
-      "alt_zh": "展示脊髓区域不确定性引导掩码的概念封面"
+      "alt_en": "U2AD Figure 2 showing preprocessing, healthy-image pretraining, and uncertainty-guided adaptation",
+      "alt_zh": "U2AD 论文图2，展示预处理、健康影像预训练与不确定性引导适配",
+      "label_en": "Fig. 2 · Paper figure",
+      "label_zh": "图 2 · 论文图示"
     },
     "summary_en": "U2AD detects spinal-cord T2 hyperintensity without requiring abnormal-region annotations. Its uncertainty-guided masking strategy balances reconstruction of normal anatomy with sensitivity to anomalies.",
     "summary_zh": "U2AD在不依赖异常区域标注的条件下检测脊髓T2高信号。其不确定性引导掩码在正常结构重建与异常敏感性之间取得平衡。",
@@ -106,8 +110,10 @@
     },
     "image": {
       "src": "/assets/publications/cervai-x.webp",
-      "alt_en": "Conceptual cover linking cervical anatomy segmentation to measurable clinical indicators",
-      "alt_zh": "连接颈椎解剖分割与临床量化指标的概念封面"
+      "alt_en": "Paper Figure 1 showing the workflow from dataset construction and pathology-guided segmentation to expert-based diagnosis",
+      "alt_zh": "论文图1，展示从数据集构建、病理引导分割到专家知识诊断的整体流程",
+      "label_en": "Fig. 1 · Paper figure",
+      "label_zh": "图 1 · 论文图示"
     },
     "summary_en": "This pathology-guided system links cervical MRI segmentation with automated calculation of clinically relevant indicators. The design emphasises interpretable measurements and validation across clinical data sources.",
     "summary_zh": "该病理引导系统将颈椎MRI分割与临床相关指标的自动计算相连接，强调可解释测量以及跨临床数据来源的验证。",
@@ -146,8 +152,10 @@
     },
     "image": {
       "src": "/assets/publications/ardmr.webp",
-      "alt_en": "Conceptual cover showing recursive alignment of multimodal image grids",
-      "alt_zh": "展示多模态图像网格递归对齐的概念封面"
+      "alt_en": "ARDMR Figure 2 showing multimodal inputs, contrastive feature extraction, multiscale registration, and adaptive recursive inference",
+      "alt_zh": "ARDMR 论文图2，展示多模态输入、对比特征提取、多尺度配准与自适应递归推理",
+      "label_en": "Fig. 2 · Paper figure",
+      "label_zh": "图 2 · 论文图示"
     },
     "summary_en": "ARDMR studies multimodal deformable registration under large anatomical changes using representation disentanglement and adaptive recursive inference.",
     "summary_zh": "ARDMR通过表征解耦与自适应递归推理研究大形变条件下的多模态可变形配准。",
@@ -185,8 +193,10 @@
     },
     "image": {
       "src": "/assets/publications/healthivert-gan.webp",
-      "alt_en": "Conceptual cover comparing compressed and pseudo-healthy vertebral contours",
-      "alt_zh": "对比压缩椎体与伪健康椎体轮廓的概念封面"
+      "alt_en": "HealthiVert-GAN Figure 2 showing preprocessing, coarse-to-fine generation, iterative synthesis, quantification, and grading",
+      "alt_zh": "HealthiVert-GAN 论文图2，展示预处理、粗到细生成、迭代合成、量化与分级流程",
+      "label_en": "Fig. 2 · Paper figure",
+      "label_zh": "图 2 · 论文图示"
     },
     "summary_en": "HealthiVert-GAN synthesises a pseudo-healthy vertebral reference from CT to support interpretable compression-fracture assessment. Relative height loss turns image synthesis into a measurable grading workflow.",
     "summary_zh": "HealthiVert-GAN从CT合成伪健康椎体参照，用于可解释的压缩性骨折评估。相对高度损失将图像合成连接到可量化的分级流程。",
@@ -220,8 +230,10 @@
     },
     "image": {
       "src": "/assets/publications/multitransad.webp",
-      "alt_en": "Conceptual cover showing cross-sequence MRI translation and anomaly evidence",
-      "alt_zh": "展示MRI跨序列翻译与异常证据的概念封面"
+      "alt_en": "MultiTransAD Figure 1 showing cross-sequence translation, feature alignment, adaptive fusion, and image generation",
+      "alt_zh": "MultiTransAD 论文图1，展示跨序列翻译、特征对齐、自适应融合与图像生成架构",
+      "label_en": "Fig. 1 · Paper figure",
+      "label_zh": "图 1 · 论文图示"
     },
     "summary_en": "MultiTransAD uses translation between MRI sequences to expose anomalies as cross-sequence inconsistencies. Content-style disentanglement and dual-level evidence combine anatomical structure with contrast information.",
     "summary_zh": "MultiTransAD利用MRI序列间翻译，将异常表征为跨序列不一致。内容风格解耦与双层证据结合了解剖结构与对比信息。",
@@ -257,8 +269,10 @@
     },
     "image": {
       "src": "/assets/publications/rdmr.webp",
-      "alt_en": "Conceptual cover showing recursive multimodal deformation alignment",
-      "alt_zh": "展示递归多模态形变对齐的概念封面"
+      "alt_en": "RDMR Figure 1 showing dual-stream modality features and recursive multiscale registration",
+      "alt_zh": "RDMR 论文图1，展示双流模态特征与递归多尺度配准架构",
+      "label_en": "Fig. 1 · Paper figure",
+      "label_zh": "图 1 · 论文图示"
     },
     "summary_en": "RDMR combines modality-invariant representation learning with recursive inference for multimodal large-deformation registration.",
     "summary_zh": "RDMR结合模态不变表征学习与递归推理，用于多模态大形变配准。",
@@ -298,8 +312,10 @@
     },
     "image": {
       "src": "/assets/publications/ipf-ct-ai-review.webp",
-      "alt_en": "Conceptual cover for a review of CT and AI in pulmonary fibrosis prognosis",
-      "alt_zh": "肺纤维化预后中CT与人工智能综述的概念封面"
+      "alt_en": "Review Figure 1 relating artificial intelligence, machine learning, and deep learning to four stages of IPF prognostic modelling",
+      "alt_zh": "综述论文图1，展示人工智能、机器学习、深度学习与IPF预后建模四阶段的关系",
+      "label_en": "Fig. 1 · Paper figure",
+      "label_zh": "图 1 · 论文图示"
     },
     "summary_en": "This review surveys how CT-derived measures and artificial-intelligence methods contribute to prognostic modelling for idiopathic pulmonary fibrosis.",
     "summary_zh": "该综述系统讨论CT衍生指标与人工智能方法如何用于特发性肺纤维化预后建模。",
@@ -339,8 +355,10 @@
     },
     "image": {
       "src": "/assets/publications/knee-cartilage-qsm.webp",
-      "alt_en": "Conceptual cover showing cartilage contours and quantitative MRI measurements",
-      "alt_zh": "展示软骨轮廓与定量MRI测量的概念封面"
+      "alt_en": "Paper Figure 2 showing knee MRI input, automatic cartilage segmentation, quantitative parameter calculation, and validation",
+      "alt_zh": "论文图2，展示膝关节MRI输入、自动软骨分割、定量参数计算与验证流程",
+      "label_en": "Fig. 2 · Paper figure",
+      "label_zh": "图 2 · 论文图示"
     },
     "summary_en": "This study combines automatic cartilage segmentation with morphometric and magnetic-susceptibility measurements in knee MRI. It links image analysis to reproducible quantitative assessment of osteoarthritis-related cartilage changes.",
     "summary_zh": "该研究将自动软骨分割与膝关节MRI形态及磁化率测量结合，把图像分析连接到骨关节炎相关软骨变化的可复现定量评估。",

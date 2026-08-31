@@ -15,7 +15,7 @@ const summary =
 ---
 
 <article class="publication-card featured-card">
-  <div class="publication-image">
+  <figure class="publication-image">
     <img
       src={publication.image.src}
       alt={locale === "en"
@@ -26,7 +26,14 @@ const summary =
       loading="lazy"
       decoding="async"
     />
-  </div>
+    <figcaption class="figure-source-badge">
+      {
+        locale === "en"
+          ? publication.image.label_en
+          : publication.image.label_zh
+      }
+    </figcaption>
+  </figure>
   <div class="publication-content">
     <div class="badge-row">
       <span

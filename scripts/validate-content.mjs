@@ -58,8 +58,15 @@ for (const publication of publications) {
   }
   if (!publication.summary_en || !publication.summary_zh)
     errors.push(`Bilingual summary missing: ${publication.id}`);
-  if (!publication.image?.alt_en || !publication.image?.alt_zh)
-    errors.push(`Bilingual image alt missing: ${publication.id}`);
+  if (
+    !publication.image?.alt_en ||
+    !publication.image?.alt_zh ||
+    !publication.image?.label_en ||
+    !publication.image?.label_zh
+  )
+    errors.push(
+      `Bilingual publication image metadata missing: ${publication.id}`,
+    );
   if (localPathPattern.test(JSON.stringify(publication)))
     errors.push(`Local path exposed: ${publication.id}`);
   try {

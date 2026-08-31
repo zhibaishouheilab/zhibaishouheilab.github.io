@@ -42,6 +42,8 @@ const publicationSchema = z.object({
     src: z.string().startsWith("/"),
     alt_en: z.string().min(1),
     alt_zh: z.string().min(1),
+    label_en: z.string().min(1),
+    label_zh: z.string().min(1),
   }),
   summary_en: z.string().min(1),
   summary_zh: z.string().min(1),
