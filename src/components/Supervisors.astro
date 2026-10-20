@@ -1,0 +1,27 @@
+---
+import { supervisors } from "../data/profile";
+import type { Locale } from "../i18n/routes";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+---
+
+<span class="supervisor-links">
+  {
+    supervisors.map((supervisor, index) => (
+      <>
+        {index > 0 && (locale === "en" ? " and " : "、")}
+        <a
+          href={locale === "en" ? supervisor.url : supervisor.urlZh}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {locale === "en" ? supervisor.name : supervisor.nameZh}
+        </a>
+      </>
+    ))
+  }
+</span>

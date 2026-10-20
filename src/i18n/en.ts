@@ -60,7 +60,7 @@ export const en = {
     education: "Education",
     biography: "Biography",
     clinicalCollaboration: "Clinical collaboration",
-    supervisor: "Supervisor",
+    supervisor: "Supervisors",
     webCv: "Curriculum Vitae",
     selectedExperience: "Research profile",
     skills: "Research methods",

@@ -97,7 +97,17 @@ const metricNote = publication.venue_metrics
     </p>
     <p class="venue-line">
       <strong>{venue}</strong> · {publication.year}
+      {publication.volume && ` · ${publication.volume}`}{
+        publication.issue && `(${publication.issue})`
+      }
+      {publication.pages && ` · ${publication.pages}`}
+      {publication.article_number && ` · ${publication.article_number}`}
     </p>
+    {
+      publication.publication_note && (
+        <p class="publication-note">{publication.publication_note[locale]}</p>
+      )
+    }
     <p class="publication-summary">{summary}</p>
     {
       publication.doi && (

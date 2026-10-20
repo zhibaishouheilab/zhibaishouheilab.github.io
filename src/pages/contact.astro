@@ -1,6 +1,7 @@
 ---
 import ContentLayout from "../layouts/ContentLayout.astro";
 import SocialLinks from "../components/SocialLinks.astro";
+import Supervisors from "../components/Supervisors.astro";
 import { profile } from "../data/profile";
 import { dictionaries } from "../i18n/routes";
 
@@ -53,11 +54,7 @@ const t = dictionaries[locale];
         <div><dt>{t.labels.location}</dt><dd>{profile.location}</dd></div>
         <div>
           <dt>{t.labels.supervisor}</dt><dd>
-            <a
-              href={profile.supervisorUrl}
-              target="_blank"
-              rel="noopener noreferrer">{profile.supervisor}</a
-            >
+            <Supervisors {locale} />
           </dd>
         </div>
       </dl>

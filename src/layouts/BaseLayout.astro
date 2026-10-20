@@ -9,7 +9,6 @@ import {
   type Locale,
   type RouteName,
 } from "../i18n/routes";
-import "../styles/global.css";
 
 interface Props {
   locale: Locale;
@@ -101,3 +100,7 @@ const jsonLd = {
     <Footer {locale} />
   </body>
 </html>
+
+<style is:global>
+  @import "../styles/global.css";
+</style>

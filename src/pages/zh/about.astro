@@ -1,5 +1,6 @@
 ---
 import ContentLayout from "../../layouts/ContentLayout.astro";
+import Supervisors from "../../components/Supervisors.astro";
 import { biography, profile } from "../../data/profile";
 import { education } from "../../data/education";
 import HonorsList from "../../components/HonorsList.astro";
@@ -33,12 +34,9 @@ const t = dictionaries[locale];
       <aside>
         <div class="side-panel">
           <h2>{t.labels.supervisor}</h2><p>
-            <a
-              href={profile.supervisorUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              ><strong>{profile.supervisorZh}</strong></a
-            ><br />{profile.institutionZh}{profile.departmentZh}
+            <Supervisors {locale} /><br />{profile.institutionZh}{
+              profile.departmentZh
+            }
           </p>
         </div>
         <div class="side-panel">

@@ -25,10 +25,8 @@ const activeRoute = routeName.startsWith("research") ? "research" : routeName;
       href={pathFor(locale, "home")}
       aria-label={locale === "en" ? "Qi Zhang home" : "张琦主页"}
     >
-      <span class="wordmark-name">Qi Zhang</span>
-      <span class="wordmark-rule" aria-hidden="true"></span>
-      <span class="wordmark-field"
-        >{locale === "en" ? "Medical Image Analysis" : "医学图像分析"}</span
+      <span class="wordmark-name"
+        >Qi Zhang · <span lang="zh-CN">张琦</span></span
       >
     </a>
     <button
@@ -44,7 +42,7 @@ const activeRoute = routeName.startsWith("research") ? "research" : routeName;
     <nav
       id="primary-navigation"
       class="primary-navigation"
-      aria-label="Primary"
+      aria-label={locale === "en" ? "Main navigation" : "主导航"}
       data-navigation
     >
       <ul>
@@ -61,8 +59,8 @@ const activeRoute = routeName.startsWith("research") ? "research" : routeName;
           ))
         }
       </ul>
-      <LanguageSwitch {locale} />
     </nav>
+    <LanguageSwitch {locale} />
   </div>
 </header>
 

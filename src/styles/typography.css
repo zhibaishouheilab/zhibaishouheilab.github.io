@@ -14,28 +14,30 @@ body {
 h1,
 h2,
 h3 {
-  color: var(--color-primary);
-  line-height: 1.18;
-  letter-spacing: -0.025em;
+  color: var(--color-text);
+  line-height: 1.35;
+  letter-spacing: 0;
   text-wrap: balance;
 }
 
 h1 {
   margin: 0;
-  font-size: clamp(2.65rem, 6vw, 5.35rem);
-  font-weight: 700;
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 3vw, 2.125rem);
+  font-weight: 400;
 }
 
 h2 {
   margin: 0;
-  font-size: clamp(1.85rem, 3.5vw, 3rem);
-  font-weight: 680;
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 2vw, 1.6rem);
+  font-weight: 400;
 }
 
 h3 {
   margin: 0;
-  font-size: clamp(1.15rem, 2vw, 1.45rem);
-  font-weight: 650;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 p {
@@ -53,23 +55,25 @@ a:hover {
 }
 
 .eyebrow {
-  color: var(--color-secondary);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 [lang="zh-CN"] .eyebrow {
-  letter-spacing: 0.12em;
+  letter-spacing: 0;
 }
 
 .section-heading {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: end;
-  gap: 2rem;
-  margin-bottom: 2.2rem;
+  gap: 1.25rem;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .section-heading p {
@@ -80,19 +84,19 @@ a:hover {
 .page-lead {
   max-width: 46rem;
   color: var(--color-text-muted);
-  font-size: clamp(1.08rem, 2vw, 1.3rem);
+  font-size: 1rem;
   line-height: 1.75;
 }
 
 .prose {
   max-width: var(--content);
   color: var(--color-text);
-  font-size: 1.05rem;
-  line-height: 1.82;
+  font-size: 1rem;
+  line-height: 1.8;
 }
 
 .prose p + p {
-  margin-top: 1.35rem;
+  margin-top: 1rem;
 }
 
 .muted {

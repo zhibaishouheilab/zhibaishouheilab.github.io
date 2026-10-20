@@ -9,4 +9,10 @@ export default defineConfig({
   build: {
     format: "directory",
   },
+  vite: {
+    build: {
+      // Every route shares the same global stylesheet.
+      cssCodeSplit: false,
+    },
+  },
 });

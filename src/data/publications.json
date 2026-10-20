@@ -11,12 +11,12 @@
     ],
     "venue": "Medical Image Computing and Computer Assisted Intervention - MICCAI 2026",
     "year": 2026,
-    "volume": "",
+    "volume": "16888",
     "issue": "",
-    "pages": "",
+    "pages": "478-487",
     "article_number": "",
-    "doi": "",
-    "status": "Accepted",
+    "doi": "10.1007/978-3-032-38179-8_46",
+    "status": "Published",
     "venue_metrics": {
       "badges_en": ["CCF B · 2026", "MICCAI · Premier conference"],
       "badges_zh": ["CCF B · 2026", "MICCAI · 医学图像领域顶会"],
@@ -32,7 +32,7 @@
     "featured": true,
     "topics": ["cervical-spine", "super-resolution", "multimodal-learning"],
     "links": {
-      "paper": null,
+      "paper": "https://doi.org/10.1007/978-3-032-38179-8_46",
       "preprint": null,
       "code": "https://github.com/zhibaishouheilab/JointSR",
       "project": "/research/cervical-spine-imaging/"
@@ -46,7 +46,11 @@
     },
     "summary_en": "An anatomy-style decoupled hybrid implicit neural representation reconstructs an isotropic 3D cervical MRI volume from routine anisotropic multi-view scans. The method uses unified spatial coordinates, view-specific style embeddings, and stochastic view dropout without paired high-resolution supervision.",
     "summary_zh": "该研究利用解剖-风格解耦的混合隐式神经表示，从常规多视角各向异性扫描重建各向同性三维颈椎MRI。方法结合统一空间坐标、视角风格嵌入与随机视角丢弃，无需配对高分辨率监督。",
-    "bibtex": "@inproceedings{zhang2026jointsr,\n  title={Reconstructing Isotropic 3D Cervical MRI from Anisotropic Clinical Scans via Anatomy-Style Decoupled INRs},\n  author={Zhang, Qi and Chen, Xiuyuan and Hu, Yibo and Shen, Hongxing and Sun, Jianqi},\n  booktitle={Medical Image Computing and Computer Assisted Intervention -- MICCAI 2026},\n  year={2026},\n  note={Accepted}\n}"
+    "bibtex": "@inproceedings{zhang2026jointsr,\n  title={Reconstructing Isotropic 3D Cervical MRI from Anisotropic Clinical Scans via Anatomy-Style Decoupled INRs},\n  author={Zhang, Qi and Chen, Xiuyuan and Hu, Yibo and Shen, Hongxing and Sun, Jianqi},\n  booktitle={Medical Image Computing and Computer Assisted Intervention -- MICCAI 2026},\n  series={Lecture Notes in Computer Science},\n  volume={16888},\n  pages={478--487},\n  publisher={Springer Nature Switzerland},\n  year={2027},\n  doi={10.1007/978-3-032-38179-8_46}\n}",
+    "publication_note": {
+      "en": "Published online 26 September 2026. Springer lists 2027 as the citation year.",
+      "zh": "2026年9月26日在线出版；Springer 正式引文年份为2027年。"
+    }
   },
   {
     "id": "dcm-ai-review",
@@ -101,12 +105,12 @@
     ],
     "venue": "IEEE Transactions on Medical Imaging",
     "year": 2026,
-    "volume": "",
-    "issue": "",
-    "pages": "",
+    "volume": "45",
+    "issue": "9",
+    "pages": "4876-4891",
     "article_number": "",
     "doi": "10.1109/TMI.2026.3711975",
-    "status": "In Press",
+    "status": "Published",
     "venue_metrics": {
       "badges_en": ["2025 JIF · 12.4", "JCR Q1", "CAS 2025 · Tier 1 · Top"],
       "badges_zh": ["2025 IF · 12.4", "JCR Q1", "中科院2025 · 1区 · Top"],
@@ -136,7 +140,7 @@
     },
     "summary_en": "A unified translation framework addresses brain MRI anomaly detection across diseases, sequences, and missing-input settings. Dynamic style prototypes and dual-level evidence support flexible inference under different combinations of MRI inputs.",
     "summary_zh": "该工作面向不同疾病、序列与缺失输入场景，构建统一的脑MRI翻译式异常检测框架。动态风格原型与双层证据机制支持更加灵活的推理。",
-    "bibtex": "@article{zhang2026unitransad,\n  title={UniTransAD: Unified Translation Framework for Anomaly Detection in Brain MRI},\n  author={Zhang, Qi and Li, Xia and Hu, Yibo and Sun, Jianqi},\n  journal={IEEE Transactions on Medical Imaging},\n  year={2026},\n  doi={10.1109/TMI.2026.3711975},\n  note={Online ahead of print}\n}"
+    "bibtex": "@article{zhang2026unitransad,\n  title={UniTransAD: Unified Translation Framework for Anomaly Detection in Brain MRI},\n  author={Zhang, Qi and Li, Xia and Hu, Yibo and Sun, Jianqi},\n  journal={IEEE Transactions on Medical Imaging},\n  year={2026},\n  volume={45},\n  number={9},\n  pages={4876--4891},\n  doi={10.1109/TMI.2026.3711975}\n}"
   },
   {
     "id": "u2ad",

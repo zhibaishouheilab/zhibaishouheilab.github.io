@@ -93,6 +93,28 @@ test("publication page exposes accessible views, filters, and BibTeX", async () 
   assert.match(html, /CCF B · 2026/);
 });
 
+test("every bilingual route includes a stylesheet that was emitted by the static build", async () => {
+  for (const locale of ["", "zh"]) {
+    for (const route of routes) {
+      const html = await readFile(
+        path.join(root, "dist", locale, route, "index.html"),
+        "utf8",
+      );
+      const stylesheets = [
+        ...html.matchAll(/<link\b[^>]*rel="stylesheet"[^>]*href="([^"]+)"/g),
+      ];
+      assert.ok(
+        stylesheets.length > 0,
+        `Missing stylesheet: /${locale}/${route}`,
+      );
+      for (const [, href] of stylesheets) {
+        const css = await readFile(path.join(root, "dist", href), "utf8");
+        assert.ok(css.trim().length > 0, `Empty stylesheet: ${href}`);
+      }
+    }
+  }
+});
+
 test("presentations are independent from the publication list", async () => {
   const publicationsHtml = await readFile(
     path.join(root, "dist", "publications", "index.html"),

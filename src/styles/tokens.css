@@ -1,28 +1,28 @@
 :root {
-  --color-primary: #173b57;
-  --color-primary-hover: #245976;
-  --color-secondary: #2f7c83;
-  --color-accent: #b96b45;
-  --color-background: #f6f8fa;
+  --color-primary: #8a493d;
+  --color-primary-hover: #67372e;
+  --color-secondary: #6b574b;
+  --color-accent: #8a493d;
+  --color-background: #fffefa;
   --color-surface: #ffffff;
-  --color-surface-soft-blue: #eaf1f5;
-  --color-surface-soft-teal: #e7f2f2;
-  --color-text: #1c2730;
-  --color-text-muted: #5f6f78;
-  --color-border: #d9e2e7;
-  --color-border-strong: #bfced6;
+  --color-surface-soft-blue: #f5f2ed;
+  --color-surface-soft-teal: #f5f2ed;
+  --color-text: #322f2b;
+  --color-text-muted: #67625c;
+  --color-border: #e3dfd7;
+  --color-border-strong: #cbc3b8;
   --color-success: #39705a;
   --color-warning: #8a681f;
   --color-review: #66717a;
-  --color-focus: #145e75;
+  --color-focus: #8a493d;
   --font-sans:
-    Inter, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", "Noto Sans SC",
-    "Microsoft YaHei", sans-serif;
-  --container: 1200px;
+    Arial, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-serif: Georgia, "Times New Roman", "Songti SC", SimSun, serif;
+  --container: 1060px;
   --content: 800px;
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 22px;
-  --shadow-soft: 0 12px 40px rgba(23, 59, 87, 0.07);
+  --radius-sm: 3px;
+  --radius-md: 4px;
+  --radius-lg: 4px;
+  --shadow-soft: none;
   --transition: 180ms ease;
 }

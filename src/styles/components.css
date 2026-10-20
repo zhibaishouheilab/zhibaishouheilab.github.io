@@ -1,26 +1,21 @@
 .button {
   display: inline-flex;
-  min-height: 44px;
+  min-height: 40px;
   align-items: center;
   justify-content: center;
-  gap: 0.45rem;
-  padding: 0.66rem 1rem;
-  border: 1px solid transparent;
+  gap: 0.4rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-sm);
   font: inherit;
-  font-weight: 650;
-  line-height: 1.2;
+  font-size: 0.85rem;
+  line-height: 1.3;
   text-decoration: none;
-  transition:
-    transform var(--transition),
-    border-color var(--transition),
-    background var(--transition),
-    color var(--transition);
   cursor: pointer;
 }
 
 .button:hover {
-  transform: translateY(-1px);
+  transform: none;
 }
 
 .button.primary {
@@ -81,10 +76,10 @@
 .social-links a {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  color: var(--color-text-muted);
-  font-size: 0.93rem;
-  font-weight: 620;
+  gap: 0.4rem;
+  color: var(--color-primary);
+  font-size: 0.86rem;
+  font-weight: 400;
   text-decoration: none;
 }
 
@@ -94,14 +89,13 @@
 
 .social-mark {
   display: grid;
-  width: 1.75rem;
-  height: 1.75rem;
+  width: 1.5rem;
+  height: 1.5rem;
   place-items: center;
-  border: 1px solid var(--color-border-strong);
-  border-radius: 50%;
-  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
   font-size: 0.62rem;
-  font-weight: 750;
 }
 
 .social-links.compact {
@@ -113,52 +107,41 @@
 }
 
 .interest-card {
-  min-height: 13rem;
-  padding: 1.5rem;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
-  transition:
-    transform var(--transition),
-    border-color var(--transition);
+  padding: 0;
+  min-width: 0;
 }
 
 .interest-card:hover {
-  transform: translateY(-3px);
+  transform: none;
   border-color: var(--color-border-strong);
 }
 
 .interest-number {
-  display: block;
-  margin-bottom: 2.6rem;
-  color: var(--color-accent);
-  font-size: 0.78rem;
-  font-weight: 750;
-  letter-spacing: 0.12em;
+  display: none;
 }
 
 .interest-card p {
-  margin-top: 0.8rem;
+  margin-top: 0.3rem;
   color: var(--color-text-muted);
+  font-size: 0.84rem;
+  line-height: 1.65;
 }
 
 .publication-card,
 .project-card {
-  overflow: hidden;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
-  box-shadow: var(--shadow-soft);
+  display: grid;
+  grid-template-columns: minmax(220px, 0.7fr) minmax(0, 1.3fr);
+  gap: 28px;
+  padding: 0 0 1.5rem;
 }
 
 .publication-image {
   position: relative;
-  display: block;
   width: 100%;
+  min-width: 0;
   margin: 0;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-  background: var(--color-surface-soft-blue);
+  align-self: start;
+  background: var(--color-surface);
 }
 
 .publication-image-button > img,
@@ -190,7 +173,7 @@
   padding: 3.4rem 1rem 1rem;
   border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-md);
-  background: #f4f7f8;
+  background: var(--color-surface-soft-blue);
   box-shadow: 0 28px 90px rgba(12, 35, 50, 0.28);
 }
 
@@ -216,33 +199,24 @@
 }
 
 .figure-source-badge {
-  position: absolute;
-  top: 0.75rem;
-  left: 0.75rem;
-  display: inline-flex;
-  min-height: 28px;
-  align-items: center;
-  padding: 0.3rem 0.62rem;
-  border: 1px solid rgba(32, 70, 91, 0.2);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.94);
-  color: var(--color-primary);
-  box-shadow: 0 4px 16px rgba(18, 42, 57, 0.12);
-  font-size: 0.72rem;
-  font-weight: 720;
-  letter-spacing: 0.02em;
-  line-height: 1;
-  backdrop-filter: blur(6px);
+  display: block;
+  padding: 0.35rem 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.65rem;
+  line-height: 1.35;
+  pointer-events: none;
 }
 
 .publication-content,
 .project-content {
-  padding: clamp(1.25rem, 3vw, 1.85rem);
+  padding: 0;
 }
 
 .publication-content h3,
 .publication-list-content h3 {
-  margin-top: 0.8rem;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 .badge-row {
@@ -256,112 +230,100 @@
 .metric-badge {
   display: inline-flex;
   align-items: center;
-  min-height: 26px;
-  padding: 0.25rem 0.55rem;
-  border: 1px solid transparent;
-  border-radius: 999px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.025em;
+  padding: 0 0.45rem 0 0;
+  border: 0;
+  border-right: 1px solid var(--color-border);
+  border-radius: 0;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.6;
 }
 
 .status-published {
-  border-color: #b9d2c7;
-  background: #edf6f1;
-  color: var(--color-success);
+  color: var(--color-text-muted);
 }
 
 .status-in-press,
 .status-accepted {
-  border-color: #d8c896;
-  background: #fbf6e9;
-  color: var(--color-warning);
+  color: var(--color-text-muted);
 }
 
 .status-under-review,
 .status-preprint {
-  border-color: var(--color-border-strong);
-  background: #f0f3f5;
-  color: var(--color-review);
+  color: var(--color-text-muted);
 }
 
 .author-badge {
-  border-color: #d8bba8;
-  background: #fbf1ec;
-  color: #865038;
+  color: var(--color-text-muted);
 }
 
 .metric-badge {
-  border-color: #b9ced8;
-  background: #eef6f8;
-  color: #24566b;
+  color: var(--color-text-muted);
 }
 
 .authors {
-  margin-top: 0.7rem;
+  margin-top: 0.45rem;
   color: var(--color-text-muted);
-  font-size: 0.92rem;
-  line-height: 1.58;
+  font-size: 0.8rem;
+  line-height: 1.65;
 }
 
 .author-self {
   color: var(--color-text);
-  text-decoration: underline;
-  text-decoration-color: var(--color-accent);
-  text-decoration-thickness: 2px;
-  text-underline-offset: 0.18em;
+  font-weight: 600;
 }
 
 .venue-line {
-  margin-top: 0.65rem;
+  margin-top: 0.35rem;
   color: var(--color-text-muted);
-  font-size: 0.92rem;
+  font-size: 0.8rem;
 }
 
 .publication-summary,
 .project-summary {
-  margin: 1rem 0;
+  margin: 0.5rem 0;
   color: var(--color-text-muted);
+  font-size: 0.87rem;
+  line-height: 1.7;
 }
 
 .doi {
-  margin: 0.95rem 0 1.1rem;
+  margin: 0.5rem 0;
   color: var(--color-text-muted);
-  font-size: 0.84rem;
+  font-size: 0.75rem;
   overflow-wrap: anywhere;
 }
 
 .doi span {
   margin-right: 0.4rem;
   color: var(--color-text);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .publication-list-item {
   display: grid;
-  grid-template-columns: minmax(15rem, 0.72fr) minmax(0, 1.28fr);
-  overflow: hidden;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
-  box-shadow: var(--shadow-soft);
+  grid-template-columns: 190px minmax(0, 1fr);
+  gap: 24px;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .publication-list-item + .publication-list-item {
-  margin-top: 1rem;
+  margin-top: 0;
 }
 
 .publication-list-visual {
   position: relative;
+  min-width: 0;
   align-self: start;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-  border-right: 1px solid var(--color-border);
-  background: var(--color-surface-soft-blue);
+  background: var(--color-surface);
 }
 
 .publication-list-content {
-  padding: clamp(1.25rem, 3vw, 1.7rem);
+  padding: 0;
 }
 
 .publication-list-item[hidden] {
@@ -369,20 +331,11 @@
 }
 
 .publication-year {
-  position: absolute;
-  right: 0.75rem;
-  bottom: 0.75rem;
-  display: inline-flex;
-  min-height: 30px;
-  align-items: center;
-  padding: 0.28rem 0.62rem;
-  border-radius: 999px;
-  background: rgba(13, 74, 92, 0.94);
-  color: #fff;
-  box-shadow: 0 4px 16px rgba(18, 42, 57, 0.16);
-  font-size: 0.8rem;
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
   font-variant-numeric: tabular-nums;
-  font-weight: 740;
 }
 
 .publication-filters {
@@ -401,7 +354,7 @@
   gap: 0.35rem;
   color: var(--color-text-muted);
   font-size: 0.78rem;
-  font-weight: 680;
+  font-weight: 600;
 }
 
 .publication-filters input,
@@ -439,30 +392,27 @@
 
 .publication-tablist {
   display: inline-flex;
-  gap: 0.35rem;
-  padding: 0.35rem;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  background: var(--color-surface-soft-blue);
+  gap: 1rem;
+  padding: 0;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .publication-tablist button {
   min-height: 44px;
-  padding: 0.65rem 1rem;
-  border: 1px solid transparent;
-  border-radius: 6px;
+  padding: 0.55rem 0;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
   background: transparent;
   color: var(--color-text-muted);
   font: inherit;
-  font-weight: 700;
+  font-size: 0.9rem;
   cursor: pointer;
 }
 
 .publication-tablist button[aria-selected="true"] {
-  border-color: var(--color-border-strong);
-  background: var(--color-surface);
+  border-bottom-color: var(--color-primary);
   color: var(--color-primary);
-  box-shadow: var(--shadow-soft);
 }
 
 .publication-tab-content {
@@ -541,7 +491,7 @@
   margin: 1rem 0;
   padding: 1rem;
   border-radius: var(--radius-sm);
-  background: #f0f4f6;
+  background: var(--color-surface-soft-blue);
   font-size: 0.82rem;
   line-height: 1.55;
   white-space: pre-wrap;
@@ -557,7 +507,7 @@
 .copy-status {
   color: var(--color-success);
   font-size: 0.9rem;
-  font-weight: 650;
+  font-weight: 600;
 }
 
 .project-card {
@@ -567,13 +517,13 @@
 
 .project-image {
   display: grid;
-  height: 100%;
+  width: 100%;
+  aspect-ratio: 16 / 10;
   min-width: 0;
   margin: 0;
-  overflow: hidden;
   place-items: center;
-  border-right: 1px solid var(--color-border);
-  background: var(--color-surface-soft-blue);
+  align-self: start;
+  background: var(--color-surface);
 }
 
 .project-image > img {
@@ -583,8 +533,8 @@
 }
 
 .project-content h2 {
-  margin-top: 0.8rem;
-  font-size: clamp(1.55rem, 3vw, 2.15rem);
+  margin-top: 0.5rem;
+  font-size: 1.5rem;
 }
 
 .project-details {
@@ -600,7 +550,7 @@
 
 .project-details dt {
   color: var(--color-primary);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .project-details dd {
@@ -630,7 +580,7 @@
 .related-publication-list li > a span {
   color: var(--color-secondary);
   font-size: 0.78rem;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .related-publication-actions {
@@ -692,19 +642,19 @@
 
 .conference-formats span {
   padding: 0.28rem 0.55rem;
-  border: 1px solid #b9d2c7;
+  border: 1px solid var(--color-border);
   border-radius: 999px;
-  background: #edf6f1;
+  background: var(--color-surface-soft-blue);
   color: var(--color-success);
   font-size: 0.72rem;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .conference-meta {
   margin-top: 0.5rem;
   color: var(--color-secondary);
   font-size: 0.85rem;
-  font-weight: 650;
+  font-weight: 600;
 }
 
 .conference-talk {
@@ -729,10 +679,10 @@
   margin-top: 1rem;
   padding: 0.72rem 0.8rem;
   border-left: 3px solid var(--color-accent);
-  background: #fbf6e9;
-  color: #795724;
+  background: var(--color-surface-soft-blue);
+  color: var(--color-secondary);
   font-size: 0.88rem;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .conference-link {
@@ -740,7 +690,7 @@
   margin-top: auto;
   padding-top: 1rem;
   font-size: 0.86rem;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .presentation-stack {
@@ -760,12 +710,10 @@
 
 .presentation-card {
   display: grid;
-  grid-template-columns: minmax(280px, 0.86fr) minmax(0, 1.14fr);
-  overflow: hidden;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
-  box-shadow: var(--shadow-soft);
+  grid-template-columns: minmax(230px, 0.7fr) minmax(0, 1.3fr);
+  gap: 28px;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .presentation-card[hidden] {
@@ -773,16 +721,15 @@
 }
 
 .presentation-featured {
-  border-top: 3px solid var(--color-accent);
+  border-top: 0;
 }
 
 .presentation-image {
   position: relative;
   min-width: 0;
-  min-height: 20rem;
+  height: 18rem;
   margin: 0;
-  border-right: 1px solid var(--color-border);
-  background: var(--color-surface-soft-blue);
+  background: var(--color-surface);
 }
 
 .presentation-image figcaption {
@@ -794,12 +741,12 @@
   background: rgba(255, 255, 255, 0.95);
   color: var(--color-primary);
   font-size: 0.74rem;
-  font-weight: 700;
+  font-weight: 600;
   pointer-events: none;
 }
 
 .presentation-content {
-  padding: clamp(1.25rem, 3vw, 1.8rem);
+  padding: 0;
 }
 
 .presentation-content h2 {
@@ -811,13 +758,13 @@
   margin-top: 0.8rem;
   color: var(--color-secondary);
   font-size: 0.86rem;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .award-badge {
-  border-color: #d8b88c !important;
-  background: #fbf1e6 !important;
-  color: #795724 !important;
+  border-color: var(--color-border) !important;
+  background: var(--color-surface-soft-blue) !important;
+  color: var(--color-secondary) !important;
 }
 
 .presentation-list {
@@ -838,7 +785,7 @@
 .presentation-list li > span {
   color: var(--color-secondary);
   font-size: 0.78rem;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .presentation-list li > a {
@@ -867,11 +814,9 @@
 
 .resource-card,
 .research-publication-card {
-  padding: 1.5rem;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
-  box-shadow: var(--shadow-soft);
+  min-width: 0;
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--color-border);
 }
 
 .resource-card h2 {
@@ -940,13 +885,13 @@
 
 .detail-steps li::marker {
   color: var(--color-accent);
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .research-publication-card > p {
   color: var(--color-secondary);
   font-size: 0.82rem;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .research-publication-card h3 {
@@ -1007,7 +952,7 @@
   background: var(--color-surface);
   color: var(--color-primary);
   font: inherit;
-  font-weight: 720;
+  font-weight: 600;
   cursor: pointer;
 }
 
@@ -1017,9 +962,9 @@
 }
 
 .like-button.is-liked {
-  border-color: #d8bba8;
-  background: #fbf1ec;
-  color: #865038;
+  border-color: var(--color-border);
+  background: var(--color-surface-soft-blue);
+  color: var(--color-secondary);
 }
 
 .like-heart {
@@ -1091,7 +1036,7 @@
 .honors-list time {
   color: var(--color-secondary);
   font-size: 0.9rem;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .honors-list strong,
@@ -1127,16 +1072,16 @@
 
 .news-list li {
   display: grid;
-  grid-template-columns: 8rem minmax(0, 1fr);
+  grid-template-columns: 7rem minmax(0, 1fr);
   gap: 1rem;
-  padding: 1rem 0;
+  padding: 0.8rem 0;
   border-top: 1px solid var(--color-border);
 }
 
 .news-list time {
   color: var(--color-secondary);
   font-variant-numeric: tabular-nums;
-  font-weight: 650;
+  font-weight: 600;
 }
 
 .news-list a {
@@ -1159,7 +1104,7 @@
 
 .timeline time {
   color: var(--color-secondary);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .timeline strong {
@@ -1179,38 +1124,22 @@
 }
 
 .fact-grid > div {
-  padding: 1.25rem;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  background: var(--color-surface);
+  padding: 1rem 0;
+  border-top: 1px solid var(--color-border);
 }
 
 .fact-grid dt {
   color: var(--color-text-muted);
   font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  font-weight: 400;
 }
 
 .fact-grid dd {
-  margin: 0.35rem 0 0;
-  color: var(--color-primary);
-  font-weight: 650;
+  margin: 0.4rem 0 0;
   overflow-wrap: anywhere;
 }
 
 @media (max-width: 900px) {
-  .publication-list-item {
-    grid-template-columns: 1fr;
-  }
-
-  .publication-list-visual {
-    width: 100%;
-    border-right: 0;
-    border-bottom: 1px solid var(--color-border);
-  }
-
   .publication-filters {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1296,5 +1225,149 @@
   .presentations-cta {
     align-items: stretch;
     flex-direction: column;
+  }
+}
+
+/* Shared row layout for the homepage and the first-author publication view. */
+.featured-card {
+  display: grid;
+  grid-template-columns: 168px minmax(0, 1fr);
+  gap: 22px;
+  padding: 1.25rem 0;
+}
+
+.featured-card:first-child {
+  padding-top: 0;
+}
+.featured-card:last-child {
+  border-bottom: 0;
+}
+.publication-image-button > img {
+  height: auto;
+  max-height: 160px;
+}
+.presentation-image .publication-image-button > img {
+  height: 100%;
+  max-height: none;
+}
+.publication-content .button-row,
+.publication-list-content .button-row {
+  gap: 0.7rem;
+}
+.publication-content .button,
+.publication-list-content .button {
+  min-height: 32px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-primary);
+  font-size: 0.78rem;
+  font-weight: 400;
+}
+.publication-content .button:hover,
+.publication-list-content .button:hover {
+  text-decoration: underline;
+}
+.publication-note {
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+.hero-links .social-mark {
+  display: none;
+}
+.section-heading > a:not(.button) {
+  font-size: 0.8rem;
+}
+.home-publications .featured-card {
+  grid-template-columns: 146px minmax(0, 1fr);
+  gap: 20px;
+}
+.home-publications .badge-row {
+  gap: 0.3rem;
+}
+.home-publications .metric-badge {
+  display: none;
+}
+.home-project-link h3 {
+  color: var(--color-primary);
+}
+.supervisor-links {
+  line-height: 1.8;
+}
+.supervisor-links a {
+  text-decoration: none;
+}
+.supervisor-links a:hover {
+  text-decoration: underline;
+}
+.bibtex-dialog,
+.media-lightbox {
+  background: var(--color-background);
+}
+
+@media (max-width: 760px) {
+  .featured-card,
+  .publication-list-item,
+  .home-publications .featured-card {
+    grid-template-columns: 100px minmax(0, 1fr);
+    gap: 16px;
+  }
+  .publication-content h3,
+  .publication-list-content h3 {
+    font-size: 0.92rem;
+  }
+  .publication-image-button > img {
+    max-height: 120px;
+  }
+  .project-card,
+  .presentation-card {
+    gap: 1rem;
+  }
+  .project-image,
+  .presentation-image {
+    min-height: 0;
+  }
+  .presentation-image {
+    height: 16rem;
+  }
+  .research-detail-intro {
+    gap: 1.25rem;
+  }
+  .resource-grid {
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .featured-card,
+  .publication-list-item,
+  .home-publications .featured-card {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.7rem;
+  }
+  .publication-image,
+  .publication-list-visual {
+    width: 160px;
+    max-width: 100%;
+  }
+  .publication-image-button > img {
+    max-height: 110px;
+  }
+  .presentation-image .publication-image-button > img {
+    max-height: none;
+  }
+  .authors,
+  .venue-line {
+    font-size: 0.78rem;
+  }
+  .publication-summary {
+    font-size: 0.85rem;
+  }
+  .publication-filters {
+    padding: 0.75rem;
+  }
+  .bibtex-dialog {
+    padding: 1rem;
   }
 }

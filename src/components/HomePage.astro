@@ -1,0 +1,130 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "./Hero.astro";
+import ResearchInterestCard from "./ResearchInterestCard.astro";
+import FeaturedPublicationCard from "./FeaturedPublicationCard.astro";
+import NewsList from "./NewsList.astro";
+import SiteLikeButton from "./SiteLikeButton.astro";
+import { researchInterests } from "../data/researchInterests";
+import { researchDetails } from "../data/researchDetails";
+import { dictionaries, pathFor, type Locale } from "../i18n/routes";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = dictionaries[locale];
+const publicationRecords = (await getCollection("publications")).map(
+  (entry) => entry.data,
+);
+const selectedIds = ["jointsr-miccai2026", "unitransad", "u2ad", "cervai-x"];
+const publications = selectedIds.flatMap((id) => {
+  const record = publicationRecords.find(
+    (publication) => publication.id === id && publication.featured,
+  );
+  return record ? [record] : [];
+});
+const projects = (await getCollection("projects")).map((entry) => entry.data);
+---
+
+<BaseLayout {locale} routeName="home">
+  <Hero {locale} />
+  <div class="container home-columns">
+    <section class="home-publications" aria-labelledby="publications-heading">
+      <div class="section-heading">
+        <h2 id="publications-heading">{t.labels.selectedPublications}</h2>
+        <a href={pathFor(locale, "publications")}>
+          {locale === "en" ? "All publications" : "全部论文"}
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+      <div class="featured-grid">
+        {
+          publications.map((publication) => (
+            <FeaturedPublicationCard {publication} {locale} />
+          ))
+        }
+      </div>
+    </section>
+    <aside class="home-sidebar">
+      <section aria-labelledby="interests-heading">
+        <div class="section-heading">
+          <h2 id="interests-heading">{t.labels.researchInterests}</h2>
+        </div>
+        <div class="interest-grid">
+          {
+            researchInterests.map((interest) => (
+              <ResearchInterestCard
+                number={interest.number}
+                title={locale === "en" ? interest.title_en : interest.title_zh}
+                description={
+                  locale === "en"
+                    ? interest.description_en
+                    : interest.description_zh
+                }
+              />
+            ))
+          }
+        </div>
+      </section>
+      <section aria-labelledby="news-heading">
+        <div class="section-heading">
+          <h2 id="news-heading">{t.labels.latestNews}</h2>
+        </div>
+        <NewsList {locale} limit={5} />
+        <a class="news-more" href={pathFor(locale, "news")}
+          >{t.labels.viewAllNews} <span aria-hidden="true">→</span></a
+        >
+      </section>
+    </aside>
+  </div>
+  <section class="section home-research" aria-labelledby="projects-heading">
+    <div class="container">
+      <div class="section-heading">
+        <h2 id="projects-heading">{t.labels.featuredResearch}</h2>
+        <a href={pathFor(locale, "research")}
+          >{locale === "en" ? "Research overview" : "研究概览"}
+          <span aria-hidden="true">→</span></a
+        >
+      </div>
+      <div class="home-project-grid">
+        {
+          researchDetails.map((detail) => {
+            const project = projects.find(
+              (item) => item.id === detail.projectId,
+            );
+            return (
+              project && (
+                <a
+                  class="home-project-link"
+                  href={pathFor(locale, detail.routeName)}
+                >
+                  <span class="home-project-image">
+                    <img
+                      src={project.image.src}
+                      alt={
+                        locale === "en"
+                          ? project.image.alt_en
+                          : project.image.alt_zh
+                      }
+                      width="1200"
+                      height="750"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </span>
+                  <h3>{locale === "en" ? detail.title_en : detail.title_zh}</h3>
+                  <span>
+                    {locale === "en" ? project.summary_en : project.summary_zh}
+                  </span>
+                </a>
+              )
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
+  <SiteLikeButton {locale} />
+</BaseLayout>

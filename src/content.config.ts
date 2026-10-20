@@ -60,6 +60,12 @@ const publicationSchema = z.object({
   summary_en: z.string().min(1),
   summary_zh: z.string().min(1),
   bibtex: z.string().min(1),
+  publication_note: z
+    .object({
+      en: z.string().min(1),
+      zh: z.string().min(1),
+    })
+    .optional(),
 });
 
 const projectSchema = z.object({

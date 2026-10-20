@@ -1,5 +1,23 @@
 export const news = [
   {
+    date: "2026-09-26",
+    title_en:
+      "Our MICCAI 2026 paper on isotropic 3D cervical MRI reconstruction is now published in the Springer proceedings.",
+    title_zh:
+      "MICCAI 2026 各向同性三维颈椎 MRI 重建论文已在 Springer 会议论文集中正式出版。",
+    related_link: "https://doi.org/10.1007/978-3-032-38179-8_46",
+    category: "Publication",
+  },
+  {
+    date: "2026-09",
+    title_en:
+      "UniTransAD now appears in IEEE Transactions on Medical Imaging, volume 45, issue 9, pages 4876–4891.",
+    title_zh:
+      "UniTransAD 正式刊于 IEEE Transactions on Medical Imaging，第45卷第9期，4876–4891页。",
+    related_link: "https://doi.org/10.1109/TMI.2026.3711975",
+    category: "Publication",
+  },
+  {
     date: "2026-07-10",
     title_en:
       "UniTransAD was published online ahead of print in IEEE Transactions on Medical Imaging.",

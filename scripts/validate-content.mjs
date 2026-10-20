@@ -72,6 +72,11 @@ for (const publication of publications) {
   }
   if (!publication.summary_en || !publication.summary_zh)
     errors.push(`Bilingual summary missing: ${publication.id}`);
+  if (
+    publication.publication_note &&
+    (!publication.publication_note.en || !publication.publication_note.zh)
+  )
+    errors.push(`Bilingual publication note missing: ${publication.id}`);
   if (publication.status !== "Under Review" && !publication.venue_metrics)
     errors.push(`Venue metrics missing: ${publication.id}`);
   if (

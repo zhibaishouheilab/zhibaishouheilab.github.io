@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import ContentLayout from "../../layouts/ContentLayout.astro";
 import { education } from "../../data/education";
+import Supervisors from "../../components/Supervisors.astro";
 import { profile } from "../../data/profile";
 import { dictionaries } from "../../i18n/routes";
 import HonorsList from "../../components/HonorsList.astro";
@@ -73,6 +74,9 @@ const selected = publications
             <strong>{profile.positionZh}</strong><br />{profile.institutionZh}{
               profile.departmentZh
             }
+          </p>
+          <p>
+            {t.labels.supervisor}：<Supervisors {locale} />
           </p>
         </div>
         <div class="side-panel">

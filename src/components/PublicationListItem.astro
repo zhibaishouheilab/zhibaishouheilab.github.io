@@ -115,6 +115,11 @@ const metricNote = publication.venue_metrics
       }{publication.article_number && ` · ${publication.article_number}`}
     </p>
     {
+      publication.publication_note && (
+        <p class="publication-note">{publication.publication_note[locale]}</p>
+      )
+    }
+    {
       publication.doi && (
         <p class="doi">
           <span>{t.labels.doi}</span>

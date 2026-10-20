@@ -8,6 +8,10 @@ Edit `src/data/publications.json`. Every record needs a unique lowercase `id`, a
 
 Allowed publication statuses are `Published`, `Accepted`, `In Press`, `Preprint`, and `Under Review`. A paper is `featured` only when it is appropriate to highlight it on the home page. Mark `first_author` and `co_first_author` independently and set `equal_contribution` only for authors explicitly identified by the source.
 
+When the first online publication year and the publisher's citation year differ, keep the first online year in `year` for chronological browsing and the publisher's citation year in BibTeX. Explain both dates in the optional bilingual `publication_note` (`en` and `zh`), shown in both publication views. Do not infer publication from conference acceptance alone.
+
+首次在线出版年份与出版社正式引文年份不一致时，`year` 保留首次在线年份用于时间排序，BibTeX 使用出版社引文年份，并在可选的双语 `publication_note`（`en` 和 `zh`）中说明。两种论文视图均显示该说明；会议接收本身不代表正式出版。
+
 ## Projects / 项目
 
 Edit `src/data/projects.json`. Project descriptions should state the clinical motivation and technical focus without claiming unverified outcomes. Every ID in `related_publications` must exist in the publications file.
