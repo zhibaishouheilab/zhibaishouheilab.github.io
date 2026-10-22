@@ -1,5 +1,14 @@
 export const news = [
   {
+    date: "2026-10-21",
+    title_en:
+      "Selected for the 2026 Young Science and Technology Talent Cultivation Program (Doctoral Track) of the China Association for Science and Technology (CAST).",
+    title_zh: "入选 2026 年中国科协青年科技人才培育工程博士生专项计划。",
+    related_link:
+      "https://rczx.cast.org.cn/sy/tzgg/art/2026/art_3c9cc64b5a914fa2b0e43e113ce66c39.html",
+    category: "Recognition",
+  },
+  {
     date: "2026-09-26",
     title_en:
       "Our MICCAI 2026 paper on isotropic 3D cervical MRI reconstruction is now published in the Springer proceedings.",
